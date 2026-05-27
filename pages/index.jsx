@@ -1,33 +1,939 @@
-17:50:13.596 Running build in Washington, D.C., USA (East) – iad1 (Turbo Build Machine)
-17:50:13.596 Build machine configuration: 30 cores, 60 GB
-17:50:13.693 Cloning github.com/noel22988/vocab (Branch: main, Commit: 35fa1b7)
-17:50:13.887 Cloning completed: 194.000ms
-17:50:14.724 Restored build cache from previous deployment (EUM8Wgsf5nwCPssjamc68txuaUVY)
-17:50:14.925 Running "vercel build"
-17:50:14.937 Vercel CLI 54.4.1
-17:50:15.096 Installing dependencies...
-17:50:16.906 
-17:50:16.906 up to date in 2s
-17:50:16.906 
-17:50:16.907 3 packages are looking for funding
-17:50:16.907   run `npm fund` for details
-17:50:16.933 Detected Next.js version: 14.2.3
-17:50:16.936 Running "npm run build"
-17:50:17.023 
-17:50:17.024 > chinese-vocab-trainer@1.0.0 build
-17:50:17.024 > next build
-17:50:17.024 
-17:50:17.566   ▲ Next.js 14.2.3
-17:50:17.566 
-17:50:17.566    Linting and checking validity of types ...
-17:50:17.643    Creating an optimized production build ...
-17:50:18.979 Failed to compile.
-17:50:18.979 
-17:50:18.979 ./pages/index.jsx
-17:50:18.979 Module not found: Can't resolve '../data/wordData.json'
-17:50:18.979 
-17:50:18.979 https://nextjs.org/docs/messages/module-not-found
-17:50:18.979 
-17:50:18.995 
-17:50:18.995 > Build failed because of webpack errors
-17:50:19.015 Error: Command "npm run build" exited with 1
+import { useState, useEffect, useCallback, useMemo } from 'react';
+import WORD_DATA from '../data/wordData.json';
+
+// ─── DATA ─────────────────────────────────────────────────────────────────────
+const IDIOMS = [
+  {word:"黯然神伤",pinyin:"àn rán shén shāng",meaning:"Heartbroken and depressed",cn:"听到离别的消息后，他感到黯然神伤。",en:"He felt heartbroken and depressed after hearing the farewell news."},
+  {word:"安于现状",pinyin:"ān yú xiàn zhuàng",meaning:"Content with the current situation",cn:"他不想改变，因为他安于现状。",en:"He is content with the current situation and doesn't want to change."},
+  {word:"百折不挠",pinyin:"bǎi zhé bù náo",meaning:"Indomitable; never gives up",cn:"他在困境中百折不挠。",en:"He remains indomitable in the face of adversity."},
+  {word:"暴跳如雷",pinyin:"bào tiào rú léi",meaning:"Fly into a rage",cn:"他听到坏消息后暴跳如雷。",en:"He flew into a rage after hearing the bad news."},
+  {word:"不辞辛劳",pinyin:"bù cí xīn láo",meaning:"Toil tirelessly",cn:"父母为了孩子不辞辛劳。",en:"Parents toil tirelessly for their children."},
+  {word:"不甘示弱",pinyin:"bù gān shì ruò",meaning:"Unwilling to show weakness",cn:"他在辩论中不甘示弱。",en:"He was unwilling to show weakness in the debate."},
+  {word:"不假思索",pinyin:"bù jiǎ sī suǒ",meaning:"Without thinking; spontaneously",cn:"他不假思索地回答了问题。",en:"He answered the question without thinking."},
+  {word:"不解之缘",pinyin:"bù jiě zhī yuán",meaning:"Indissoluble bond",cn:"他们之间有着不解之缘。",en:"They share an indissoluble bond."},
+  {word:"不可或缺",pinyin:"bù kě huò quē",meaning:"Indispensable",cn:"水是人类不可或缺的资源。",en:"Water is an indispensable resource for humans."},
+  {word:"不可思议",pinyin:"bù kě sī yì",meaning:"Inconceivable; unbelievable",cn:"这个奇迹真是不可思议。",en:"This miracle is truly inconceivable."},
+  {word:"不屈不挠",pinyin:"bù qū bù náo",meaning:"Indomitable spirit",cn:"他面对困难表现得不屈不挠。",en:"He showed indomitable spirit in the face of difficulties."},
+  {word:"不胜枚举",pinyin:"bù shèng méi jǔ",meaning:"Too numerous to mention",cn:"他的优点不胜枚举。",en:"His merits are too numerous to mention."},
+  {word:"不闻不问",pinyin:"bù wén bù wèn",meaning:"Indifferent; unconcerned",cn:"他对周围的事情不闻不问。",en:"He is indifferent to everything around him."},
+  {word:"不以为然",pinyin:"bù yǐ wéi rán",meaning:"Not think much of something",cn:"对于他的批评，她不以为然。",en:"She didn't think much of his criticism."},
+  {word:"不约而同",pinyin:"bù yuē ér tóng",meaning:"Coincidentally; without prior agreement",cn:"他们不约而同地笑了起来。",en:"They laughed at the same time without prior agreement."},
+  {word:"不自量力",pinyin:"bù zì liàng lì",meaning:"Overestimate one's abilities",cn:"他经常不自量力。",en:"He often overestimates his abilities."},
+  {word:"称心如意",pinyin:"chèn xīn rú yì",meaning:"Everything is satisfactory",cn:"他找到了一份称心如意的工作。",en:"He found a job that is everything he wished for."},
+  {word:"赤手空拳",pinyin:"chì shǒu kōng quán",meaning:"Bare-handed; with nothing",cn:"他赤手空拳面对敌人。",en:"He faced the enemy bare-handed."},
+  {word:"持之以恒",pinyin:"chí zhī yǐ héng",meaning:"Persevere consistently",cn:"他持之以恒地练习钢琴。",en:"He practices the piano with perseverance."},
+  {word:"处心积虑",pinyin:"chǔ xīn jī lǜ",meaning:"Meticulously scheming",cn:"他处心积虑地想要打败对手。",en:"He meticulously planned to defeat his opponent."},
+  {word:"处之泰然",pinyin:"chǔ zhī tài rán",meaning:"Take things calmly",cn:"面对危机，他处之泰然。",en:"He takes things calmly in the face of a crisis."},
+  {word:"大同小异",pinyin:"dà tóng xiǎo yì",meaning:"Similar in essential aspects",cn:"这两个计划大同小异。",en:"These two plans are similar in essential aspects."},
+  {word:"得意忘形",pinyin:"dé yì wàng xíng",meaning:"Let success go to one's head",cn:"他因为成功而得意忘形。",en:"He let success go to his head."},
+  {word:"多种多样",pinyin:"duō zhǒng duō yàng",meaning:"Diverse; varied",cn:"这个市场提供多种多样的产品。",en:"This market offers a wide variety of products."},
+  {word:"敷衍塞责",pinyin:"fū yǎn sè zé",meaning:"Do things superficially",cn:"他对工作敷衍塞责，毫无责任感。",en:"He does his work superficially with no sense of responsibility."},
+  {word:"格格不入",pinyin:"gé gé bù rù",meaning:"Incompatible; doesn't fit in",cn:"他的性格和团队格格不入。",en:"His personality is incompatible with the team."},
+  {word:"古道热肠",pinyin:"gǔ dào rè cháng",meaning:"Warm-hearted and generous",cn:"他是一个古道热肠的人。",en:"He is a warm-hearted and generous person."},
+  {word:"哄堂大笑",pinyin:"hōng táng dà xiào",meaning:"Roar with laughter",cn:"他的笑话让全场哄堂大笑。",en:"His joke made the whole audience roar with laughter."},
+  {word:"急功近利",pinyin:"jí gōng jìn lì",meaning:"Eager for quick success",cn:"他总是急功近利，不考虑长期影响。",en:"He is always eager for quick success without considering long-term effects."},
+  {word:"坚韧不拔",pinyin:"jiān rèn bù bá",meaning:"Persistent and determined",cn:"他坚韧不拔地追求自己的目标。",en:"He persistently pursues his goals."},
+  {word:"截然不同",pinyin:"jié rán bù tóng",meaning:"Completely different",cn:"他们的观点截然不同。",en:"Their viewpoints are completely different."},
+  {word:"津津乐道",pinyin:"jīn jīn lè dào",meaning:"Take delight in talking about",cn:"大家津津乐道他的成功故事。",en:"Everyone takes delight in talking about his success story."},
+  {word:"尽如人意",pinyin:"jìn rú rén yì",meaning:"As desired; satisfactory",cn:"事情的发展尽如人意。",en:"The development of things is as desired."},
+  {word:"进退维谷",pinyin:"jìn tuì wéi gǔ",meaning:"In a dilemma",cn:"面对困境，他进退维谷。",en:"He was in a dilemma when faced with difficulties."},
+  {word:"惊慌失措",pinyin:"jīng huāng shī cuò",meaning:"Panic-stricken",cn:"他在紧急情况下惊慌失措。",en:"He was panic-stricken in the emergency situation."},
+  {word:"刻苦耐劳",pinyin:"kè kǔ nài láo",meaning:"Hardworking and enduring",cn:"他是一个刻苦耐劳的工人。",en:"He is a hardworking and enduring worker."},
+  {word:"哭笑不得",pinyin:"kū xiào bù dé",meaning:"Between laughter and tears; dumbfounded",cn:"他的举动让我哭笑不得。",en:"His actions left me not knowing whether to laugh or cry."},
+  {word:"理所当然",pinyin:"lǐ suǒ dāng rán",meaning:"Take for granted; as a matter of course",cn:"他们的成功理所当然。",en:"Their success is taken as a matter of course."},
+  {word:"屡见不鲜",pinyin:"lǚ jiàn bù xiān",meaning:"Common occurrence; nothing new",cn:"这种现象在这个地区屡见不鲜。",en:"This phenomenon is a common occurrence in this area."},
+  {word:"面红耳赤",pinyin:"miàn hóng ěr chì",meaning:"Blush with embarrassment",cn:"被揭穿后，他面红耳赤。",en:"After being exposed, he blushed with embarrassment."},
+  {word:"漠不关心",pinyin:"mò bù guān xīn",meaning:"Indifferent; apathetic",cn:"他对别人的感受漠不关心。",en:"He is indifferent to others' feelings."},
+  {word:"莫名其妙",pinyin:"mò míng qí miào",meaning:"Baffling; inexplicable",cn:"他的行为真是莫名其妙。",en:"His behavior is truly baffling."},
+  {word:"目不暇接",pinyin:"mù bù xiá jiē",meaning:"Too many things for the eye to take in",cn:"这次展览的作品让人目不暇接。",en:"The exhibits are too many for the eye to take in."},
+  {word:"目瞪口呆",pinyin:"mù dèng kǒu dāi",meaning:"Stunned; dumbfounded",cn:"他听到消息后目瞪口呆。",en:"He was stunned when he heard the news."},
+  {word:"品头论足",pinyin:"pǐn tóu lùn zú",meaning:"Nitpick; find fault with others",cn:"他总是喜欢品头论足别人。",en:"He always likes to nitpick about others."},
+  {word:"平淡无奇",pinyin:"píng dàn wú qí",meaning:"Ordinary and unremarkable",cn:"这部电影平淡无奇。",en:"This movie is ordinary and unremarkable."},
+  {word:"迫不及待",pinyin:"pò bù jí dài",meaning:"Impatient; can't wait",cn:"她迫不及待地想分享好消息。",en:"She was impatient to share the good news."},
+  {word:"破涕为笑",pinyin:"pò tì wéi xiào",meaning:"Turn tears into laughter",cn:"她听到好消息后破涕为笑。",en:"She turned her tears into laughter after hearing the good news."},
+  {word:"气喘吁吁",pinyin:"qì chuǎn xū xū",meaning:"Gasping for breath",cn:"跑完马拉松后，他气喘吁吁。",en:"After the marathon, he was gasping for breath."},
+  {word:"千变万化",pinyin:"qiān biàn wàn huà",meaning:"Ever-changing",cn:"这个行业千变万化。",en:"This industry is ever-changing."},
+  {word:"前仆后继",pinyin:"qián pū hòu jì",meaning:"Successive waves pressing forward",cn:"为了自由，前仆后继的英雄们牺牲了自己。",en:"Successive waves of heroes sacrificed themselves for freedom."},
+  {word:"千姿百态",pinyin:"qiān zī bǎi tài",meaning:"A variety of postures and forms",cn:"花园里的花千姿百态。",en:"The flowers in the garden have a variety of postures."},
+  {word:"锲而不舍",pinyin:"qiè ér bù shě",meaning:"Persevere without giving up",cn:"他锲而不舍地追求梦想。",en:"He pursued his dreams with perseverance."},
+  {word:"情不自禁",pinyin:"qíng bù zì jīn",meaning:"Unable to restrain emotions",cn:"听到好消息后，她情不自禁地笑了出来。",en:"After hearing the good news, she couldn't help but smile."},
+  {word:"情有独钟",pinyin:"qíng yǒu dú zhōng",meaning:"Have a special fondness for",cn:"他对音乐情有独钟。",en:"He has a special fondness for music."},
+  {word:"日新月异",pinyin:"rì xīn yuè yì",meaning:"Change with each passing day",cn:"这座城市的变化真是日新月异。",en:"The changes in this city are happening with each passing day."},
+  {word:"若无其事",pinyin:"ruò wú qí shì",meaning:"Act as if nothing happened",cn:"她若无其事地走了过去。",en:"She walked past as if nothing had happened."},
+  {word:"煞费苦心",pinyin:"shà fèi kǔ xīn",meaning:"Take great pains",cn:"他煞费苦心地为我们安排了一切。",en:"He took great pains to arrange everything for us."},
+  {word:"设身处地",pinyin:"shè shēn chǔ dì",meaning:"Put oneself in someone's shoes",cn:"我们应该设身处地为别人着想。",en:"We should put ourselves in others' shoes."},
+  {word:"深思熟虑",pinyin:"shēn sī shú lǜ",meaning:"Think deeply and carefully",cn:"经过深思熟虑，他决定换工作。",en:"After thinking deeply and carefully, he decided to change jobs."},
+  {word:"视若无睹",pinyin:"shì ruò wú dǔ",meaning:"Turn a blind eye",cn:"他对不公正的事情视若无睹。",en:"He turns a blind eye to injustices."},
+  {word:"世外桃源",pinyin:"shì wài táo yuán",meaning:"Utopia; paradise",cn:"这个地方像是世外桃源。",en:"This place feels like a utopia."},
+  {word:"始终如一",pinyin:"shǐ zhōng rú yī",meaning:"Consistent from start to finish",cn:"他对朋友始终如一。",en:"He is consistent with his friends from start to finish."},
+  {word:"手足无措",pinyin:"shǒu zú wú cuò",meaning:"At a loss; flustered",cn:"面对突发事件，他手足无措。",en:"He was at a loss in the face of the unexpected event."},
+  {word:"手足之情",pinyin:"shǒu zú zhī qíng",meaning:"Brotherly love; deep friendship",cn:"他们之间有深厚的手足之情。",en:"They share a deep brotherly bond."},
+  {word:"似曾相识",pinyin:"sì céng xiāng shí",meaning:"Seem familiar; déjà vu",cn:"我对这个地方有似曾相识的感觉。",en:"This place seems familiar to me."},
+  {word:"似笑非笑",pinyin:"sì xiào fēi xiào",meaning:"A smile that isn't quite a smile",cn:"她脸上露出似笑非笑的表情。",en:"She had a smile that wasn't really a smile on her face."},
+  {word:"随机应变",pinyin:"suí jī yìng biàn",meaning:"Adapt to changing circumstances",cn:"他能够随机应变，应对复杂的情况。",en:"He is able to adapt to changing circumstances."},
+  {word:"忐忑不安",pinyin:"tǎn tè bù ān",meaning:"Uneasy and anxious",cn:"他在等待结果时感到忐忑不安。",en:"He felt uneasy and anxious while waiting for the result."},
+  {word:"天伦之乐",pinyin:"tiān lún zhī lè",meaning:"The joy of family togetherness",cn:"我喜欢享受天伦之乐。",en:"I love enjoying the joy of family togetherness."},
+  {word:"挺身而出",pinyin:"tǐng shēn ér chū",meaning:"Step forward bravely",cn:"在危险时刻，他挺身而出。",en:"He stepped forward bravely in a moment of danger."},
+  {word:"突如其来",pinyin:"tū rú qí lái",meaning:"Happen suddenly; out of nowhere",cn:"暴风雨突如其来。",en:"The storm came suddenly out of nowhere."},
+  {word:"忘年之交",pinyin:"wàng nián zhī jiāo",meaning:"Friendship despite age difference",cn:"他们是忘年之交的好朋友。",en:"They are close friends despite their age difference."},
+  {word:"我行我素",pinyin:"wǒ xíng wǒ sù",meaning:"Act in one's own way regardless",cn:"他总是我行我素，不在乎别人的意见。",en:"He always acts in his own way regardless of others' opinions."},
+  {word:"无可奈何",pinyin:"wú kě nài hé",meaning:"Helpless; nothing can be done",cn:"遇到困难时，他感到无可奈何。",en:"He felt helpless when faced with difficulties."},
+  {word:"无忧无虑",pinyin:"wú yōu wú lǜ",meaning:"Carefree; without worries",cn:"孩子们在公园里无忧无虑地玩耍。",en:"The children played carefree in the park."},
+  {word:"心安理得",pinyin:"xīn ān lǐ dé",meaning:"Feel at ease and justified",cn:"他对自己的决定心安理得。",en:"He feels at ease and justified with his decision."},
+  {word:"心灰意冷",pinyin:"xīn huī yì lěng",meaning:"Disheartened; discouraged",cn:"失败后，他感到心灰意冷。",en:"After failing, he felt disheartened."},
+  {word:"心旷神怡",pinyin:"xīn kuàng shén yí",meaning:"Feel relaxed and happy",cn:"在山顶上，我感到心旷神怡。",en:"I felt relaxed and happy at the mountaintop."},
+  {word:"形影不离",pinyin:"xíng yǐng bù lí",meaning:"Inseparable",cn:"他们从小就是形影不离的朋友。",en:"They have been inseparable friends since childhood."},
+  {word:"兴致勃勃",pinyin:"xìng zhì bó bó",meaning:"In high spirits; enthusiastic",cn:"他对这项新工作兴致勃勃。",en:"He is in high spirits about his new job."},
+  {word:"虚情假意",pinyin:"xū qíng jiǎ yì",meaning:"Fake sincerity; hypocritical",cn:"他的道歉显得虚情假意。",en:"His apology seemed insincere."},
+  {word:"一帆风顺",pinyin:"yī fān fēng shùn",meaning:"Smooth and successful",cn:"祝你未来一帆风顺。",en:"Wishing you smooth and successful days ahead."},
+  {word:"一见如故",pinyin:"yī jiàn rú gù",meaning:"Feel like old friends at first meeting",cn:"我们第一次见面就一见如故。",en:"We felt like old friends from our first meeting."},
+  {word:"一举两得",pinyin:"yī jǔ liǎng dé",meaning:"Kill two birds with one stone",cn:"这项计划能让我们一举两得。",en:"This plan allows us to kill two birds with one stone."},
+  {word:"一蹶不振",pinyin:"yī jué bù zhèn",meaning:"Collapse after one setback",cn:"失败后他一蹶不振。",en:"He collapsed after his first failure."},
+  {word:"一劳永逸",pinyin:"yī láo yǒng yì",meaning:"Once and for all",cn:"他希望能一劳永逸地解决这个问题。",en:"He hopes to solve the problem once and for all."},
+  {word:"一鸣惊人",pinyin:"yī míng jīng rén",meaning:"Achieve sudden fame",cn:"他在比赛中一鸣惊人。",en:"He became an instant sensation at the competition."},
+  {word:"一模一样",pinyin:"yī mú yī yàng",meaning:"Exactly the same",cn:"他们的衣服一模一样。",en:"Their clothes are exactly the same."},
+  {word:"一日千里",pinyin:"yī rì qiān lǐ",meaning:"Advance with leaps and bounds",cn:"他的事业发展一日千里。",en:"His career is advancing by leaps and bounds."},
+  {word:"一心一意",pinyin:"yī xīn yī yì",meaning:"Wholeheartedly; single-minded",cn:"他一心一意想要帮助别人。",en:"He is wholeheartedly focused on helping others."},
+  {word:"怨天尤人",pinyin:"yuàn tiān yóu rén",meaning:"Blame others or fate",cn:"他遇到问题时总是怨天尤人。",en:"He always blames others when encountering problems."},
+  {word:"跃跃欲试",pinyin:"yuè yuè yù shì",meaning:"Eager to try",cn:"听到比赛的消息，他跃跃欲试。",en:"Hearing about the competition, he was eager to try."},
+  {word:"责无旁贷",pinyin:"zé wú páng dài",meaning:"Duty-bound; obligatory",cn:"作为父母，责任责无旁贷。",en:"As parents, responsibility is duty-bound."},
+  {word:"展翅高飞",pinyin:"zhǎn chì gāo fēi",meaning:"Spread wings and soar",cn:"毕业后，他将展翅高飞。",en:"After graduation, he will spread his wings and soar."},
+  {word:"郑重其事",pinyin:"zhèng zhòng qí shì",meaning:"Take something seriously",cn:"他郑重其事地做了这个决定。",en:"He made the decision with great seriousness."},
+  {word:"志同道合",pinyin:"zhì tóng dào hé",meaning:"Like-minded; share the same goals",cn:"他们是志同道合的朋友。",en:"They are like-minded friends who share the same goals."},
+  {word:"专心致志",pinyin:"zhuān xīn zhì zhì",meaning:"Concentrate wholeheartedly",cn:"他专心致志地完成了任务。",en:"He completed the task with full concentration."},
+  {word:"装腔作势",pinyin:"zhuāng qiāng zuò shì",meaning:"Pretentious; putting on airs",cn:"他总是装腔作势，想给人留下好印象。",en:"He is always putting on airs to leave a good impression."},
+  {word:"追根究底",pinyin:"zhuī gēn jiū dǐ",meaning:"Get to the bottom of things",cn:"他总是喜欢追根究底。",en:"He always likes to get to the bottom of things."},
+  {word:"自暴自弃",pinyin:"zì bào zì qì",meaning:"Give up on oneself",cn:"他失败后自暴自弃。",en:"After failing, he gave up on himself."},
+  {word:"自得其乐",pinyin:"zì dé qí lè",meaning:"Find contentment in one's own way",cn:"他喜欢独处，能自得其乐。",en:"He enjoys being alone and finds his own contentment."},
+  {word:"自然而然",pinyin:"zì rán ér rán",meaning:"Naturally; as a matter of course",cn:"这些事情自然而然地发生了。",en:"These things happened naturally."},
+];
+
+const EXAM_WORDS = [{"w":"不假思索","t":"成语","y":["2016","2018","2019","2022"]},{"w":"理所当然","t":"成语","y":["2018","2019","2020","2023"]},{"w":"坦然","t":"普通词","y":["2014","2018","2020","2023"]},{"w":"提升","t":"普通词","y":["2015","2016","2021","2025"]},{"w":"矛盾","t":"普通词","y":["2015","2016","2023","2024"]},{"w":"尽管","t":"关联词","y":["2018","2019","2021"]},{"w":"固然","t":"关联词","y":["2018","2019","2020"]},{"w":"若无其事","t":"成语","y":["2014","2019","2020"]},{"w":"不胜枚举","t":"成语","y":["2017","2020","2025"]},{"w":"千姿百态","t":"成语","y":["2017","2023","2025"]},{"w":"迷失","t":"普通词","y":["2014","2022","2024"]},{"w":"懊悔","t":"普通词","y":["2014","2019","2022"]},{"w":"丰富","t":"普通词","y":["2015","2022","2025"]},{"w":"投入","t":"普通词","y":["2015","2019","2020"]},{"w":"经历","t":"普通词","y":["2015","2017","2025"]},{"w":"积极","t":"普通词","y":["2016","2018","2019"]},{"w":"安慰","t":"普通词","y":["2016","2019","2021"]},{"w":"陶醉","t":"普通词","y":["2017","2019","2020"]},{"w":"计划","t":"普通词","y":["2018","2019","2025"]},{"w":"控制","t":"普通词","y":["2020","2022","2023"]},{"w":"投诉","t":"普通词","y":["2021","2024","2025"]},{"w":"责怪","t":"普通词","y":["2021","2024","2025"]},{"w":"关键","t":"普通词","y":["2021","2023","2024"]},{"w":"化解","t":"普通词","y":["2022","2024"]},{"w":"宁可","t":"关联词","y":["2014","2019"]},{"w":"就算","t":"关联词","y":["2014","2020"]},{"w":"难免","t":"关联词","y":["2018","2023"]},{"w":"不妨","t":"关联词","y":["2019","2021"]},{"w":"始终","t":"关联词","y":["2020","2023"]},{"w":"究竟","t":"关联词","y":["2020","2023"]},{"w":"一帆风顺","t":"成语","y":["2014","2022"]},{"w":"视若无睹","t":"成语","y":["2014","2023"]},{"w":"截然不同","t":"成语","y":["2014","2025"]},{"w":"格格不入","t":"成语","y":["2014","2018"]},{"w":"不屈不挠","t":"成语","y":["2015","2016"]},{"w":"不辞辛劳","t":"成语","y":["2015","2022"]},{"w":"百折不挠","t":"成语","y":["2015","2024"]},{"w":"煞费苦心","t":"成语","y":["2016","2024"]},{"w":"跃跃欲试","t":"成语","y":["2016","2018"]},{"w":"无可奈何","t":"成语","y":["2017","2021"]},{"w":"惊慌失措","t":"成语","y":["2017","2018"]},{"w":"进退维谷","t":"成语","y":["2017","2019"]},{"w":"急功近利","t":"成语","y":["2017","2018"]},{"w":"手足无措","t":"成语","y":["2018","2021"]},{"w":"兴致勃勃","t":"成语","y":["2018","2024"]},{"w":"挺身而出","t":"成语","y":["2018","2024"]},{"w":"情不自禁","t":"成语","y":["2018","2021"]},{"w":"突如其来","t":"成语","y":["2018","2020"]},{"w":"怨天尤人","t":"成语","y":["2019","2021"]},{"w":"敷衍塞责","t":"成语","y":["2020","2021"]},{"w":"不可或缺","t":"成语","y":["2021","2023"]},{"w":"命运","t":"普通词","y":["2014","2015"]},{"w":"保证","t":"普通词","y":["2014","2021"]},{"w":"影响","t":"普通词","y":["2014","2021"]},{"w":"肯定","t":"普通词","y":["2014","2017"]},{"w":"难堪","t":"普通词","y":["2014","2020"]},{"w":"承受","t":"普通词","y":["2014","2022"]},{"w":"检讨","t":"普通词","y":["2014","2021"]},{"w":"威严","t":"普通词","y":["2014","2019"]},{"w":"判断","t":"普通词","y":["2014","2022"]},{"w":"探索","t":"普通词","y":["2014","2024"]},{"w":"调整","t":"普通词","y":["2014","2020"]},{"w":"困境","t":"普通词","y":["2014","2024"]},{"w":"潇洒","t":"普通词","y":["2014","2018"]},{"w":"思想","t":"普通词","y":["2014","2015"]},{"w":"展示","t":"普通词","y":["2014","2023"]},{"w":"激发","t":"普通词","y":["2015","2023"]},{"w":"区别","t":"普通词","y":["2015","2020"]},{"w":"距离","t":"普通词","y":["2015","2016"]},{"w":"认真","t":"普通词","y":["2015","2016"]},{"w":"感受","t":"普通词","y":["2015","2017"]},{"w":"触摸","t":"普通词","y":["2015","2022"]},{"w":"品尝","t":"普通词","y":["2015","2022"]},{"w":"态度","t":"普通词","y":["2015","2024"]},{"w":"追求","t":"普通词","y":["2015","2024"]},{"w":"缺失","t":"普通词","y":["2015","2017"]},{"w":"视野","t":"普通词","y":["2016","2021"]},{"w":"体谅","t":"普通词","y":["2016","2021"]},{"w":"偶尔","t":"普通词","y":["2016","2025"]},{"w":"谨慎","t":"普通词","y":["2016","2020"]},{"w":"冷漠","t":"普通词","y":["2016","2023"]},{"w":"豁达","t":"普通词","y":["2016","2019"]},{"w":"禁止","t":"普通词","y":["2016","2022"]},{"w":"突破","t":"普通词","y":["2016","2022"]},{"w":"果断","t":"普通词","y":["2016","2021"]},{"w":"收获","t":"普通词","y":["2016","2022"]},{"w":"防备","t":"普通词","y":["2017","2020"]},{"w":"漂泊","t":"普通词","y":["2017","2018"]},{"w":"沉溺","t":"普通词","y":["2017","2019"]},{"w":"充沛","t":"普通词","y":["2017","2022"]},{"w":"辽阔","t":"普通词","y":["2017","2018"]},{"w":"抱怨","t":"普通词","y":["2017","2025"]},{"w":"局限","t":"普通词","y":["2017","2023"]},{"w":"拘束","t":"普通词","y":["2017","2023"]},{"w":"惦念","t":"普通词","y":["2017","2020"]},{"w":"依照","t":"普通词","y":["2017","2019"]},{"w":"排练","t":"普通词","y":["2017","2022"]},{"w":"在意","t":"普通词","y":["2017","2021"]},{"w":"忽略","t":"普通词","y":["2017","2021"]},{"w":"抛弃","t":"普通词","y":["2017","2024"]},{"w":"情绪","t":"普通词","y":["2017","2024"]},{"w":"滑稽","t":"普通词","y":["2018","2023"]},{"w":"促进","t":"普通词","y":["2018","2021"]},{"w":"清新","t":"普通词","y":["2018","2022"]},{"w":"完善","t":"普通词","y":["2018","2021"]},{"w":"悠久","t":"普通词","y":["2018","2023"]},{"w":"漫长","t":"普通词","y":["2018","2023"]},{"w":"擅长","t":"普通词","y":["2019","2021"]},{"w":"批评","t":"普通词","y":["2019","2021"]},{"w":"严肃","t":"普通词","y":["2019","2024"]},{"w":"安排","t":"普通词","y":["2019","2025"]},{"w":"构成","t":"普通词","y":["2019","2023"]},{"w":"深陷","t":"普通词","y":["2019","2020"]},{"w":"萌生","t":"普通词","y":["2019","2023"]},{"w":"无谓","t":"普通词","y":["2019","2023"]},{"w":"消极","t":"普通词","y":["2019","2020"]},{"w":"放弃","t":"普通词","y":["2019","2025"]},{"w":"更换","t":"普通词","y":["2019","2025"]},{"w":"重视","t":"普通词","y":["2020","2023"]},{"w":"计较","t":"普通词","y":["2020","2022"]},{"w":"平凡","t":"普通词","y":["2020","2023"]},{"w":"沉浸","t":"普通词","y":["2020","2021"]},{"w":"导致","t":"普通词","y":["2021","2024"]},{"w":"形成","t":"普通词","y":["2021","2024"]},{"w":"遗憾","t":"普通词","y":["2021","2024"]},{"w":"阻碍","t":"普通词","y":["2021","2023"]},{"w":"兴趣","t":"普通词","y":["2021","2024"]},{"w":"开展","t":"普通词","y":["2021","2023"]},{"w":"盎然","t":"普通词","y":["2022","2023"]},{"w":"把握","t":"普通词","y":["2022","2023"]},{"w":"接受","t":"普通词","y":["2022","2023"]},{"w":"婉转","t":"普通词","y":["2022","2023"]},{"w":"保留","t":"普通词","y":["2023","2024"]},{"w":"遭受","t":"普通词","y":["2024","2025"]},{"w":"不管","t":"关联词","y":["2014"]},{"w":"既然","t":"关联词","y":["2014"]},{"w":"一向","t":"关联词","y":["2018"]},{"w":"依然","t":"关联词","y":["2018"]},{"w":"确实","t":"关联词","y":["2018"]},{"w":"向来","t":"关联词","y":["2018"]},{"w":"毕竟","t":"关联词","y":["2018"]},{"w":"一旦","t":"关联词","y":["2019"]},{"w":"与其","t":"关联词","y":["2019"]},{"w":"只有","t":"关联词","y":["2019"]},{"w":"以致","t":"关联词","y":["2020"]},{"w":"再说","t":"关联词","y":["2020"]},{"w":"不止","t":"关联词","y":["2020"]},{"w":"其实","t":"关联词","y":["2020"]},{"w":"必然","t":"关联词","y":["2021"]},{"w":"或许","t":"关联词","y":["2021"]},{"w":"于是","t":"关联词","y":["2022"]},{"w":"到底","t":"关联词","y":["2022"]},{"w":"居然","t":"关联词","y":["2022"]},{"w":"最终","t":"关联词","y":["2022"]},{"w":"不然","t":"关联词","y":["2022"]},{"w":"何况","t":"关联词","y":["2022"]},{"w":"反之","t":"关联词","y":["2022"]},{"w":"此外","t":"关联词","y":["2022"]},{"w":"何尝","t":"关联词","y":["2023"]},{"w":"未必","t":"关联词","y":["2023"]},{"w":"无论","t":"关联词","y":["2024"]},{"w":"不仅","t":"关联词","y":["2025"]},{"w":"偏偏","t":"叠字","y":["2017"]},{"w":"牢牢","t":"叠字","y":["2022"]},{"w":"纷纷","t":"叠字","y":["2022"]},{"w":"细细","t":"叠字","y":["2022"]},{"w":"重重","t":"叠字","y":["2022"]},{"w":"一劳永逸","t":"成语","y":["2014"]},{"w":"一日千里","t":"成语","y":["2014"]},{"w":"一鸣惊人","t":"成语","y":["2014"]},{"w":"处之泰然","t":"成语","y":["2014"]},{"w":"安于现状","t":"成语","y":["2014"]},{"w":"不闻不问","t":"成语","y":["2014"]},{"w":"漠不关心","t":"成语","y":["2014"]},{"w":"不可思议","t":"成语","y":["2015"]},{"w":"不甘示弱","t":"成语","y":["2015"]},{"w":"一心一意","t":"成语","y":["2015"]},{"w":"前仆后继","t":"成语","y":["2015"]},{"w":"持之以恒","t":"成语","y":["2015"]},{"w":"追根究底","t":"成语","y":["2015"]},{"w":"刻苦耐劳","t":"成语","y":["2015"]},{"w":"深思熟虑","t":"成语","y":["2016"]},{"w":"郑重其事","t":"成语","y":["2016"]},{"w":"赤手空拳","t":"成语","y":["2016"]},{"w":"形影不离","t":"成语","y":["2017"]},{"w":"目不暇接","t":"成语","y":["2017"]},{"w":"平淡无奇","t":"成语","y":["2017"]},{"w":"自暴自弃","t":"成语","y":["2017"]},{"w":"黯然神伤","t":"成语","y":["2017"]},{"w":"心灰意冷","t":"成语","y":["2017"]},{"w":"责无旁贷","t":"成语","y":["2017"]},{"w":"一蹶不振","t":"成语","y":["2017"]},{"w":"不自量力","t":"成语","y":["2017"]},{"w":"我行我素","t":"成语","y":["2017"]},{"w":"似笑非笑","t":"成语","y":["2018"]},{"w":"哄堂大笑","t":"成语","y":["2018"]},{"w":"哭笑不得","t":"成语","y":["2018"]},{"w":"破涕为笑","t":"成语","y":["2018"]},{"w":"不以为然","t":"成语","y":["2018"]},{"w":"莫名其妙","t":"成语","y":["2018"]},{"w":"迫不及待","t":"成语","y":["2018"]},{"w":"得意忘形","t":"成语","y":["2018"]},{"w":"虚情假意","t":"成语","y":["2018"]},{"w":"忐忑不安","t":"成语","y":["2019"]},{"w":"装腔作势","t":"成语","y":["2019"]},{"w":"自得其乐","t":"成语","y":["2019"]},{"w":"一模一样","t":"成语","y":["2020"]},{"w":"大同小异","t":"成语","y":["2020"]},{"w":"始终如一","t":"成语","y":["2020"]},{"w":"志同道合","t":"成语","y":["2020"]},{"w":"品头论足","t":"成语","y":["2020"]},{"w":"情有独钟","t":"成语","y":["2020"]},{"w":"津津乐道","t":"成语","y":["2020"]},{"w":"心安理得","t":"成语","y":["2020"]},{"w":"自然而然","t":"成语","y":["2020"]},{"w":"千变万化","t":"成语","y":["2020"]},{"w":"日新月异","t":"成语","y":["2020"]},{"w":"专心致志","t":"成语","y":["2021"]},{"w":"古道热肠","t":"成语","y":["2021"]},{"w":"坚韧不拔","t":"成语","y":["2021"]},{"w":"随机应变","t":"成语","y":["2021"]},{"w":"不约而同","t":"成语","y":["2021"]},{"w":"锲而不舍","t":"成语","y":["2021"]},{"w":"不解之缘","t":"成语","y":["2021"]},{"w":"天伦之乐","t":"成语","y":["2021"]},{"w":"忘年之交","t":"成语","y":["2021"]},{"w":"手足之情","t":"成语","y":["2021"]},{"w":"世外桃源","t":"成语","y":["2022"]},{"w":"心旷神怡","t":"成语","y":["2022"]},{"w":"称心如意","t":"成语","y":["2022"]},{"w":"处心积虑","t":"成语","y":["2022"]},{"w":"设身处地","t":"成语","y":["2022"]},{"w":"暴跳如雷","t":"成语","y":["2022"]},{"w":"气喘吁吁","t":"成语","y":["2022"]},{"w":"目瞪口呆","t":"成语","y":["2022"]},{"w":"面红耳赤","t":"成语","y":["2022"]},{"w":"一举两得","t":"成语","y":["2023"]},{"w":"尽如人意","t":"成语","y":["2023"]},{"w":"展翅高飞","t":"成语","y":["2023"]},{"w":"无忧无虑","t":"成语","y":["2023"]},{"w":"似曾相识","t":"成语","y":["2023"]},{"w":"多种多样","t":"成语","y":["2023"]},{"w":"屡见不鲜","t":"成语","y":["2023"]},{"w":"一见如故","t":"成语","y":["2023"]},{"w":"五彩缤纷","t":"成语","y":["2025"]},{"w":"定位","t":"普通词","y":["2014"]},{"w":"方向","t":"普通词","y":["2014"]},{"w":"牵制","t":"普通词","y":["2014"]},{"w":"埋怨","t":"普通词","y":["2014"]},{"w":"消沉","t":"普通词","y":["2014"]},{"w":"妥协","t":"普通词","y":["2014"]},{"w":"逃避","t":"普通词","y":["2014"]},{"w":"坚定","t":"普通词","y":["2014"]},{"w":"徒然","t":"普通词","y":["2014"]},{"w":"悠然","t":"普通词","y":["2014"]},{"w":"模糊","t":"普通词","y":["2014"]},{"w":"孤独","t":"普通词","y":["2014"]},{"w":"强化","t":"普通词","y":["2015"]},{"w":"差异","t":"普通词","y":["2015"]},{"w":"灵感","t":"普通词","y":["2015"]},{"w":"成就","t":"普通词","y":["2015"]},{"w":"手段","t":"普通词","y":["2015"]},{"w":"领悟","t":"普通词","y":["2015"]},{"w":"奋斗","t":"普通词","y":["2015"]},{"w":"实力","t":"普通词","y":["2015"]},{"w":"毅力","t":"普通词","y":["2015"]},{"w":"潜力","t":"普通词","y":["2015"]},{"w":"来往","t":"普通词","y":["2016"]},{"w":"沟通","t":"普通词","y":["2016"]},{"w":"描绘","t":"普通词","y":["2016"]},{"w":"抒发","t":"普通词","y":["2016"]},{"w":"赋予","t":"普通词","y":["2016"]},{"w":"提示","t":"普通词","y":["2016"]},{"w":"提醒","t":"普通词","y":["2016"]},{"w":"维护","t":"普通词","y":["2016"]},{"w":"安静","t":"普通词","y":["2016"]},{"w":"废除","t":"普通词","y":["2016"]},{"w":"坚强","t":"普通词","y":["2016"]},{"w":"分享","t":"普通词","y":["2016"]},{"w":"排解","t":"普通词","y":["2016"]},{"w":"启示","t":"普通词","y":["2016"]},{"w":"忙碌","t":"普通词","y":["2017"]},{"w":"意识","t":"普通词","y":["2017"]},{"w":"侵略","t":"普通词","y":["2017"]},{"w":"告诫","t":"普通词","y":["2017"]},{"w":"感触","t":"普通词","y":["2017"]},{"w":"憧憬","t":"普通词","y":["2017"]},{"w":"梦想","t":"普通词","y":["2017"]},{"w":"享有","t":"普通词","y":["2018"]},{"w":"寻求","t":"普通词","y":["2018"]},{"w":"推动","t":"普通词","y":["2018"]},{"w":"谅解","t":"普通词","y":["2018"]},{"w":"亲近","t":"普通词","y":["2018"]},{"w":"坎坷","t":"普通词","y":["2018"]},{"w":"真诚","t":"普通词","y":["2018"]},{"w":"评价","t":"普通词","y":["2018"]},{"w":"理解","t":"普通词","y":["2018"]},{"w":"阻止","t":"普通词","y":["2018"]},{"w":"听从","t":"普通词","y":["2019"]},{"w":"向往","t":"普通词","y":["2019"]},{"w":"推崇","t":"普通词","y":["2019"]},{"w":"责任","t":"普通词","y":["2019"]},{"w":"鼓励","t":"普通词","y":["2019"]},{"w":"决心","t":"普通词","y":["2019"]},{"w":"顽强","t":"普通词","y":["2019"]},{"w":"宽慰","t":"普通词","y":["2019"]},{"w":"心意","t":"普通词","y":["2019"]},{"w":"展现","t":"普通词","y":["2020"]},{"w":"表达","t":"普通词","y":["2020"]},{"w":"宽容","t":"普通词","y":["2020"]},{"w":"忏悔","t":"普通词","y":["2020"]},{"w":"充满","t":"普通词","y":["2020"]},{"w":"自豪","t":"普通词","y":["2020"]},{"w":"享受","t":"普通词","y":["2020"]},{"w":"压力","t":"普通词","y":["2020"]},{"w":"造就","t":"普通词","y":["2021"]},{"w":"凝视","t":"普通词","y":["2021"]},{"w":"盼望","t":"普通词","y":["2021"]},{"w":"掌握","t":"普通词","y":["2021"]},{"w":"不懈","t":"普通词","y":["2021"]},{"w":"升华","t":"普通词","y":["2021"]},{"w":"感化","t":"普通词","y":["2021"]},{"w":"观念","t":"普通词","y":["2021"]},{"w":"热衷","t":"普通词","y":["2021"]},{"w":"惆怅","t":"普通词","y":["2022"]},{"w":"渴望","t":"普通词","y":["2022"]},{"w":"怀疑","t":"普通词","y":["2022"]},{"w":"包容","t":"普通词","y":["2022"]},{"w":"从容","t":"普通词","y":["2022"]},{"w":"热情","t":"普通词","y":["2022"]},{"w":"去除","t":"普通词","y":["2022"]},{"w":"抑制","t":"普通词","y":["2022"]},{"w":"疏解","t":"普通词","y":["2022"]},{"w":"元素","t":"普通词","y":["2023"]},{"w":"信念","t":"普通词","y":["2023"]},{"w":"实践","t":"普通词","y":["2023"]},{"w":"积累","t":"普通词","y":["2023"]},{"w":"经营","t":"普通词","y":["2023"]},{"w":"悲惨","t":"普通词","y":["2023"]},{"w":"浓厚","t":"普通词","y":["2023"]},{"w":"和谐","t":"普通词","y":["2023"]},{"w":"依赖","t":"普通词","y":["2023"]},{"w":"后果","t":"普通词","y":["2024"]},{"w":"珍惜","t":"普通词","y":["2024"]},{"w":"给予","t":"普通词","y":["2024"]},{"w":"选择","t":"普通词","y":["2024"]},{"w":"角色","t":"普通词","y":["2024"]},{"w":"贡献","t":"普通词","y":["2024"]},{"w":"瞬间","t":"普通词","y":["2025"]},{"w":"交流","t":"普通词","y":["2025"]},{"w":"体会","t":"普通词","y":["2025"]},{"w":"关注","t":"普通词","y":["2025"]},{"w":"方式","t":"普通词","y":["2025"]},{"w":"增进","t":"普通词","y":["2025"]},{"w":"期待","t":"普通词","y":["2025"]},{"w":"挑战","t":"普通词","y":["2025"]}];
+
+const SYLLABUS_RAW = [{"w":"淘气","py":"táoqì","s":"1"},{"w":"惹","py":"rě","s":"1"},{"w":"两肋插刀","py":"liǎng lèi chā dāo","s":"1"},{"w":"赵","py":"zhào","s":"1"},{"w":"科技","py":"kējì","s":"1"},{"w":"来者不拒","py":"lái zhě bù jù","s":"1"},{"w":"口头禅","py":"kǒutóuchán","s":"1"},{"w":"小事一桩","py":"xiǎoshì yī zhuāng","s":"1"},{"w":"人缘","py":"rényuán","s":"1"},{"w":"性格","py":"xìnggé","s":"1"},{"w":"直率","py":"zhíshuài","s":"1"},{"w":"得罪","py":"dézuì","s":"1"},{"w":"别扭","py":"bièniu","s":"1"},{"w":"争辩","py":"zhēngbiàn","s":"1"},{"w":"捣乱","py":"dǎoluàn","s":"1"},{"w":"瞬间","py":"shùnjiān","s":"1"},{"w":"兴致勃勃","py":"xìngzhì bóbó","s":"1"},{"w":"粘","py":"zhān","s":"1"},{"w":"蛋液","py":"dànyè","s":"1"},{"w":"狼狈","py":"lángbèi","s":"1"},{"w":"讥讽","py":"jīfěng","s":"1"},{"w":"赌气","py":"dǔqì","s":"1"},{"w":"嚷","py":"rǎng","s":"1"},{"w":"小心翼翼","py":"xiǎoxīn yìyì","s":"1"},{"w":"荧光笔","py":"yíngguāngbǐ","s":"1"},{"w":"抵挡","py":"dǐdǎng","s":"1"},{"w":"拉扯","py":"lāche","s":"1"},{"w":"手足无措","py":"shǒuzú wúcuò","s":"1"},{"w":"审案","py":"shěn'àn","s":"1"},{"w":"律师","py":"lǜshī","s":"1"},{"w":"振振有词","py":"zhènzhèn yǒucí","s":"1"},{"w":"心虚","py":"xīnxū","s":"1"},{"w":"哑口无言","py":"yǎkǒu wúyán","s":"1"},{"w":"判决","py":"pànjué","s":"1"},{"w":"泄","py":"xiè","s":"1"},{"w":"葡萄","py":"pútao","s":"1"},{"w":"象征","py":"xiàngzhēng","s":"1"},{"w":"风俗","py":"fēngsú","s":"1"},{"w":"辞旧迎新","py":"cíjiù yíngxīn","s":"1"},{"w":"燃放","py":"ránfàng","s":"1"},{"w":"瓶瓶罐罐","py":"píngpíng guànguàn","s":"1"},{"w":"厄运","py":"èyùn","s":"1"},{"w":"前夕","py":"qiánxī","s":"1"},{"w":"碗碟","py":"wǎndié","s":"1"},{"w":"预示","py":"yùshì","s":"1"},{"w":"兆头","py":"zhàotou","s":"1"},{"w":"忙碌","py":"mánglù","s":"1"},{"w":"遥远","py":"yáoyuǎn","s":"1"},{"w":"恭敬","py":"gōngjìng","s":"1"},{"w":"万事大吉","py":"wànshì dàjí","s":"1"},{"w":"元旦","py":"yuándàn","s":"1"},{"w":"贼","py":"zéi","s":"1"},{"w":"鱼尾纹","py":"yúwěiwén","s":"1"},{"w":"装饰","py":"zhuāngshì","s":"1"},{"w":"圣诞","py":"shèngdàn","s":"1"},{"w":"格格不入","py":"gégé bùrù","s":"1"},{"w":"结婚","py":"jiéhūn","s":"1"},{"w":"嫁","py":"jià","s":"1"},{"w":"视讯","py":"shìxùn","s":"1"},{"w":"沉默寡言","py":"chénmò guǎyán","s":"1"},{"w":"副","py":"fù","s":"1"},{"w":"酷","py":"kù","s":"1"},{"w":"承诺","py":"chéngnuò","s":"1"},{"w":"歉意","py":"qiànyì","s":"1"},{"w":"围炉","py":"wéilú","s":"1"},{"w":"蒸腾","py":"zhēngténg","s":"1"},{"w":"叽叽喳喳","py":"jījī zhāzhā","s":"1"},{"w":"缺席","py":"quēxí","s":"1"},{"w":"悦耳","py":"yuè'ěr","s":"1"},{"w":"红枣","py":"hóngzǎo","s":"1"},{"w":"儿媳妇","py":"érxífù","s":"1"},{"w":"莫名其妙","py":"mòmíng qímiào","s":"1"},{"w":"疑惑","py":"yíhuò","s":"1"},{"w":"魅力","py":"mèilì","s":"1"},{"w":"博物馆","py":"bówùguǎn","s":"1"},{"w":"悠久","py":"yōujiǔ","s":"1"},{"w":"遗产","py":"yíchǎn","s":"1"},{"w":"巴刹","py":"bāshā","s":"1"},{"w":"同胞","py":"tóngbāo","s":"1"},{"w":"融合","py":"rónghé","s":"1"},{"w":"皇宫","py":"huánggōng","s":"1"},{"w":"城堡","py":"chéngbǎo","s":"1"},{"w":"时尚","py":"shíshàng","s":"1"},{"w":"彩绘","py":"cǎihuì","s":"1"},{"w":"流连忘返","py":"liúlián wàngfǎn","s":"1"},{"w":"娱乐","py":"yúlè","s":"1"},{"w":"探索","py":"tànsuǒ","s":"1"},{"w":"娘惹","py":"niángré","s":"1"},{"w":"拍摄","py":"pāishè","s":"1"},{"w":"平均","py":"píngjūn","s":"1"},{"w":"繁忙","py":"fánmáng","s":"1"},{"w":"闪耀","py":"shǎnyào","s":"1"},{"w":"横梁","py":"héngliáng","s":"1"},{"w":"覆盖","py":"fùgài","s":"1"},{"w":"玻璃","py":"bōli","s":"1"},{"w":"瀑布","py":"pùbù","s":"1"},{"w":"循环","py":"xúnhuán","s":"1"},{"w":"山谷","py":"shāngǔ","s":"1"},{"w":"株","py":"zhū","s":"1"},{"w":"设施","py":"shèshī","s":"1"},{"w":"蹦跳","py":"bèngtiào","s":"1"},{"w":"甚至","py":"shènzhì","s":"1"},{"w":"投降","py":"tóuxiáng","s":"1"},{"w":"自治","py":"zìzhì","s":"1"},{"w":"栏","py":"lán","s":"1"},{"w":"棕色","py":"zōngsè","s":"1"},{"w":"氧化","py":"yǎnghuà","s":"1"},{"w":"陌生","py":"mòshēng","s":"1"},{"w":"宁静","py":"níngjìng","s":"1"},{"w":"属于","py":"shǔyú","s":"1"},{"w":"坚持不懈","py":"jiānchí bùxiè","s":"1"},{"w":"开卷有益","py":"kāijuàn yǒuyì","s":"1"},{"w":"以礼待人","py":"yǐlǐ dàirén","s":"1"},{"w":"新颖","py":"xīnyǐng","s":"1"},{"w":"戏剧","py":"xìjù","s":"1"},{"w":"工作坊","py":"gōngzuòfāng","s":"1"},{"w":"尴尬","py":"gāngà","s":"1"},{"w":"维护","py":"wéihù","s":"1"},{"w":"友谊","py":"yǒuyì","s":"1"},{"w":"一帆风顺","py":"yīfān fēngshùn","s":"1"},{"w":"有效","py":"yǒuxiào","s":"1"},{"w":"策略","py":"cèlüè","s":"1"},{"w":"嘉宾","py":"jiābīn","s":"1"},{"w":"辅导员","py":"fǔdǎoyuán","s":"1"},{"w":"赖床","py":"làichuáng","s":"1"},{"w":"滋味","py":"zīwèi","s":"1"},{"w":"催促","py":"cuīcù","s":"1"},{"w":"哀求","py":"āiqiú","s":"1"},{"w":"硬着头皮","py":"yìng zhe tóupí","s":"1"},{"w":"藤鞭","py":"téngbiān","s":"1"},{"w":"抡","py":"lūn","s":"1"},{"w":"挨打","py":"áidǎ","s":"1"},{"w":"女佣","py":"nǚyōng","s":"1"},{"w":"雨篷","py":"yǔpéng","s":"1"},{"w":"泪痕","py":"lèihén","s":"1"},{"w":"早晨","py":"zǎochén","s":"1"},{"w":"猛","py":"měng","s":"1"},{"w":"嗓子眼","py":"sǎngziyan","s":"1"},{"w":"允许","py":"yǔnxǔ","s":"1"},{"w":"相貌","py":"xiàngmào","s":"1"},{"w":"讲究","py":"jiǎngjiu","s":"1"},{"w":"何必","py":"hébì","s":"1"},{"w":"记账","py":"jìzhàng","s":"1"},{"w":"亏","py":"kuī","s":"1"},{"w":"撇","py":"piē","s":"1"},{"w":"慢条斯理","py":"màntiáo sīlǐ","s":"1"},{"w":"起航","py":"qǐháng","s":"1"},{"w":"焦急","py":"jiāojí","s":"1"},{"w":"剩","py":"shèng","s":"1"},{"w":"牙膏","py":"yágāo","s":"1"},{"w":"橡皮擦","py":"xiàngpícā","s":"1"},{"w":"薯条","py":"shǔtiáo","s":"1"},{"w":"番茄酱","py":"fānqiéjiàng","s":"1"},{"w":"偶尔","py":"ǒu'ěr","s":"1"},{"w":"评委","py":"píngwěi","s":"1"},{"w":"晋级","py":"jìnjí","s":"1"},{"w":"奖励","py":"jiǎnglì","s":"1"},{"w":"获得","py":"huòdé","s":"1"},{"w":"企业","py":"qǐyè","s":"1"},{"w":"牧场","py":"mùchǎng","s":"1"},{"w":"潜水","py":"qiánshuǐ","s":"1"},{"w":"艘","py":"sōu","s":"1"},{"w":"屁股","py":"pìgu","s":"1"},{"w":"翘","py":"qiào","s":"1"},{"w":"潜水艇","py":"qiánshuǐtǐng","s":"1"},{"w":"仿佛","py":"fǎngfú","s":"1"},{"w":"确切","py":"quèqiè","s":"1"},{"w":"浑身","py":"húnshēn","s":"1"},{"w":"基因","py":"jīyīn","s":"1"},{"w":"一哄而散","py":"yīhōng érSàn","s":"1"},{"w":"手势","py":"shǒushì","s":"1"},{"w":"颁布","py":"bānbù","s":"1"},{"w":"泛","py":"fàn","s":"1"},{"w":"泡沫","py":"pàomò","s":"1"},{"w":"伤脑筋","py":"shāng nǎojīn","s":"1"},{"w":"拜访","py":"bàifǎng","s":"1"},{"w":"中央","py":"zhōngyāng","s":"1"},{"w":"漫步","py":"mànbù","s":"1"},{"w":"绞尽脑汁","py":"jiǎojìn nǎozhī","s":"1"},{"w":"华侨","py":"huáqiáo","s":"1"},{"w":"银行","py":"yínháng","s":"1"},{"w":"由衷","py":"yóuzhōng","s":"1"},{"w":"摩天大楼","py":"mótiān dàlóu","s":"1"},{"w":"薄薄的","py":"báobáo de","s":"1"},{"w":"抨击","py":"pēngjī","s":"1"},{"w":"挫折","py":"cuòzhé","s":"1"},{"w":"油漆","py":"yóuqī","s":"1"},{"w":"栏杆","py":"lángān","s":"1"},{"w":"宿舍","py":"sùshè","s":"1"},{"w":"凭","py":"píng","s":"1"},{"w":"欣慰","py":"xīnwèi","s":"1"},{"w":"订购","py":"dìnggòu","s":"1"},{"w":"塔台","py":"tǎtái","s":"1"},{"w":"范围","py":"fànwéi","s":"1"},{"w":"特殊","py":"tèshū","s":"1"},{"w":"警惕","py":"jǐngtì","s":"1"},{"w":"失误","py":"shīwù","s":"1"},{"w":"不堪设想","py":"bù kān shèxiǎng","s":"1"},{"w":"脂肪","py":"zhīfáng","s":"1"},{"w":"截至","py":"jiézhì","s":"1"},{"w":"行驶","py":"xíngshǐ","s":"1"},{"w":"延误","py":"yánwù","s":"1"},{"w":"稳定","py":"wěndìng","s":"1"},{"w":"幕后","py":"mùhòu","s":"1"},{"w":"贡献","py":"gòngxiàn","s":"1"},{"w":"明知山有虎，偏向虎山行","py":"míngzhī shān yǒu hǔ, piānxiàng hǔshān xíng","s":"1"},{"w":"漏夜","py":"lòuyè","s":"1"},{"w":"轨道","py":"guǐdào","s":"1"},{"w":"凌晨","py":"língchén","s":"1"},{"w":"就绪","py":"jiùxù","s":"1"},{"w":"隧道","py":"suìdào","s":"1"},{"w":"扫描","py":"sǎomiáo","s":"1"},{"w":"裂痕","py":"lièhén","s":"1"},{"w":"顺畅","py":"shùnchàng","s":"1"},{"w":"全力以赴","py":"quánlì yǐfù","s":"1"},{"w":"职业","py":"zhíyè","s":"1"},{"w":"故障","py":"gùzhàng","s":"1"},{"w":"岗位","py":"gǎngwèi","s":"1"},{"w":"芝麻","py":"zhīma","s":"1"},{"w":"朗朗上口","py":"lǎnglǎng shàngkǒu","s":"1"},{"w":"奉献","py":"fèngxiàn","s":"1"},{"w":"繁荣","py":"fánróng","s":"1"},{"w":"平凡","py":"píngfán","s":"1"},{"w":"光芒","py":"guāngmáng","s":"1"},{"w":"犹豫","py":"yóuyù","s":"2"},{"w":"不分青红皂白","py":"bù fēn qīnghóng zàobái","s":"2"},{"w":"教训","py":"jiàoxùn","s":"2"},{"w":"叛逆","py":"pànnì","s":"2"},{"w":"委屈","py":"wěiqu","s":"2"},{"w":"内疚","py":"nèijiù","s":"2"},{"w":"不妨","py":"bùfáng","s":"2"},{"w":"匿名","py":"nìmíng","s":"2"},{"w":"监督","py":"jiāndū","s":"2"},{"w":"代沟","py":"dàigōu","s":"2"},{"w":"上瘾","py":"shàngyǐn","s":"2"},{"w":"疏远","py":"shūyuǎn","s":"2"},{"w":"迎刃而解","py":"yíngrèn érjiě","s":"2"},{"w":"称赞","py":"chēngzàn","s":"2"},{"w":"崇拜","py":"chóngbài","s":"2"},{"w":"爱不释手","py":"ài bù shìshǒu","s":"2"},{"w":"碰钉子","py":"pèng dīngzi","s":"2"},{"w":"泼冷水","py":"pō lěngshuǐ","s":"2"},{"w":"抽屉","py":"chōutì","s":"2"},{"w":"精疲力竭","py":"jīngpí lìjié","s":"2"},{"w":"衰老","py":"shuāilǎo","s":"2"},{"w":"抑郁","py":"yìyù","s":"2"},{"w":"寂寞","py":"jìmò","s":"2"},{"w":"启齿","py":"qǐchǐ","s":"2"},{"w":"打退堂鼓","py":"dǎ tuìtánggǔ","s":"2"},{"w":"懊恼","py":"àonǎo","s":"2"},{"w":"伺机","py":"sìjī","s":"2"},{"w":"心不在焉","py":"xīn bù zài yān","s":"2"},{"w":"破天荒","py":"pòtiānhuāng","s":"2"},{"w":"仓促","py":"cāngcù","s":"2"},{"w":"严肃","py":"yánsù","s":"2"},{"w":"安抚","py":"ānfǔ","s":"2"},{"w":"干脆","py":"gāncuì","s":"2"},{"w":"风筝","py":"fēngzheng","s":"2"},{"w":"挣脱","py":"zhèngtuō","s":"2"},{"w":"惊讶","py":"jīngyà","s":"2"},{"w":"斑","py":"bān","s":"2"},{"w":"缠绕","py":"chánrào","s":"2"},{"w":"搂","py":"lǒu","s":"2"},{"w":"捐款","py":"juānkuǎn","s":"2"},{"w":"拯救","py":"zhěngjiù","s":"2"},{"w":"医疗","py":"yīliáo","s":"2"},{"w":"研究","py":"yánjiū","s":"2"},{"w":"优惠","py":"yōuhuì","s":"2"},{"w":"券","py":"quàn","s":"2"},{"w":"四肢","py":"sìzhī","s":"2"},{"w":"敏捷","py":"mǐnjié","s":"2"},{"w":"穿梭","py":"chuānsuō","s":"2"},{"w":"友善","py":"yǒushàn","s":"2"},{"w":"辨识","py":"biànshí","s":"2"},{"w":"害羞","py":"hàixiū","s":"2"},{"w":"馋","py":"chán","s":"2"},{"w":"调皮","py":"tiáopí","s":"2"},{"w":"摔跤","py":"shuāijiāo","s":"2"},{"w":"尤其","py":"yóuqí","s":"2"},{"w":"愧疚","py":"kuìjiù","s":"2"},{"w":"光泽","py":"guāngzé","s":"2"},{"w":"懒懒地","py":"lǎnlǎn de","s":"2"},{"w":"妻子","py":"qīzi","s":"2"},{"w":"啾啾","py":"jiūjiū","s":"2"},{"w":"仰","py":"yǎng","s":"2"},{"w":"凝望","py":"níngwàng","s":"2"},{"w":"鸟笼","py":"niǎolóng","s":"2"},{"w":"隔","py":"gé","s":"2"},{"w":"愤怒","py":"fènnù","s":"2"},{"w":"畏罪潜逃","py":"wèizuì qiántáo","s":"2"},{"w":"喵","py":"miāo","s":"2"},{"w":"衔","py":"xián","s":"2"},{"w":"搞","py":"gǎo","s":"2"},{"w":"失踪","py":"shīzōng","s":"2"},{"w":"估计","py":"gūjì","s":"2"},{"w":"丰富","py":"fēngfù","s":"2"},{"w":"褐","py":"hè","s":"2"},{"w":"盘旋","py":"pánxuán","s":"2"},{"w":"丝毫","py":"sīháo","s":"2"},{"w":"面面相觑","py":"miànmiàn xiāngqù","s":"2"},{"w":"愣","py":"lèng","s":"2"},{"w":"傻","py":"shǎ","s":"2"},{"w":"因素","py":"yīnsù","s":"2"},{"w":"水喉","py":"shuǐhóu","s":"2"},{"w":"资源","py":"zīyuán","s":"2"},{"w":"艰巨","py":"jiānjù","s":"2"},{"w":"昂贵","py":"ángguì","s":"2"},{"w":"消耗","py":"xiāohào","s":"2"},{"w":"干旱","py":"gānhàn","s":"2"},{"w":"扩大","py":"kuòdà","s":"2"},{"w":"蓄水池","py":"xùshuǐchí","s":"2"},{"w":"洗澡","py":"xǐzǎo","s":"2"},{"w":"浴室","py":"yùshì","s":"2"},{"w":"趋势","py":"qūshì","s":"2"},{"w":"开源节流","py":"kāiyuán jiéliú","s":"2"},{"w":"媒体","py":"méitǐ","s":"2"},{"w":"塑料","py":"sùliào","s":"2"},{"w":"吨","py":"dūn","s":"2"},{"w":"廉价","py":"liánjià","s":"2"},{"w":"提供","py":"tígōng","s":"2"},{"w":"铺","py":"pū","s":"2"},{"w":"污染","py":"wūrǎn","s":"2"},{"w":"焚烧","py":"fénshāo","s":"2"},{"w":"烟尘","py":"yānchén","s":"2"},{"w":"土壤","py":"tǔrǎng","s":"2"},{"w":"遏制","py":"èzhì","s":"2"},{"w":"倡导","py":"chàngdǎo","s":"2"},{"w":"逐渐","py":"zhújiàn","s":"2"},{"w":"威胁","py":"wēixié","s":"2"},{"w":"煞费苦心","py":"shàfèi kǔxīn","s":"2"},{"w":"统计","py":"tǒngjì","s":"2"},{"w":"选择","py":"xuǎnzé","s":"2"},{"w":"泛滥","py":"fànlàn","s":"2"},{"w":"寿命","py":"shòumìng","s":"2"},{"w":"途径","py":"tújìng","s":"2"},{"w":"缺乏","py":"quēfá","s":"2"},{"w":"亿","py":"yì","s":"2"},{"w":"遗憾","py":"yíhàn","s":"2"},{"w":"谨慎","py":"jǐnshèn","s":"2"},{"w":"妥善","py":"tuǒshàn","s":"2"},{"w":"自卑","py":"zìbēi","s":"2"},{"w":"身材","py":"shēncái","s":"2"},{"w":"羡慕","py":"xiànmù","s":"2"},{"w":"抗拒","py":"kàngjù","s":"2"},{"w":"诱惑","py":"yòuhuò","s":"2"},{"w":"毅力","py":"yìlì","s":"2"},{"w":"戒","py":"jiè","s":"2"},{"w":"茫然","py":"mángrán","s":"2"},{"w":"打瞌睡","py":"dǎ kēshuì","s":"2"},{"w":"嫌","py":"xián","s":"2"},{"w":"逼","py":"bī","s":"2"},{"w":"烹饪","py":"pēngrèn","s":"2"},{"w":"符合","py":"fúhé","s":"2"},{"w":"憋","py":"biē","s":"2"},{"w":"委婉","py":"wěiwǎn","s":"2"},{"w":"彻底","py":"chèdǐ","s":"2"},{"w":"缝","py":"féng","s":"2"},{"w":"掩","py":"yǎn","s":"2"},{"w":"恐惧","py":"kǒngjù","s":"2"},{"w":"走廊","py":"zǒuláng","s":"2"},{"w":"锁","py":"suǒ","s":"2"},{"w":"熄灯","py":"xīdēng","s":"2"},{"w":"颤抖","py":"chàndǒu","s":"2"},{"w":"隐约","py":"yǐnyuē","s":"2"},{"w":"瑟瑟","py":"sèsè","s":"2"},{"w":"恐怖","py":"kǒngbù","s":"2"},{"w":"通宵","py":"tōngxiāo","s":"2"},{"w":"惊悚","py":"jīngsǒng","s":"2"},{"w":"和谐","py":"héxié","s":"2"},{"w":"脖子","py":"bózi","s":"2"},{"w":"社交媒体","py":"shèjiāo méitǐ","s":"2"},{"w":"缺陷","py":"quēxiàn","s":"2"},{"w":"姿势","py":"zīshì","s":"2"},{"w":"拘束","py":"jūshù","s":"2"},{"w":"嘈杂","py":"cáozá","s":"2"},{"w":"沮丧","py":"jǔsàng","s":"2"},{"w":"若有所思","py":"ruòyǒu suǒsī","s":"2"},{"w":"模糊","py":"móhu","s":"2"},{"w":"简陋","py":"jiǎnlòu","s":"2"},{"w":"政府","py":"zhèngfǔ","s":"2"},{"w":"开辟","py":"kāipì","s":"2"},{"w":"市镇","py":"shìzhèn","s":"2"},{"w":"宗教","py":"zōngjiào","s":"2"},{"w":"综合","py":"zōnghé","s":"2"},{"w":"诊疗所","py":"zhěnliáosuǒ","s":"2"},{"w":"经济","py":"jīngjì","s":"2"},{"w":"蓬勃","py":"péngbó","s":"2"},{"w":"富裕","py":"fùyù","s":"2"},{"w":"变迁","py":"biànqiān","s":"2"},{"w":"障碍","py":"zhàng'ài","s":"2"},{"w":"驰名","py":"chímíng","s":"2"},{"w":"屡次","py":"lǚcì","s":"2"},{"w":"荣誉","py":"róngyù","s":"2"},{"w":"姿态","py":"zītài","s":"2"},{"w":"接触","py":"jiēchù","s":"2"},{"w":"翠绿","py":"cuìlǜ","s":"2"},{"w":"心旷神怡","py":"xīnkuàng shényí","s":"2"},{"w":"合拢","py":"hélǒng","s":"2"},{"w":"林荫","py":"línyìn","s":"2"},{"w":"樟宜","py":"zhāngyí","s":"2"},{"w":"耸立","py":"sǒnglì","s":"2"},{"w":"温馨","py":"wēnxīn","s":"2"},{"w":"欣赏","py":"xīnshǎng","s":"2"},{"w":"粗糙","py":"cūcāo","s":"2"},{"w":"婆娑","py":"pósuō","s":"2"},{"w":"撑","py":"chēng","s":"2"},{"w":"同甘共苦","py":"tónggān gòngkǔ","s":"2"},{"w":"茁壮","py":"zhuózhuàng","s":"2"},{"w":"移民","py":"yímín","s":"2"},{"w":"接纳","py":"jiēnà","s":"2"},{"w":"无怨无悔","py":"wúyuàn wúhuǐ","s":"2"},{"w":"患","py":"huàn","s":"2"},{"w":"失智症","py":"shīzhìzhèng","s":"2"},{"w":"寻找","py":"xúnzhǎo","s":"2"},{"w":"流逝","py":"liúshì","s":"2"},{"w":"嬉戏","py":"xīxì","s":"2"},{"w":"咖喱卜","py":"gālíbo","s":"2"},{"w":"俏皮","py":"qiàopí","s":"2"},{"w":"鲜艳","py":"xiānyàn","s":"2"},{"w":"承载","py":"chéngzài","s":"2"},{"w":"贸易","py":"màoyì","s":"2"},{"w":"丝绸","py":"sīchóu","s":"2"},{"w":"陆地","py":"lùdì","s":"2"},{"w":"奢侈","py":"shēchǐ","s":"2"},{"w":"瓷器","py":"cíqì","s":"2"},{"w":"仪式","py":"yíshì","s":"2"},{"w":"秉持","py":"bǐngchí","s":"2"},{"w":"枢纽","py":"shūniǔ","s":"2"},{"w":"港口","py":"gǎngkǒu","s":"2"},{"w":"致力","py":"zhìlì","s":"2"},{"w":"勾勒","py":"gōulè","s":"2"},{"w":"高瞻远瞩","py":"gāozhān yuǎnzhǔ","s":"2"},{"w":"可谓","py":"kěwèi","s":"2"},{"w":"岛屿","py":"dǎoyǔ","s":"2"},{"w":"海峡","py":"hǎixiá","s":"2"},{"w":"历史","py":"lìshǐ","s":"2"},{"w":"挖掘","py":"wājué","s":"2"},{"w":"区域","py":"qūyù","s":"2"},{"w":"汇集","py":"huìjí","s":"2"},{"w":"赋予","py":"fùyǔ","s":"2"},{"w":"海纳百川","py":"hǎinà bǎichuān","s":"2"},{"w":"椰浆饭","py":"yējiāng fàn","s":"2"},{"w":"黄姜饭","py":"huángjiāng fàn","s":"2"},{"w":"发芽","py":"fāyá","s":"2"},{"w":"兼容并蓄","py":"jiānróng bìngxù","s":"2"},{"w":"携手","py":"xiéshǒu","s":"2"},{"w":"辉煌","py":"huīhuáng","s":"2"},{"w":"皇帝","py":"huángdì","s":"2"},{"w":"典型","py":"diǎnxíng","s":"2"},{"w":"普及","py":"pǔjí","s":"2"},{"w":"真伪","py":"zhēnwěi","s":"2"},{"w":"步伐","py":"bùfá","s":"2"},{"w":"询问","py":"xúnwèn","s":"2"},{"w":"人云亦云","py":"rényún yìyún","s":"2"},{"w":"免疫","py":"miǎnyì","s":"2"},{"w":"凝聚力","py":"níngjùlì","s":"2"},{"w":"良好","py":"liánghǎo","s":"3"},{"w":"人际","py":"rénjì","s":"3"},{"w":"坦率","py":"tǎnshuài","s":"3"},{"w":"隐瞒","py":"yǐnmán","s":"3"},{"w":"粗鲁","py":"cūlǔ","s":"3"},{"w":"分歧","py":"fēnqí","s":"3"},{"w":"矛盾","py":"máodùn","s":"3"},{"w":"磋商","py":"cuōshāng","s":"3"},{"w":"彼此","py":"bǐcǐ","s":"3"},{"w":"融洽","py":"róngqià","s":"3"},{"w":"诀窍","py":"juéqiào","s":"3"},{"w":"聆听","py":"língtīng","s":"3"},{"w":"死党","py":"sǐdǎng","s":"3"},{"w":"强迫","py":"qiángpò","s":"3"},{"w":"橱窗","py":"chúchuāng","s":"3"},{"w":"狭窄","py":"xiázhǎi","s":"3"},{"w":"铅笔盒","py":"qiānbǐhé","s":"3"},{"w":"拧","py":"níng","s":"3"},{"w":"抿","py":"mǐn","s":"3"},{"w":"肺炎","py":"fèiyán","s":"3"},{"w":"纸屑","py":"zhǐxiè","s":"3"},{"w":"肿瘤","py":"zhǒngliú","s":"3"},{"w":"癌症","py":"áizhèng","s":"3"},{"w":"徒劳无功","py":"túláo wúgōng","s":"3"},{"w":"擦拭","py":"cāshì","s":"3"},{"w":"某","py":"mǒu","s":"3"},{"w":"苍白","py":"cāngbái","s":"3"},{"w":"鼓掌","py":"gǔzhǎng","s":"3"},{"w":"忠实","py":"zhōngshí","s":"3"},{"w":"异乎寻常","py":"yìhū xúncháng","s":"3"},{"w":"痊愈","py":"quányù","s":"3"},{"w":"清晰","py":"qīngxī","s":"3"},{"w":"调剂","py":"tiáojì","s":"3"},{"w":"目睹","py":"mùdǔ","s":"3"},{"w":"鄙夷","py":"bǐyí","s":"3"},{"w":"流淌","py":"liútǎng","s":"3"},{"w":"窗帘","py":"chuānglián","s":"3"},{"w":"提心吊胆","py":"tíxīn diàodǎn","s":"3"},{"w":"封","py":"fēng","s":"3"},{"w":"古董","py":"gǔdǒng","s":"3"},{"w":"衡量","py":"héngliáng","s":"3"},{"w":"纯洁","py":"chúnjié","s":"3"},{"w":"蔬菜","py":"shūcài","s":"3"},{"w":"麦片","py":"màipiàn","s":"3"},{"w":"蛋白质","py":"dànbáizhì","s":"3"},{"w":"睡眠","py":"shuìmián","s":"3"},{"w":"体魄","py":"tǐpò","s":"3"},{"w":"频率","py":"pínlǜ","s":"3"},{"w":"韵律","py":"yùnlǜ","s":"3"},{"w":"汲取","py":"jíqǔ","s":"3"},{"w":"敞开","py":"chǎngkāi","s":"3"},{"w":"心扉","py":"xīnfēi","s":"3"},{"w":"缔造","py":"dìzào","s":"3"},{"w":"聊天","py":"liáotiān","s":"3"},{"w":"郊外","py":"jiāowài","s":"3"},{"w":"淋漓","py":"línlí","s":"3"},{"w":"手札","py":"shǒuzhá","s":"3"},{"w":"抒发","py":"shūfā","s":"3"},{"w":"休憩","py":"xiūqì","s":"3"},{"w":"饮茶","py":"yǐnchá","s":"3"},{"w":"唐","py":"táng","s":"3"},{"w":"磨","py":"mó","s":"3"},{"w":"葱","py":"cōng","s":"3"},{"w":"橘子","py":"júzi","s":"3"},{"w":"宋","py":"sòng","s":"3"},{"w":"鼎盛","py":"dǐngshèng","s":"3"},{"w":"柴","py":"chái","s":"3"},{"w":"醋","py":"cù","s":"3"},{"w":"沸水","py":"fèishuǐ","s":"3"},{"w":"调匀","py":"tiáoyún","s":"3"},{"w":"搅拌","py":"jiǎobàn","s":"3"},{"w":"步骤","py":"bùzhòu","s":"3"},{"w":"鉴赏","py":"jiànshǎng","s":"3"},{"w":"消暑","py":"xiāoshǔ","s":"3"},{"w":"菌","py":"jūn","s":"3"},{"w":"舞蹈","py":"wǔdǎo","s":"3"},{"w":"节奏","py":"jiézòu","s":"3"},{"w":"霹雳舞","py":"pīlìwǔ","s":"3"},{"w":"肌肉","py":"jīròu","s":"3"},{"w":"风靡","py":"fēngmǐ","s":"3"},{"w":"掀起","py":"xiānqǐ","s":"3"},{"w":"热潮","py":"rècháo","s":"3"},{"w":"雨后春笋","py":"yǔhòu chūnsǔn","s":"3"},{"w":"爆发力","py":"bàofālì","s":"3"},{"w":"默契","py":"mòqì","s":"3"},{"w":"焕发","py":"huànfā","s":"3"},{"w":"真挚","py":"zhēnzhì","s":"3"},{"w":"名额","py":"míng'é","s":"3"},{"w":"链接","py":"liànjiē","s":"3"},{"w":"师傅","py":"shīfu","s":"3"},{"w":"擅长","py":"shàncháng","s":"3"},{"w":"裁缝","py":"cáiféng","s":"3"},{"w":"编织","py":"biānzhī","s":"3"},{"w":"匠人","py":"jiàngrén","s":"3"},{"w":"烘焙","py":"hōngbèi","s":"3"},{"w":"讲述","py":"jiǎngshù","s":"3"},{"w":"黎明","py":"límíng","s":"3"},{"w":"苏醒","py":"sūxǐng","s":"3"},{"w":"禽","py":"qín","s":"3"},{"w":"晚霞","py":"wǎnxiá","s":"3"},{"w":"添砖加瓦","py":"tiānzhuān jiāwǎ","s":"3"},{"w":"族裔","py":"zúyì","s":"3"},{"w":"唇齿相依","py":"chúnchǐ xiāngyī","s":"3"},{"w":"亲戚","py":"qīnqi","s":"3"},{"w":"援手","py":"yuánshǒu","s":"3"},{"w":"侥幸","py":"jiǎoxìng","s":"3"},{"w":"慷慨解囊","py":"kāngkǎi jiěnáng","s":"3"},{"w":"渡","py":"dù","s":"3"},{"w":"篱笆","py":"líba","s":"3"},{"w":"心力交瘁","py":"xīnlì jiāocuì","s":"3"},{"w":"雪中送炭","py":"xuězhōng sòngtàn","s":"3"},{"w":"恰好","py":"qiàhǎo","s":"3"},{"w":"弥补","py":"míbǔ","s":"3"},{"w":"谚语","py":"yànyǔ","s":"3"},{"w":"和睦","py":"hémù","s":"3"},{"w":"冷漠","py":"lěngmò","s":"3"},{"w":"挑剔","py":"tiāotì","s":"3"},{"w":"网络","py":"wǎngluò","s":"3"},{"w":"开销","py":"kāixiāo","s":"3"},{"w":"锯子","py":"jùzi","s":"3"},{"w":"遛","py":"liù","s":"3"},{"w":"拴","py":"shuān","s":"3"},{"w":"渠道","py":"qúdào","s":"3"},{"w":"弊端","py":"bìduān","s":"3"},{"w":"培训","py":"péixùn","s":"3"},{"w":"阐述","py":"chǎnshù","s":"3"},{"w":"铿锵","py":"kēngqiāng","s":"3"},{"w":"雅俗","py":"yǎsú","s":"3"},{"w":"抑扬顿挫","py":"yìyáng dùncuò","s":"3"},{"w":"僵硬","py":"jiāngyìng","s":"3"},{"w":"简言意赅","py":"jiǎnyán yìgāi","s":"3"},{"w":"啰嗦","py":"luōsuo","s":"3"},{"w":"遐想","py":"xiáxiǎng","s":"3"},{"w":"枯燥","py":"kūzào","s":"3"},{"w":"筛选","py":"shāixuǎn","s":"3"},{"w":"欲","py":"yù","s":"3"},{"w":"浏览","py":"liúlǎn","s":"3"},{"w":"润滑剂","py":"rùnhuájì","s":"3"},{"w":"不胜枚举","py":"bùshèng méijǔ","s":"3"},{"w":"扼腕","py":"èwàn","s":"3"},{"w":"体恤","py":"tǐxù","s":"3"},{"w":"氛围","py":"fēnwéi","s":"3"},{"w":"谦虚","py":"qiānxū","s":"3"},{"w":"裨益","py":"bìyì","s":"3"},{"w":"严峻","py":"yánjùn","s":"3"},{"w":"流言蜚语","py":"liúyán fēiyǔ","s":"3"},{"w":"扰乱","py":"rǎoluàn","s":"3"},{"w":"甚嚣尘上","py":"shènxiāo chénshàng","s":"3"},{"w":"基础","py":"jīchǔ","s":"3"},{"w":"涵盖","py":"hángài","s":"3"},{"w":"崛起","py":"juéqǐ","s":"3"},{"w":"颠覆","py":"diānfù","s":"3"},{"w":"报刊","py":"bàokān","s":"3"},{"w":"书籍","py":"shūjí","s":"3"},{"w":"传播","py":"chuánbō","s":"3"},{"w":"拨","py":"bō","s":"3"},{"w":"限制","py":"xiànzhì","s":"3"},{"w":"天涯","py":"tiānyá","s":"3"},{"w":"屏幕","py":"píngmù","s":"3"},{"w":"按钮","py":"ànniǔ","s":"3"},{"w":"疆界","py":"jiāngjiè","s":"3"},{"w":"庞大","py":"pángdà","s":"3"},{"w":"阶段","py":"jiēduàn","s":"3"},{"w":"同侪","py":"tóngchái","s":"3"},{"w":"撰写","py":"zhuànxiě","s":"3"},{"w":"筹备","py":"chóubèi","s":"3"},{"w":"募捐","py":"mùjuān","s":"3"},{"w":"实践","py":"shíjiàn","s":"3"},{"w":"震撼","py":"zhènhàn","s":"3"},{"w":"循规蹈矩","py":"xúnguī dǎojǔ","s":"3"},{"w":"融会贯通","py":"rónghuì guàntōng","s":"3"},{"w":"腼腆","py":"miǎntiǎn","s":"3"},{"w":"咨询","py":"zīxún","s":"3"},{"w":"数据","py":"shùjù","s":"3"},{"w":"分析","py":"fēnxī","s":"3"},{"w":"冰淇淋","py":"bīngqílín","s":"3"},{"w":"充实","py":"chōngshí","s":"3"},{"w":"雄鹰","py":"xióngyīng","s":"3"},{"w":"渺小","py":"miǎoxiǎo","s":"3"},{"w":"坐井观天","py":"zuòjǐng guāntiān","s":"3"},{"w":"自鸣得意","py":"zìmíng déyì","s":"3"},{"w":"孤陋寡闻","py":"gūlòu guǎwén","s":"3"},{"w":"奥妙","py":"àomiào","s":"3"},{"w":"寓言","py":"yùyán","s":"3"},{"w":"桨","py":"jiǎng","s":"3"},{"w":"浅尝辄止","py":"qiǎncháng zhézhǐ","s":"3"},{"w":"哲学","py":"zhéxué","s":"3"},{"w":"比喻","py":"bǐyù","s":"3"},{"w":"热忱","py":"rèchén","s":"3"},{"w":"持之以恒","py":"chízhī yǐhéng","s":"3"},{"w":"清澈","py":"qīngchè","s":"3"},{"w":"干涸","py":"gānhé","s":"3"},{"w":"浇灌","py":"jiāoguàn","s":"3"},{"w":"落伍","py":"luòwǔ","s":"3"},{"w":"楷模","py":"kǎimó","s":"3"},{"w":"孜孜不倦","py":"zīzī bùjuàn","s":"3"},{"w":"敷衍","py":"fūyǎn","s":"3"},{"w":"逆水行舟","py":"nìshuǐ xíngzhōu","s":"3"},{"w":"淘汰","py":"táotài","s":"3"},{"w":"佐证","py":"zuǒzhèng","s":"3"},{"w":"平庸","py":"píngyōng","s":"3"},{"w":"岂","py":"qǐ","s":"3"},{"w":"诠释","py":"quánshì","s":"3"},{"w":"抛锚","py":"pāomáo","s":"3"},{"w":"郁闷","py":"yùmèn","s":"3"},{"w":"叼","py":"diāo","s":"3"},{"w":"逗","py":"dòu","s":"3"},{"w":"挑战","py":"tiǎozhàn","s":"3"},{"w":"绊","py":"bàn","s":"3"},{"w":"攀登","py":"pāndēng","s":"3"},{"w":"雀跃","py":"quèyuè","s":"3"},{"w":"山脉","py":"shānmài","s":"3"},{"w":"宇宙","py":"yǔzhòu","s":"3"},{"w":"体验","py":"tǐyàn","s":"3"},{"w":"跋涉","py":"báshè","s":"3"},{"w":"牵挂","py":"qiānguà","s":"3"},{"w":"唤","py":"huàn","s":"3"},{"w":"喉咙","py":"hóulóng","s":"3"},{"w":"绽放","py":"zhànfàng","s":"3"},{"w":"绷","py":"bēng","s":"3"},{"w":"一般","py":"yībān","s":"3"},{"w":"无奈","py":"wúnài","s":"3"},{"w":"寺庙","py":"sìmiào","s":"3"},{"w":"幽静","py":"yōujìng","s":"3"},{"w":"诧异","py":"chàyì","s":"3"},{"w":"贱","py":"jiàn","s":"3"},{"w":"哽咽","py":"gěngyè","s":"3"},{"w":"眼眶","py":"yǎnkuàng","s":"3"},{"w":"咀嚼","py":"jǔjué","s":"3"},{"w":"隆重","py":"lóngzhòng","s":"3"},{"w":"诅咒","py":"zǔzhòu","s":"3"},{"w":"洋溢","py":"yángyì","s":"3"},{"w":"慈祥","py":"cíxiáng","s":"3"},{"w":"潭","py":"tán","s":"3"},{"w":"教授","py":"jiàoshòu","s":"3"},{"w":"割舍","py":"gēshě","s":"3"},{"w":"责无旁贷","py":"zé wú pángdài","s":"4"},{"w":"分忧","py":"fēnyōu","s":"4"},{"w":"残障","py":"cánzhàng","s":"4"},{"w":"聘请","py":"pìnqǐng","s":"4"},{"w":"同工同酬","py":"tónggōng tóngchóu","s":"4"},{"w":"权利","py":"quánlì","s":"4"},{"w":"雇主","py":"gùzhǔ","s":"4"},{"w":"纠纷","py":"jiūfēn","s":"4"},{"w":"小贩","py":"xiǎofàn","s":"4"},{"w":"摊位","py":"tānwèi","s":"4"},{"w":"呵护","py":"hēhù","s":"4"},{"w":"缓解","py":"huǎnjiě","s":"4"},{"w":"乞丐","py":"qǐgài","s":"4"},{"w":"跪","py":"guì","s":"4"},{"w":"肮脏","py":"āngzāng","s":"4"},{"w":"贫穷","py":"pínqióng","s":"4"},{"w":"赤裸裸","py":"chìluǒluǒ","s":"4"},{"w":"祈求","py":"qíqiú","s":"4"},{"w":"距离","py":"jùlí","s":"4"},{"w":"慈悲","py":"cíbēi","s":"4"},{"w":"阻挡","py":"zǔdǎng","s":"4"},{"w":"肆无忌惮","py":"sìwú jìdàn","s":"4"},{"w":"褴褛","py":"lánlǚ","s":"4"},{"w":"革履","py":"gélǚ","s":"4"},{"w":"侦探","py":"zhēntàn","s":"4"},{"w":"仁慈","py":"réncí","s":"4"},{"w":"叩头","py":"kòutóu","s":"4"},{"w":"残疾","py":"cánjí","s":"4"},{"w":"质朴","py":"zhìpǔ","s":"4"},{"w":"大概","py":"dàgài","s":"4"},{"w":"晓得","py":"xiǎode","s":"4"},{"w":"蓦然","py":"mòrán","s":"4"},{"w":"推心置腹","py":"tuīxīn zhìfù","s":"4"},{"w":"否则","py":"fǒuzé","s":"4"},{"w":"感恩","py":"gǎn'ēn","s":"4"},{"w":"匆匆","py":"cōngcōng","s":"4"},{"w":"婴儿","py":"yīng'ér","s":"4"},{"w":"翅膀","py":"chìbǎng","s":"4"},{"w":"呈现","py":"chéngxiàn","s":"4"},{"w":"扣人心弦","py":"kòurén xīnxián","s":"4"},{"w":"爱恋","py":"àiliàn","s":"4"},{"w":"唏嘘","py":"xīxū","s":"4"},{"w":"著名","py":"zhùmíng","s":"4"},{"w":"兴旺","py":"xīngwàng","s":"4"},{"w":"负荷","py":"fùhè","s":"4"},{"w":"反映","py":"fǎnyìng","s":"4"},{"w":"岔路口","py":"chàlùkǒu","s":"4"},{"w":"惆怅","py":"chóuchàng","s":"4"},{"w":"紧凑","py":"jǐncòu","s":"4"},{"w":"小卒","py":"xiǎozú","s":"4"},{"w":"轿子","py":"jiàozi","s":"4"},{"w":"何况","py":"hékuàng","s":"4"},{"w":"耻笑","py":"chǐxiào","s":"4"},{"w":"搀扶","py":"chānfú","s":"4"},{"w":"罢了","py":"bàle","s":"4"},{"w":"姊妹","py":"zǐmèi","s":"4"},{"w":"顽劣","py":"wánliè","s":"4"},{"w":"溺爱","py":"nì'ài","s":"4"},{"w":"颈项","py":"jǐngxiàng","s":"4"},{"w":"鬓","py":"bìn","s":"4"},{"w":"桃","py":"táo","s":"4"},{"w":"瓣","py":"bàn","s":"4"},{"w":"重逢","py":"chóngféng","s":"4"},{"w":"稀罕","py":"xīhan","s":"4"},{"w":"三顾茅庐","py":"sāngù máolú","s":"4"},{"w":"争霸","py":"zhēngbà","s":"4"},{"w":"足智多谋","py":"zúzhì duōmóu","s":"4"},{"w":"起伏","py":"qǐfú","s":"4"},{"w":"斥责","py":"chìzé","s":"4"},{"w":"严寒","py":"yánhán","s":"4"},{"w":"恳请","py":"kěnqǐng","s":"4"},{"w":"酿","py":"niàng","s":"4"},{"w":"涌","py":"yǒng","s":"4"},{"w":"繁殖","py":"fánzhí","s":"4"},{"w":"饲料","py":"sìliào","s":"4"},{"w":"佳肴","py":"jiāyáo","s":"4"},{"w":"啃","py":"kěn","s":"4"},{"w":"入侵","py":"rùqīn","s":"4"},{"w":"盎然","py":"àngrán","s":"4"},{"w":"砍伐","py":"kǎnfá","s":"4"},{"w":"栖息","py":"qīxī","s":"4"},{"w":"牢记","py":"láojì","s":"4"},{"w":"勿","py":"wù","s":"4"},{"w":"惩罚","py":"chéngfá","s":"4"},{"w":"茂密","py":"màomì","s":"4"},{"w":"恶劣","py":"èliè","s":"4"},{"w":"浸泡","py":"jìnpào","s":"4"},{"w":"牺牲","py":"xīshēng","s":"4"},{"w":"锐减","py":"ruìjiǎn","s":"4"},{"w":"保育","py":"bǎoyù","s":"4"},{"w":"储存","py":"chǔcún","s":"4"},{"w":"身躯","py":"shēnqū","s":"4"},{"w":"侵蚀","py":"qīnshí","s":"4"},{"w":"空隙","py":"kòngxì","s":"4"},{"w":"堤","py":"dī","s":"4"},{"w":"窥视","py":"kuīshì","s":"4"},{"w":"宣布","py":"xuānbù","s":"4"},{"w":"狩猎","py":"shòuliè","s":"4"},{"w":"饥饿","py":"jī'è","s":"4"},{"w":"糟蹋","py":"zāota","s":"4"},{"w":"毁灭","py":"huǐmiè","s":"4"},{"w":"罪魁祸首","py":"zuìkuí huòshǒu","s":"4"},{"w":"竞争","py":"jìngzhēng","s":"4"},{"w":"袭击","py":"xíjī","s":"4"},{"w":"违背","py":"wéibèi","s":"4"},{"w":"拼搏","py":"pīnbó","s":"4"},{"w":"联盟","py":"liánméng","s":"4"},{"w":"迄今","py":"qìjīn","s":"4"},{"w":"蜿蜒","py":"wānyán","s":"4"},{"w":"辽阔","py":"liáokuò","s":"4"},{"w":"诸多","py":"zhūduō","s":"4"},{"w":"古迹","py":"gǔjì","s":"4"},{"w":"雕刻","py":"diāokè","s":"4"},{"w":"啧啧称奇","py":"zézé chēngqí","s":"4"},{"w":"赞叹","py":"zàntàn","s":"4"},{"w":"底蕴","py":"dǐyùn","s":"4"},{"w":"灿烂","py":"cànlàn","s":"4"},{"w":"金碧辉煌","py":"jīnbì huīhuáng","s":"4"},{"w":"绚丽","py":"xuànlì","s":"4"},{"w":"颇","py":"pō","s":"4"},{"w":"独树一帜","py":"dúshù yīzhì","s":"4"},{"w":"赋税","py":"fùshuì","s":"4"},{"w":"揭竿而起","py":"jiēgān érqǐ","s":"4"},{"w":"暴虐","py":"bàonüè","s":"4"},{"w":"葬送","py":"zàngsòng","s":"4"},{"w":"推卸","py":"tuīxiè","s":"4"},{"w":"停滞","py":"tíngzhì","s":"4"},{"w":"趾高气扬","py":"zhǐgāo qìyáng","s":"4"},{"w":"谦逊","py":"qiānxùn","s":"4"},{"w":"梦寐以求","py":"mèngmèi yǐqiú","s":"4"},{"w":"昌盛","py":"chāngshèng","s":"4"},{"w":"协作","py":"xiézuò","s":"4"},{"w":"论坛","py":"lùntán","s":"4"},{"w":"毋庸讳言","py":"wúyōng huìyán","s":"4"},{"w":"棘手","py":"jíshǒu","s":"4"},{"w":"里程碑","py":"lǐchéngbēi","s":"4"},{"w":"开拓","py":"kāituò","s":"4"},{"w":"先驱","py":"xiānqū","s":"4"},{"w":"气馁","py":"qìněi","s":"4"},{"w":"出类拔萃","py":"chūlèi báicuì","s":"4"},{"w":"韧性","py":"rènxìng","s":"4"},{"w":"浩瀚","py":"hàohàn","s":"4"},{"w":"天方夜谭","py":"tiānfāng yètán","s":"4"},{"w":"百折不挠","py":"bǎizhé bùnáo","s":"4"},{"w":"贬","py":"biǎn","s":"4"},{"w":"粮食","py":"liángshi","s":"4"},{"w":"豁达","py":"huòdá","s":"4"},{"w":"满腔","py":"mǎnqiāng","s":"4"},{"w":"霜","py":"shuāng","s":"4"},{"w":"遣","py":"qiǎn","s":"4"},{"w":"挽","py":"wǎn","s":"4"},{"w":"豪迈","py":"háomài","s":"4"},{"w":"慷慨激昂","py":"kāngkǎi jī'áng","s":"4"},{"w":"勉励","py":"miǎnlì","s":"4"},{"w":"朝廷","py":"cháotíng","s":"4"},{"w":"笔锋","py":"bǐfēng","s":"4"},{"w":"扎","py":"zhā","s":"4"},{"w":"喧腾","py":"xuānténg","s":"4"},{"w":"感悟","py":"gǎnwù","s":"4"},{"w":"崭新","py":"zhǎnxīn","s":"4"},{"w":"迥然","py":"jiǒngrán","s":"4"},{"w":"奋斗","py":"fèndòu","s":"4"},{"w":"崎岖","py":"qíqū","s":"4"},{"w":"淘气","py":"","s":"1"},{"w":"惹","py":"","s":"1"},{"w":"两肋插刀","py":"","s":"1"},{"w":"赵","py":"","s":"1"},{"w":"科技","py":"","s":"1"},{"w":"来者不拒","py":"","s":"1"},{"w":"口头禅","py":"","s":"1"},{"w":"小事一桩","py":"","s":"1"},{"w":"人缘","py":"","s":"1"},{"w":"性格","py":"","s":"1"},{"w":"直率","py":"","s":"1"},{"w":"得罪","py":"","s":"1"},{"w":"别扭","py":"","s":"1"},{"w":"争辩","py":"","s":"1"},{"w":"捣乱","py":"","s":"1"},{"w":"瞬间","py":"","s":"1"},{"w":"兴致勃勃","py":"","s":"1"},{"w":"粘","py":"","s":"1"},{"w":"蛋液","py":"","s":"1"},{"w":"狼狈","py":"","s":"1"},{"w":"讥讽","py":"","s":"1"},{"w":"赌气","py":"","s":"1"},{"w":"嚷","py":"","s":"1"},{"w":"小心翼翼","py":"","s":"1"},{"w":"荧光笔","py":"","s":"1"},{"w":"抵挡","py":"","s":"1"},{"w":"拉扯","py":"","s":"1"},{"w":"手足无措","py":"","s":"1"},{"w":"审案","py":"","s":"1"},{"w":"律师","py":"","s":"1"},{"w":"振振有词","py":"","s":"1"},{"w":"心虚","py":"","s":"1"},{"w":"哑口无言","py":"","s":"1"},{"w":"判决","py":"","s":"1"},{"w":"泄","py":"","s":"1"},{"w":"葡萄","py":"","s":"1"},{"w":"象征","py":"","s":"1"},{"w":"风俗","py":"","s":"1"},{"w":"辞旧迎新","py":"","s":"1"},{"w":"燃放","py":"","s":"1"},{"w":"瓶瓶罐罐","py":"","s":"1"},{"w":"厄运","py":"","s":"1"},{"w":"前夕","py":"","s":"1"},{"w":"碗碟","py":"","s":"1"},{"w":"预示","py":"","s":"1"},{"w":"兆头","py":"","s":"1"},{"w":"忙碌","py":"","s":"1"},{"w":"遥远","py":"","s":"1"},{"w":"恭敬","py":"","s":"1"},{"w":"万事大吉","py":"","s":"1"},{"w":"元旦","py":"","s":"1"},{"w":"贼","py":"","s":"1"},{"w":"鱼尾纹","py":"","s":"1"},{"w":"装饰","py":"","s":"1"},{"w":"圣诞","py":"","s":"1"},{"w":"格格不入","py":"","s":"1"},{"w":"结婚","py":"","s":"1"},{"w":"嫁","py":"","s":"1"},{"w":"视讯","py":"","s":"1"},{"w":"沉默寡言","py":"","s":"1"},{"w":"副","py":"","s":"1"},{"w":"酷","py":"","s":"1"},{"w":"承诺","py":"","s":"1"},{"w":"歉意","py":"","s":"1"},{"w":"围炉","py":"","s":"1"},{"w":"蒸腾","py":"","s":"1"},{"w":"叽叽喳喳","py":"","s":"1"},{"w":"缺席","py":"","s":"1"},{"w":"悦耳","py":"","s":"1"},{"w":"红枣","py":"","s":"1"},{"w":"儿媳妇","py":"","s":"1"},{"w":"莫名其妙","py":"","s":"1"},{"w":"疑惑","py":"","s":"1"},{"w":"魅力","py":"","s":"1"},{"w":"博物馆","py":"","s":"1"},{"w":"悠久","py":"","s":"1"},{"w":"遗产","py":"","s":"1"},{"w":"巴刹","py":"","s":"1"},{"w":"同胞","py":"","s":"1"},{"w":"融合","py":"","s":"1"},{"w":"皇宫","py":"","s":"1"},{"w":"城堡","py":"","s":"1"},{"w":"时尚","py":"","s":"1"},{"w":"彩绘","py":"","s":"1"},{"w":"流连忘返","py":"","s":"1"},{"w":"娱乐","py":"","s":"1"},{"w":"探索","py":"","s":"1"},{"w":"娘惹","py":"","s":"1"},{"w":"拍摄","py":"","s":"1"},{"w":"平均","py":"","s":"1"},{"w":"繁忙","py":"","s":"1"},{"w":"闪耀","py":"","s":"1"},{"w":"横梁","py":"","s":"1"},{"w":"覆盖","py":"","s":"1"},{"w":"玻璃","py":"","s":"1"},{"w":"瀑布","py":"","s":"1"},{"w":"循环","py":"","s":"1"},{"w":"山谷","py":"","s":"1"},{"w":"株","py":"","s":"1"},{"w":"设施","py":"","s":"1"},{"w":"蹦跳","py":"","s":"1"},{"w":"甚至","py":"","s":"1"},{"w":"投降","py":"","s":"1"},{"w":"自治","py":"","s":"1"},{"w":"栏","py":"","s":"1"},{"w":"棕色","py":"","s":"1"},{"w":"氧化","py":"","s":"1"},{"w":"陌生","py":"","s":"1"},{"w":"宁静","py":"","s":"1"},{"w":"属于","py":"","s":"1"},{"w":"坚持不懈","py":"","s":"1"},{"w":"开卷有益","py":"","s":"1"},{"w":"以礼待人","py":"","s":"1"},{"w":"新颖","py":"","s":"1"},{"w":"戏剧","py":"","s":"1"},{"w":"工作坊","py":"","s":"1"},{"w":"尴尬","py":"","s":"1"},{"w":"维护","py":"","s":"1"},{"w":"友谊","py":"","s":"1"},{"w":"一帆风顺","py":"","s":"1"},{"w":"有效","py":"","s":"1"},{"w":"策略","py":"","s":"1"},{"w":"嘉宾","py":"","s":"1"},{"w":"辅导员","py":"","s":"1"},{"w":"赖床","py":"","s":"1"},{"w":"滋味","py":"","s":"1"},{"w":"催促","py":"","s":"1"},{"w":"哀求","py":"","s":"1"},{"w":"硬着头皮","py":"","s":"1"},{"w":"藤鞭","py":"","s":"1"},{"w":"抡","py":"","s":"1"},{"w":"挨打","py":"","s":"1"},{"w":"女佣","py":"","s":"1"},{"w":"雨篷","py":"","s":"1"},{"w":"泪痕","py":"","s":"1"},{"w":"早晨","py":"","s":"1"},{"w":"猛","py":"","s":"1"},{"w":"嗓子眼","py":"","s":"1"},{"w":"允许","py":"","s":"1"},{"w":"相貌","py":"","s":"1"},{"w":"讲究","py":"","s":"1"},{"w":"何必","py":"","s":"1"},{"w":"记账","py":"","s":"1"},{"w":"亏","py":"","s":"1"},{"w":"撇","py":"","s":"1"},{"w":"慢条斯理","py":"","s":"1"},{"w":"起航","py":"","s":"1"},{"w":"焦急","py":"","s":"1"},{"w":"剩","py":"","s":"1"},{"w":"牙膏","py":"","s":"1"},{"w":"橡皮擦","py":"","s":"1"},{"w":"薯条","py":"","s":"1"},{"w":"番茄酱","py":"","s":"1"},{"w":"偶尔","py":"","s":"1"},{"w":"评委","py":"","s":"1"},{"w":"晋级","py":"","s":"1"},{"w":"奖励","py":"","s":"1"},{"w":"获得","py":"","s":"1"},{"w":"企业","py":"","s":"1"},{"w":"牧场","py":"","s":"1"},{"w":"潜水","py":"","s":"1"},{"w":"艘","py":"","s":"1"},{"w":"屁股","py":"","s":"1"},{"w":"翘","py":"","s":"1"},{"w":"潜水艇","py":"","s":"1"},{"w":"仿佛","py":"","s":"1"},{"w":"确切","py":"","s":"1"},{"w":"浑身","py":"","s":"1"},{"w":"基因","py":"","s":"1"},{"w":"一哄而散","py":"","s":"1"},{"w":"手势","py":"","s":"1"},{"w":"颁布","py":"","s":"1"},{"w":"泛","py":"","s":"1"},{"w":"泡沫","py":"","s":"1"},{"w":"伤脑筋","py":"","s":"1"},{"w":"拜访","py":"","s":"1"},{"w":"中央","py":"","s":"1"},{"w":"漫步","py":"","s":"1"},{"w":"绞尽脑汁","py":"","s":"1"},{"w":"华侨","py":"","s":"1"},{"w":"银行","py":"","s":"1"},{"w":"由衷","py":"","s":"1"},{"w":"摩天大楼","py":"","s":"1"},{"w":"薄薄的","py":"","s":"1"},{"w":"抨击","py":"","s":"1"},{"w":"挫折","py":"","s":"1"},{"w":"油漆","py":"","s":"1"},{"w":"栏杆","py":"","s":"1"},{"w":"宿舍","py":"","s":"1"},{"w":"凭","py":"","s":"1"},{"w":"欣慰","py":"","s":"1"},{"w":"订购","py":"","s":"1"},{"w":"塔台","py":"","s":"1"},{"w":"范围","py":"","s":"1"},{"w":"特殊","py":"","s":"1"},{"w":"警惕","py":"","s":"1"},{"w":"失误","py":"","s":"1"},{"w":"不堪设想","py":"","s":"1"},{"w":"脂肪","py":"","s":"1"},{"w":"截至","py":"","s":"1"},{"w":"行驶","py":"","s":"1"},{"w":"延误","py":"","s":"1"},{"w":"稳定","py":"","s":"1"},{"w":"幕后","py":"","s":"1"},{"w":"贡献","py":"","s":"1"},{"w":"漏夜","py":"","s":"1"},{"w":"轨道","py":"","s":"1"},{"w":"凌晨","py":"","s":"1"},{"w":"就绪","py":"","s":"1"},{"w":"隧道","py":"","s":"1"},{"w":"扫描","py":"","s":"1"},{"w":"裂痕","py":"","s":"1"},{"w":"顺畅","py":"","s":"1"},{"w":"全力以赴","py":"","s":"1"},{"w":"职业","py":"","s":"1"},{"w":"故障","py":"","s":"1"},{"w":"岗位","py":"","s":"1"},{"w":"芝麻","py":"","s":"1"},{"w":"朗朗上口","py":"","s":"1"},{"w":"奉献","py":"","s":"1"},{"w":"繁荣","py":"","s":"1"},{"w":"平凡","py":"","s":"1"},{"w":"光芒","py":"","s":"1"},{"w":"犹豫","py":"","s":"1"},{"w":"不分青红皂白","py":"","s":"1"},{"w":"教训","py":"","s":"1"},{"w":"叛逆","py":"","s":"1"},{"w":"委屈","py":"","s":"1"},{"w":"内疚","py":"","s":"1"},{"w":"不妨","py":"","s":"1"},{"w":"匿名","py":"","s":"1"},{"w":"监督","py":"","s":"1"},{"w":"代沟","py":"","s":"1"},{"w":"上瘾","py":"","s":"1"},{"w":"疏远","py":"","s":"1"},{"w":"迎刃而解","py":"","s":"1"},{"w":"称赞","py":"","s":"1"},{"w":"崇拜","py":"","s":"1"},{"w":"爱不释手","py":"","s":"1"},{"w":"碰钉子","py":"","s":"1"},{"w":"泼冷水","py":"","s":"1"},{"w":"抽屉","py":"","s":"1"},{"w":"精疲力竭","py":"","s":"1"},{"w":"衰老","py":"","s":"1"},{"w":"抑郁","py":"","s":"1"},{"w":"寂寞","py":"","s":"1"},{"w":"启齿","py":"","s":"1"},{"w":"打退堂鼓","py":"","s":"1"},{"w":"懊恼","py":"","s":"1"},{"w":"伺机","py":"","s":"1"},{"w":"心不在焉","py":"","s":"1"},{"w":"破天荒","py":"","s":"1"},{"w":"仓促","py":"","s":"1"},{"w":"严肃","py":"","s":"1"},{"w":"安抚","py":"","s":"1"},{"w":"干脆","py":"","s":"1"},{"w":"风筝","py":"","s":"1"},{"w":"挣脱","py":"","s":"1"},{"w":"惊讶","py":"","s":"1"},{"w":"斑","py":"","s":"1"},{"w":"缠绕","py":"","s":"1"},{"w":"搂","py":"","s":"1"},{"w":"捐款","py":"","s":"1"},{"w":"拯救","py":"","s":"1"},{"w":"医疗","py":"","s":"1"},{"w":"研究","py":"","s":"1"},{"w":"优惠","py":"","s":"1"},{"w":"券","py":"","s":"1"},{"w":"四肢","py":"","s":"1"},{"w":"敏捷","py":"","s":"1"},{"w":"穿梭","py":"","s":"1"},{"w":"友善","py":"","s":"1"},{"w":"辨识","py":"","s":"1"},{"w":"害羞","py":"","s":"1"},{"w":"馋","py":"","s":"1"},{"w":"调皮","py":"","s":"1"},{"w":"摔跤","py":"","s":"1"},{"w":"尤其","py":"","s":"1"},{"w":"愧疚","py":"","s":"1"},{"w":"光泽","py":"","s":"1"},{"w":"懒懒地","py":"","s":"1"},{"w":"妻子","py":"","s":"1"},{"w":"啾啾","py":"","s":"1"},{"w":"仰","py":"","s":"1"},{"w":"凝望","py":"","s":"1"},{"w":"鸟笼","py":"","s":"1"},{"w":"隔","py":"","s":"1"},{"w":"愤怒","py":"","s":"1"},{"w":"畏罪潜逃","py":"","s":"1"},{"w":"喵","py":"","s":"1"},{"w":"衔","py":"","s":"1"},{"w":"搞","py":"","s":"1"},{"w":"失踪","py":"","s":"1"},{"w":"估计","py":"","s":"1"},{"w":"丰富","py":"","s":"1"},{"w":"褐","py":"","s":"1"},{"w":"盘旋","py":"","s":"1"},{"w":"丝毫","py":"","s":"1"},{"w":"面面相觑","py":"","s":"1"},{"w":"愣","py":"","s":"1"},{"w":"傻","py":"","s":"1"},{"w":"因素","py":"","s":"1"},{"w":"水喉","py":"","s":"1"},{"w":"资源","py":"","s":"1"},{"w":"艰巨","py":"","s":"1"},{"w":"昂贵","py":"","s":"1"},{"w":"消耗","py":"","s":"1"},{"w":"干旱","py":"","s":"1"},{"w":"扩大","py":"","s":"1"},{"w":"蓄水池","py":"","s":"1"},{"w":"洗澡","py":"","s":"1"},{"w":"浴室","py":"","s":"1"},{"w":"趋势","py":"","s":"1"},{"w":"开源节流","py":"","s":"1"},{"w":"媒体","py":"","s":"1"},{"w":"塑料","py":"","s":"1"},{"w":"吨","py":"","s":"1"},{"w":"廉价","py":"","s":"1"},{"w":"提供","py":"","s":"1"},{"w":"铺","py":"","s":"1"},{"w":"污染","py":"","s":"1"},{"w":"焚烧","py":"","s":"1"},{"w":"烟尘","py":"","s":"1"},{"w":"土壤","py":"","s":"1"},{"w":"遏制","py":"","s":"1"},{"w":"倡导","py":"","s":"1"},{"w":"逐渐","py":"","s":"1"},{"w":"威胁","py":"","s":"1"},{"w":"煞费苦心","py":"","s":"1"},{"w":"统计","py":"","s":"1"},{"w":"选择","py":"","s":"1"},{"w":"泛滥","py":"","s":"1"},{"w":"寿命","py":"","s":"1"},{"w":"途径","py":"","s":"1"},{"w":"缺乏","py":"","s":"1"},{"w":"亿","py":"","s":"1"},{"w":"遗憾","py":"","s":"1"},{"w":"谨慎","py":"","s":"1"},{"w":"妥善","py":"","s":"1"},{"w":"自卑","py":"","s":"1"},{"w":"身材","py":"","s":"1"},{"w":"羡慕","py":"","s":"1"},{"w":"抗拒","py":"","s":"1"},{"w":"诱惑","py":"","s":"1"},{"w":"毅力","py":"","s":"1"},{"w":"戒","py":"","s":"1"},{"w":"茫然","py":"","s":"1"},{"w":"打瞌睡","py":"","s":"1"},{"w":"嫌","py":"","s":"1"},{"w":"逼","py":"","s":"1"},{"w":"烹饪","py":"","s":"1"},{"w":"符合","py":"","s":"1"},{"w":"憋","py":"","s":"1"},{"w":"委婉","py":"","s":"1"},{"w":"彻底","py":"","s":"1"},{"w":"缝","py":"","s":"1"},{"w":"掩","py":"","s":"1"},{"w":"恐惧","py":"","s":"1"},{"w":"走廊","py":"","s":"1"},{"w":"锁","py":"","s":"1"},{"w":"熄灯","py":"","s":"1"},{"w":"颤抖","py":"","s":"1"},{"w":"隐约","py":"","s":"1"},{"w":"瑟瑟","py":"","s":"1"},{"w":"恐怖","py":"","s":"1"},{"w":"通宵","py":"","s":"1"},{"w":"惊悚","py":"","s":"1"},{"w":"和谐","py":"","s":"1"},{"w":"脖子","py":"","s":"1"},{"w":"社交媒体","py":"","s":"1"},{"w":"缺陷","py":"","s":"1"},{"w":"姿势","py":"","s":"1"},{"w":"拘束","py":"","s":"1"},{"w":"嘈杂","py":"","s":"1"},{"w":"沮丧","py":"","s":"1"},{"w":"若有所思","py":"","s":"1"},{"w":"模糊","py":"","s":"1"},{"w":"简陋","py":"","s":"1"},{"w":"政府","py":"","s":"1"},{"w":"开辟","py":"","s":"1"},{"w":"市镇","py":"","s":"1"},{"w":"宗教","py":"","s":"1"},{"w":"综合","py":"","s":"1"},{"w":"诊疗所","py":"","s":"1"},{"w":"经济","py":"","s":"1"},{"w":"蓬勃","py":"","s":"1"},{"w":"富裕","py":"","s":"1"},{"w":"变迁","py":"","s":"1"},{"w":"障碍","py":"","s":"1"},{"w":"驰名","py":"","s":"1"},{"w":"屡次","py":"","s":"1"},{"w":"荣誉","py":"","s":"1"},{"w":"姿态","py":"","s":"1"},{"w":"接触","py":"","s":"1"},{"w":"翠绿","py":"","s":"1"},{"w":"心旷神怡","py":"","s":"1"},{"w":"合拢","py":"","s":"1"},{"w":"林荫","py":"","s":"1"},{"w":"樟宜","py":"","s":"1"},{"w":"耸立","py":"","s":"1"},{"w":"温馨","py":"","s":"1"},{"w":"欣赏","py":"","s":"1"},{"w":"粗糙","py":"","s":"1"},{"w":"婆娑","py":"","s":"1"},{"w":"撑","py":"","s":"1"},{"w":"同甘共苦","py":"","s":"1"},{"w":"茁壮","py":"","s":"1"},{"w":"移民","py":"","s":"1"},{"w":"接纳","py":"","s":"1"},{"w":"无怨无悔","py":"","s":"1"},{"w":"患","py":"","s":"1"},{"w":"失智症","py":"","s":"1"},{"w":"寻找","py":"","s":"1"},{"w":"流逝","py":"","s":"1"},{"w":"嬉戏","py":"","s":"1"},{"w":"咖喱卜","py":"","s":"1"},{"w":"俏皮","py":"","s":"1"},{"w":"鲜艳","py":"","s":"1"},{"w":"承载","py":"","s":"1"},{"w":"贸易","py":"","s":"1"},{"w":"丝绸","py":"","s":"1"},{"w":"陆地","py":"","s":"1"},{"w":"奢侈","py":"","s":"1"},{"w":"瓷器","py":"","s":"1"},{"w":"仪式","py":"","s":"1"},{"w":"秉持","py":"","s":"1"},{"w":"枢纽","py":"","s":"1"},{"w":"港口","py":"","s":"1"},{"w":"致力","py":"","s":"1"},{"w":"勾勒","py":"","s":"1"},{"w":"高瞻远瞩","py":"","s":"1"},{"w":"可谓","py":"","s":"1"},{"w":"岛屿","py":"","s":"1"},{"w":"海峡","py":"","s":"1"},{"w":"历史","py":"","s":"1"},{"w":"挖掘","py":"","s":"1"},{"w":"区域","py":"","s":"1"},{"w":"汇集","py":"","s":"1"},{"w":"赋予","py":"","s":"1"},{"w":"海纳百川","py":"","s":"1"},{"w":"椰浆饭","py":"","s":"1"},{"w":"黄姜饭","py":"","s":"1"},{"w":"发芽","py":"","s":"1"},{"w":"兼容并蓄","py":"","s":"1"},{"w":"携手","py":"","s":"1"},{"w":"辉煌","py":"","s":"1"},{"w":"皇帝","py":"","s":"1"},{"w":"典型","py":"","s":"1"},{"w":"普及","py":"","s":"1"},{"w":"真伪","py":"","s":"1"},{"w":"步伐","py":"","s":"1"},{"w":"询问","py":"","s":"1"},{"w":"人云亦云","py":"","s":"1"},{"w":"免疫","py":"","s":"1"},{"w":"凝聚力","py":"","s":"1"},{"w":"良好","py":"","s":"3"},{"w":"人际","py":"","s":"3"},{"w":"坦率","py":"","s":"3"},{"w":"隐瞒","py":"","s":"3"},{"w":"粗鲁","py":"","s":"3"},{"w":"分歧","py":"","s":"3"},{"w":"矛盾","py":"","s":"3"},{"w":"磋商","py":"","s":"3"},{"w":"彼此","py":"","s":"3"},{"w":"融洽","py":"","s":"3"},{"w":"诀窍","py":"","s":"3"},{"w":"聆听","py":"","s":"3"},{"w":"死党","py":"","s":"3"},{"w":"强迫","py":"","s":"3"},{"w":"橱窗","py":"","s":"3"},{"w":"狭窄","py":"","s":"3"},{"w":"铅笔盒","py":"","s":"3"},{"w":"拧","py":"","s":"3"},{"w":"抿","py":"","s":"3"},{"w":"肺炎","py":"","s":"3"},{"w":"纸屑","py":"","s":"3"},{"w":"肿瘤","py":"","s":"3"},{"w":"癌症","py":"","s":"3"},{"w":"徒劳无功","py":"","s":"3"},{"w":"擦拭","py":"","s":"3"},{"w":"某","py":"","s":"3"},{"w":"苍白","py":"","s":"3"},{"w":"鼓掌","py":"","s":"3"},{"w":"忠实","py":"","s":"3"},{"w":"异乎寻常","py":"","s":"3"},{"w":"痊愈","py":"","s":"3"},{"w":"清晰","py":"","s":"3"},{"w":"调剂","py":"","s":"3"},{"w":"目睹","py":"","s":"3"},{"w":"鄙夷","py":"","s":"3"},{"w":"流淌","py":"","s":"3"},{"w":"窗帘","py":"","s":"3"},{"w":"提心吊胆","py":"","s":"3"},{"w":"封","py":"","s":"3"},{"w":"古董","py":"","s":"3"},{"w":"衡量","py":"","s":"3"},{"w":"纯洁","py":"","s":"3"},{"w":"蔬菜","py":"","s":"3"},{"w":"麦片","py":"","s":"3"},{"w":"蛋白质","py":"","s":"3"},{"w":"睡眠","py":"","s":"3"},{"w":"体魄","py":"","s":"3"},{"w":"频率","py":"","s":"3"},{"w":"韵律","py":"","s":"3"},{"w":"汲取","py":"","s":"3"},{"w":"敞开","py":"","s":"3"},{"w":"心扉","py":"","s":"3"},{"w":"缔造","py":"","s":"3"},{"w":"聊天","py":"","s":"3"},{"w":"郊外","py":"","s":"3"},{"w":"淋漓","py":"","s":"3"},{"w":"手札","py":"","s":"3"},{"w":"抒发","py":"","s":"3"},{"w":"休憩","py":"","s":"3"},{"w":"饮茶","py":"","s":"3"},{"w":"唐","py":"","s":"3"},{"w":"磨","py":"","s":"3"},{"w":"葱","py":"","s":"3"},{"w":"橘子","py":"","s":"3"},{"w":"宋","py":"","s":"3"},{"w":"鼎盛","py":"","s":"3"},{"w":"柴","py":"","s":"3"},{"w":"醋","py":"","s":"3"},{"w":"沸水","py":"","s":"3"},{"w":"调匀","py":"","s":"3"},{"w":"搅拌","py":"","s":"3"},{"w":"步骤","py":"","s":"3"},{"w":"鉴赏","py":"","s":"3"},{"w":"消暑","py":"","s":"3"},{"w":"菌","py":"","s":"3"},{"w":"舞蹈","py":"","s":"3"},{"w":"节奏","py":"","s":"3"},{"w":"霹雳舞","py":"","s":"3"},{"w":"肌肉","py":"","s":"3"},{"w":"风靡","py":"","s":"3"},{"w":"掀起","py":"","s":"3"},{"w":"热潮","py":"","s":"3"},{"w":"雨后春笋","py":"","s":"3"},{"w":"爆发力","py":"","s":"3"},{"w":"默契","py":"","s":"3"},{"w":"焕发","py":"","s":"3"},{"w":"真挚","py":"","s":"3"},{"w":"名额","py":"","s":"3"},{"w":"链接","py":"","s":"3"},{"w":"师傅","py":"","s":"3"},{"w":"擅长","py":"","s":"3"},{"w":"裁缝","py":"","s":"3"},{"w":"编织","py":"","s":"3"},{"w":"匠人","py":"","s":"3"},{"w":"烘焙","py":"","s":"3"},{"w":"讲述","py":"","s":"3"},{"w":"黎明","py":"","s":"3"},{"w":"苏醒","py":"","s":"3"},{"w":"禽","py":"","s":"3"},{"w":"晚霞","py":"","s":"3"},{"w":"添砖加瓦","py":"","s":"3"},{"w":"族裔","py":"","s":"3"},{"w":"唇齿相依","py":"","s":"3"},{"w":"亲戚","py":"","s":"3"},{"w":"援手","py":"","s":"3"},{"w":"侥幸","py":"","s":"3"},{"w":"慷慨解囊","py":"","s":"3"},{"w":"渡","py":"","s":"3"},{"w":"篱笆","py":"","s":"3"},{"w":"心力交瘁","py":"","s":"3"},{"w":"雪中送炭","py":"","s":"3"},{"w":"恰好","py":"","s":"3"},{"w":"弥补","py":"","s":"3"},{"w":"谚语","py":"","s":"3"},{"w":"和睦","py":"","s":"3"},{"w":"冷漠","py":"","s":"3"},{"w":"挑剔","py":"","s":"3"},{"w":"网络","py":"","s":"3"},{"w":"开销","py":"","s":"3"},{"w":"锯子","py":"","s":"3"},{"w":"遛","py":"","s":"3"},{"w":"拴","py":"","s":"3"},{"w":"渠道","py":"","s":"3"},{"w":"弊端","py":"","s":"3"},{"w":"培训","py":"","s":"3"},{"w":"阐述","py":"","s":"3"},{"w":"铿锵","py":"","s":"3"},{"w":"雅俗","py":"","s":"3"},{"w":"抑扬顿挫","py":"","s":"3"},{"w":"僵硬","py":"","s":"3"},{"w":"简言意赅","py":"","s":"3"},{"w":"啰嗦","py":"","s":"3"},{"w":"遐想","py":"","s":"3"},{"w":"枯燥","py":"","s":"3"},{"w":"筛选","py":"","s":"3"},{"w":"欲","py":"","s":"3"},{"w":"浏览","py":"","s":"3"},{"w":"润滑剂","py":"","s":"3"},{"w":"不胜枚举","py":"","s":"3"},{"w":"扼腕","py":"","s":"3"},{"w":"体恤","py":"","s":"3"},{"w":"氛围","py":"","s":"3"},{"w":"谦虚","py":"","s":"3"},{"w":"裨益","py":"","s":"3"},{"w":"严峻","py":"","s":"3"},{"w":"流言蜚语","py":"","s":"3"},{"w":"扰乱","py":"","s":"3"},{"w":"甚嚣尘上","py":"","s":"3"},{"w":"基础","py":"","s":"3"},{"w":"涵盖","py":"","s":"3"},{"w":"崛起","py":"","s":"3"},{"w":"颠覆","py":"","s":"3"},{"w":"报刊","py":"","s":"3"},{"w":"书籍","py":"","s":"3"},{"w":"传播","py":"","s":"3"},{"w":"拨","py":"","s":"3"},{"w":"限制","py":"","s":"3"},{"w":"天涯","py":"","s":"3"},{"w":"屏幕","py":"","s":"3"},{"w":"按钮","py":"","s":"3"},{"w":"疆界","py":"","s":"3"},{"w":"庞大","py":"","s":"3"},{"w":"阶段","py":"","s":"3"},{"w":"同侪","py":"","s":"3"},{"w":"撰写","py":"","s":"3"},{"w":"筹备","py":"","s":"3"},{"w":"募捐","py":"","s":"3"},{"w":"实践","py":"","s":"3"},{"w":"震撼","py":"","s":"3"},{"w":"循规蹈矩","py":"","s":"3"},{"w":"融会贯通","py":"","s":"3"},{"w":"腼腆","py":"","s":"3"},{"w":"咨询","py":"","s":"3"},{"w":"数据","py":"","s":"3"},{"w":"分析","py":"","s":"3"},{"w":"冰淇淋","py":"","s":"3"},{"w":"充实","py":"","s":"3"},{"w":"雄鹰","py":"","s":"3"},{"w":"渺小","py":"","s":"3"},{"w":"坐井观天","py":"","s":"3"},{"w":"自鸣得意","py":"","s":"3"},{"w":"孤陋寡闻","py":"","s":"3"},{"w":"奥妙","py":"","s":"3"},{"w":"寓言","py":"","s":"3"},{"w":"桨","py":"","s":"3"},{"w":"浅尝辄止","py":"","s":"3"},{"w":"哲学","py":"","s":"3"},{"w":"比喻","py":"","s":"3"},{"w":"热忱","py":"","s":"3"},{"w":"持之以恒","py":"","s":"3"},{"w":"清澈","py":"","s":"3"},{"w":"干涸","py":"","s":"3"},{"w":"浇灌","py":"","s":"3"},{"w":"落伍","py":"","s":"3"},{"w":"楷模","py":"","s":"3"},{"w":"孜孜不倦","py":"","s":"3"},{"w":"敷衍","py":"","s":"3"},{"w":"逆水行舟","py":"","s":"3"},{"w":"淘汰","py":"","s":"3"},{"w":"佐证","py":"","s":"3"},{"w":"平庸","py":"","s":"3"},{"w":"岂","py":"","s":"3"},{"w":"诠释","py":"","s":"3"},{"w":"抛锚","py":"","s":"3"},{"w":"郁闷","py":"","s":"3"},{"w":"叼","py":"","s":"3"},{"w":"逗","py":"","s":"3"},{"w":"挑战","py":"","s":"3"},{"w":"绊","py":"","s":"3"},{"w":"攀登","py":"","s":"3"},{"w":"雀跃","py":"","s":"3"},{"w":"山脉","py":"","s":"3"},{"w":"宇宙","py":"","s":"3"},{"w":"体验","py":"","s":"3"},{"w":"跋涉","py":"","s":"3"},{"w":"牵挂","py":"","s":"3"},{"w":"唤","py":"","s":"3"},{"w":"喉咙","py":"","s":"3"},{"w":"绽放","py":"","s":"3"},{"w":"绷","py":"","s":"3"},{"w":"一般","py":"","s":"3"},{"w":"无奈","py":"","s":"3"},{"w":"寺庙","py":"","s":"3"},{"w":"幽静","py":"","s":"3"},{"w":"诧异","py":"","s":"3"},{"w":"贱","py":"","s":"3"},{"w":"哽咽","py":"","s":"3"},{"w":"眼眶","py":"","s":"3"},{"w":"咀嚼","py":"","s":"3"},{"w":"隆重","py":"","s":"3"},{"w":"诅咒","py":"","s":"3"},{"w":"洋溢","py":"","s":"3"},{"w":"慈祥","py":"","s":"3"},{"w":"潭","py":"","s":"3"},{"w":"教授","py":"","s":"3"},{"w":"割舍","py":"","s":"3"},{"w":"责无旁贷","py":"","s":"4"},{"w":"分忧","py":"","s":"4"},{"w":"残障","py":"","s":"4"},{"w":"聘请","py":"","s":"4"},{"w":"同工同酬","py":"","s":"4"},{"w":"权利","py":"","s":"4"},{"w":"雇主","py":"","s":"4"},{"w":"纠纷","py":"","s":"4"},{"w":"小贩","py":"","s":"4"},{"w":"摊位","py":"","s":"4"},{"w":"呵护","py":"","s":"4"},{"w":"缓解","py":"","s":"4"},{"w":"乞丐","py":"","s":"4"},{"w":"跪","py":"","s":"4"},{"w":"肮脏","py":"","s":"4"},{"w":"贫穷","py":"","s":"4"},{"w":"赤裸裸","py":"","s":"4"},{"w":"祈求","py":"","s":"4"},{"w":"距离","py":"","s":"4"},{"w":"慈悲","py":"","s":"4"},{"w":"阻挡","py":"","s":"4"},{"w":"肆无忌惮","py":"","s":"4"},{"w":"褴褛","py":"","s":"4"},{"w":"革履","py":"","s":"4"},{"w":"侦探","py":"","s":"4"},{"w":"仁慈","py":"","s":"4"},{"w":"叩头","py":"","s":"4"},{"w":"残疾","py":"","s":"4"},{"w":"质朴","py":"","s":"4"},{"w":"大概","py":"","s":"4"},{"w":"晓得","py":"","s":"4"},{"w":"蓦然","py":"","s":"4"},{"w":"推心置腹","py":"","s":"4"},{"w":"否则","py":"","s":"4"},{"w":"感恩","py":"","s":"4"},{"w":"匆匆","py":"","s":"4"},{"w":"婴儿","py":"","s":"4"},{"w":"翅膀","py":"","s":"4"},{"w":"呈现","py":"","s":"4"},{"w":"扣人心弦","py":"","s":"4"},{"w":"爱恋","py":"","s":"4"},{"w":"唏嘘","py":"","s":"4"},{"w":"著名","py":"","s":"4"},{"w":"兴旺","py":"","s":"4"},{"w":"负荷","py":"","s":"4"},{"w":"反映","py":"","s":"4"},{"w":"岔路口","py":"","s":"4"},{"w":"惆怅","py":"","s":"4"},{"w":"紧凑","py":"","s":"4"},{"w":"小卒","py":"","s":"4"},{"w":"轿子","py":"","s":"4"},{"w":"何况","py":"","s":"4"},{"w":"耻笑","py":"","s":"4"},{"w":"搀扶","py":"","s":"4"},{"w":"罢了","py":"","s":"4"},{"w":"姊妹","py":"","s":"4"},{"w":"顽劣","py":"","s":"4"},{"w":"溺爱","py":"","s":"4"},{"w":"颈项","py":"","s":"4"},{"w":"鬓","py":"","s":"4"},{"w":"桃","py":"","s":"4"},{"w":"瓣","py":"","s":"4"},{"w":"重逢","py":"","s":"4"},{"w":"稀罕","py":"","s":"4"},{"w":"三顾茅庐","py":"","s":"4"},{"w":"争霸","py":"","s":"4"},{"w":"足智多谋","py":"","s":"4"},{"w":"起伏","py":"","s":"4"},{"w":"斥责","py":"","s":"4"},{"w":"严寒","py":"","s":"4"},{"w":"恳请","py":"","s":"4"},{"w":"酿","py":"","s":"4"},{"w":"涌","py":"","s":"4"},{"w":"繁殖","py":"","s":"4"},{"w":"饲料","py":"","s":"4"},{"w":"佳肴","py":"","s":"4"},{"w":"啃","py":"","s":"4"},{"w":"入侵","py":"","s":"4"},{"w":"盎然","py":"","s":"4"},{"w":"砍伐","py":"","s":"4"},{"w":"栖息","py":"","s":"4"},{"w":"牢记","py":"","s":"4"},{"w":"勿","py":"","s":"4"},{"w":"惩罚","py":"","s":"4"},{"w":"茂密","py":"","s":"4"},{"w":"恶劣","py":"","s":"4"},{"w":"浸泡","py":"","s":"4"},{"w":"牺牲","py":"","s":"4"},{"w":"锐减","py":"","s":"4"},{"w":"保育","py":"","s":"4"},{"w":"储存","py":"","s":"4"},{"w":"身躯","py":"","s":"4"},{"w":"侵蚀","py":"","s":"4"},{"w":"空隙","py":"","s":"4"},{"w":"堤","py":"","s":"4"},{"w":"窥视","py":"","s":"4"},{"w":"宣布","py":"","s":"4"},{"w":"狩猎","py":"","s":"4"},{"w":"饥饿","py":"","s":"4"},{"w":"糟蹋","py":"","s":"4"},{"w":"毁灭","py":"","s":"4"},{"w":"罪魁祸首","py":"","s":"4"},{"w":"竞争","py":"","s":"4"},{"w":"袭击","py":"","s":"4"},{"w":"违背","py":"","s":"4"},{"w":"拼搏","py":"","s":"4"},{"w":"联盟","py":"","s":"4"},{"w":"迄今","py":"","s":"4"},{"w":"蜿蜒","py":"","s":"4"},{"w":"辽阔","py":"","s":"4"},{"w":"诸多","py":"","s":"4"},{"w":"古迹","py":"","s":"4"},{"w":"雕刻","py":"","s":"4"},{"w":"啧啧称奇","py":"","s":"4"},{"w":"赞叹","py":"","s":"4"},{"w":"底蕴","py":"","s":"4"},{"w":"灿烂","py":"","s":"4"},{"w":"金碧辉煌","py":"","s":"4"},{"w":"绚丽","py":"","s":"4"},{"w":"颇","py":"","s":"4"},{"w":"独树一帜","py":"","s":"4"},{"w":"赋税","py":"","s":"4"},{"w":"揭竿而起","py":"","s":"4"},{"w":"暴虐","py":"","s":"4"},{"w":"葬送","py":"","s":"4"},{"w":"推卸","py":"","s":"4"},{"w":"停滞","py":"","s":"4"},{"w":"趾高气扬","py":"","s":"4"},{"w":"谦逊","py":"","s":"4"},{"w":"梦寐以求","py":"","s":"4"},{"w":"昌盛","py":"","s":"4"},{"w":"协作","py":"","s":"4"},{"w":"论坛","py":"","s":"4"},{"w":"毋庸讳言","py":"","s":"4"},{"w":"棘手","py":"","s":"4"},{"w":"里程碑","py":"","s":"4"},{"w":"开拓","py":"","s":"4"},{"w":"先驱","py":"","s":"4"},{"w":"气馁","py":"","s":"4"},{"w":"出类拔萃","py":"","s":"4"},{"w":"韧性","py":"","s":"4"},{"w":"浩瀚","py":"","s":"4"},{"w":"天方夜谭","py":"","s":"4"},{"w":"百折不挠","py":"","s":"4"},{"w":"贬","py":"","s":"4"},{"w":"粮食","py":"","s":"4"},{"w":"豁达","py":"","s":"4"},{"w":"满腔","py":"","s":"4"},{"w":"霜","py":"","s":"4"},{"w":"遣","py":"","s":"4"},{"w":"挽","py":"","s":"4"},{"w":"豪迈","py":"","s":"4"},{"w":"慷慨激昂","py":"","s":"4"},{"w":"勉励","py":"","s":"4"},{"w":"朝廷","py":"","s":"4"},{"w":"笔锋","py":"","s":"4"},{"w":"扎","py":"","s":"4"},{"w":"喧腾","py":"","s":"4"},{"w":"感悟","py":"","s":"4"},{"w":"崭新","py":"","s":"4"},{"w":"迥然","py":"","s":"4"},{"w":"奋斗","py":"","s":"4"},{"w":"崎岖","py":"","s":"4"}];
+
+const CHAR_F=[{char:'不',words:['不仅','不以为然','不假思索','不可思议','不可或缺','不妨','不屈不挠','不甘示弱','不管','不约而同','不胜枚举','不自量力','不解之缘','不辞辛劳','不闻不问']},{char:'一',words:['一举两得','一劳永逸','一向','一味','一帆风顺','一心一意','一日千里','一旦','一模一样','一般','一见如故','一蹶不振','一鸣惊人']},{char:'自',words:['自得其乐','自暴自弃','自然','自然而然','自觉','自豪','自负']},{char:'心',words:['心安理得','心意','心旷神怡','心灰意冷','心胸']},{char:'无',words:['无可奈何','无忧无虑','无论','无谓','无限']},{char:'情',words:['情不自禁','情况','情有独钟','情绪']},{char:'手',words:['手段','手足之情','手足无措']},{char:'视',words:['视线','视若无睹','视野']},{char:'追',words:['追根究底','追求','追逐']},{char:'深',words:['深刻','深思熟虑','深陷']},{char:'安',words:['安于现状','安慰','安排','安静']},{char:'重',words:['重复','重大','重视','重重']},{char:'展',words:['展现','展示','展翅高飞']},{char:'感',words:['感化','感受','感叹','感慨','感触']},{char:'责',words:['责任','责备','责怪','责无旁贷']},{char:'提',words:['提升','提示','提醒']},{char:'难',words:['难免','难堪','难处']},{char:'探',words:['探索','探视','探讨']}];
+const CHAR_L=[{char:'然',words:['不然','依然','固然','坦然','居然','徒然','必然','悠然','既然','毅然','盎然','自然']},{char:'解',words:['化解','排解','理解','疏解','破解','谅解','辩解']},{char:'力',words:['压力','实力','毅力','潜力','精力','耐力']},{char:'动',words:['推动','波动','激动','生动','移动','调动']},{char:'定',words:['否定','固定','坚定','确定','肯定','锁定']},{char:'受',words:['享受','感受','承受','接受','遭受']},{char:'失',words:['丢失','丧失','缺失','迷失','遗失']},{char:'识',words:['意识','结识','见识','认识','赏识']},{char:'望',words:['失望','期望','渴望','盼望']},{char:'止',words:['不止','禁止','终止','阻止']},{char:'求',words:['力求','寻求','苛求','追求']},{char:'弃',words:['抛弃','放弃','舍弃','遗弃']},{char:'制',words:['抑制','控制','牵制','节制','限制']},{char:'示',words:['启示','展示','提示','显示']},{char:'进',words:['促进','增进','推进']},{char:'达',words:['抵达','表达','豁达']},{char:'视',words:['凝视','探视','重视']}];
+
+// ─── WORD DATA + 构词 ENGINE ──────────────────────────────────────────────────
+// Dedup the syllabus list (the raw data had every word duplicated with blank
+// pinyin / reset section). First occurrence wins — that's the clean half.
+function uniqueByWord(arr) {
+  const seen = new Set(), out = [];
+  for (const it of arr) { if (seen.has(it.w)) continue; seen.add(it.w); out.push(it); }
+  return out;
+}
+const SYLLABUS_WORDS = uniqueByWord(SYLLABUS_RAW);
+
+const chs = (w) => [...w];
+
+// One combined corpus of every word the app knows, used to derive 构词 examples.
+const CORPUS = (() => {
+  const set = new Set();
+  IDIOMS.forEach(i => set.add(i.word));
+  EXAM_WORDS.forEach(w => set.add(w.w));
+  SYLLABUS_WORDS.forEach(w => set.add(w.w));
+  [...CHAR_F, ...CHAR_L].forEach(g => g.words.forEach(w => set.add(w)));
+  return [...set];
+})();
+const CORPUS2 = CORPUS.filter(w => chs(w).length === 2);
+
+const startsWith = (ch, not) => CORPUS2.filter(w => w !== not && chs(w)[0] === ch);
+const endsWith   = (ch, not) => CORPUS2.filter(w => w !== not && chs(w)[1] === ch);
+
+// 构词 for a 2-char word AB → words using A/B in first/last position.
+function buildGouci(word, limit = 8) {
+  const c = chs(word);
+  if (c.length !== 2) return null;
+  const [a, b] = c;
+  return {
+    a, b,
+    AX: startsWith(a, word).slice(0, limit), // A 在首
+    XA: endsWith(a, word).slice(0, limit),   // A 在尾
+    BX: startsWith(b, word).slice(0, limit), // B 在首
+    XB: endsWith(b, word).slice(0, limit),   // B 在尾
+  };
+}
+
+// Real 2-char words differing from `word` by exactly one character (same
+// position) — used as plausible distractors in the 词语替换 quiz.
+function oneCharVariants(word) {
+  const c = chs(word);
+  if (c.length !== 2) return [];
+  const [a, b] = c;
+  return CORPUS2.filter(w => {
+    if (w === word) return false;
+    const x = chs(w);
+    const sa = x[0] === a, sb = x[1] === b;
+    return (sa && !sb) || (!sa && sb);
+  });
+}
+
+const wordInfo = (word) => WORD_DATA[word] || null;
+function pinyinOf(word) {
+  const wd = WORD_DATA[word]; if (wd && wd.py) return wd.py;
+  const s = SYLLABUS_WORDS.find(w => w.w === word); if (s && s.py) return s.py;
+  const id = IDIOMS.find(i => i.word === word); if (id) return id.pinyin;
+  return '';
+}
+
+// ─── SM-2 ─────────────────────────────────────────────────────────────────────
+const A = '#D85A30';
+const TC = { '成语':{bg:'#FAECE7',text:'#993C1D'}, '关联词':{bg:'#E6F1FB',text:'#185FA5'}, '叠字':{bg:'#EAF3DE',text:'#3B6D11'}, '普通词':{bg:'#FAEEDA',text:'#854F0B'} };
+
+function applyRating(card = {}, quality) {
+  let { interval = 0, reps = 0, ef = 2.5 } = card;
+  if (quality < 3) { reps = 0; interval = 1; }
+  else {
+    if (reps === 0) interval = 1;
+    else if (reps === 1) interval = 6;
+    else interval = Math.round(interval * ef);
+    reps++;
+    ef = Math.max(1.3, ef + 0.1 - (5 - quality) * (0.08 + (5 - quality) * 0.02));
+  }
+  const d = new Date(); d.setDate(d.getDate() + interval);
+  return { interval, reps, ef: +ef.toFixed(3), nextReview: d.toISOString().slice(0, 10) };
+}
+
+function iLabel(c) {
+  if (!c || c.reps === 0) return c ? 'Soon' : 'New';
+  const i = c.interval;
+  if (i === 1) return '1d'; if (i < 7) return i + 'd';
+  if (i < 30) return Math.round(i / 7) + 'w'; return Math.round(i / 30) + 'mo';
+}
+
+function todayStr() { return new Date().toISOString().slice(0, 10); }
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function buildDeck(cards) {
+  const today = todayStr();
+  const due = shuffle(IDIOMS.filter(i => { const c = cards[i.word]; return c && c.nextReview && c.nextReview <= today; }));
+  const newC = shuffle(IDIOMS.filter(i => !cards[i.word]));
+  return [...due, ...newC];
+}
+
+// ─── STORAGE ──────────────────────────────────────────────────────────────────
+function lLoad(key) {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; } catch { return null; }
+}
+function lSave(key, val) {
+  try { localStorage.setItem(key, JSON.stringify(val)); } catch {}
+}
+
+// ─── SHARED UI ────────────────────────────────────────────────────────────────
+const Badge = ({ type, children, style = {} }) => {
+  const c = TC[type] || { bg: '#EEE', text: '#555' };
+  return <span style={{ display:'inline-block', fontSize:10, padding:'2px 7px', borderRadius:20, fontWeight:600, background:c.bg, color:c.text, ...style }}>{children || type}</span>;
+};
+
+const Chip = ({ active, onClick, children }) => (
+  <button onClick={onClick} style={{ fontSize:12, padding:'5px 11px', borderRadius:20, border:`1px solid ${active ? A : '#E0E0DC'}`, background: active ? '#FAECE7' : 'transparent', color: active ? '#993C1D' : '#888', cursor:'pointer', whiteSpace:'nowrap' }}>
+    {children}
+  </button>
+);
+
+const Card = ({ children, style = {}, ...p }) => (
+  <div style={{ background:'white', border:'1px solid #E8E8E4', borderRadius:14, padding:'18px 16px', ...style }} {...p}>{children}</div>
+);
+
+// ─── HOME ─────────────────────────────────────────────────────────────────────
+function Home({ cards, streak, todayCount, setTab }) {
+  const today = todayStr();
+  const reviewed = IDIOMS.filter(i => cards[i.word] && cards[i.word].reps > 0).length;
+  const due = IDIOMS.filter(i => { const c = cards[i.word]; return c && c.nextReview <= today; }).length;
+  const newC = IDIOMS.filter(i => !cards[i.word]).length;
+  const pct = Math.round(reviewed / IDIOMS.length * 100);
+  const r = 22, circ = 2 * Math.PI * r;
+
+  return (
+    <div>
+      <div style={{ background:'linear-gradient(135deg,#1A0E06,#4A2010)', borderRadius:14, padding:'16px 18px', marginBottom:12, display:'flex', alignItems:'center', gap:12 }}>
+        <div style={{ fontSize:36, lineHeight:1 }}>{'🔥'.repeat(Math.min(Math.max(streak, 1), 5))}</div>
+        <div style={{ flex:1 }}>
+          <div style={{ fontSize:26, fontWeight:700, color:'#FFD27F', lineHeight:1 }}>{streak}</div>
+          <div style={{ fontSize:12, color:'#C9956A', marginTop:2 }}>day streak · {todayCount} reviewed today</div>
+        </div>
+        {streak >= 7 && <div style={{ fontSize:24 }}>🏆</div>}
+      </div>
+
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:9, marginBottom:12 }}>
+        {[{label:'Due today',val:due,col:'#FCEBEB',tc:'#A32D2D',icon:'📋'},{label:'New cards',val:newC,col:'#E6F1FB',tc:'#185FA5',icon:'✨'},{label:'Mastered',val:reviewed,col:'#EAF3DE',tc:'#3B6D11',icon:'✅'}].map(({ label, val, col, tc, icon }) => (
+          <div key={label} style={{ background:col, borderRadius:12, padding:'12px 6px', textAlign:'center' }}>
+            <div style={{ fontSize:18, marginBottom:3 }}>{icon}</div>
+            <div style={{ fontSize:20, fontWeight:700, color:tc }}>{val}</div>
+            <div style={{ fontSize:10, color:tc, opacity:0.85 }}>{label}</div>
+          </div>
+        ))}
+      </div>
+
+      <Card style={{ marginBottom:12 }}>
+        <div style={{ display:'flex', alignItems:'center', gap:16 }}>
+          <svg width={56} height={56} viewBox="0 0 60 60">
+            <circle cx={30} cy={30} r={r} fill="none" stroke="#F0F0EC" strokeWidth={5} />
+            <circle cx={30} cy={30} r={r} fill="none" stroke={A} strokeWidth={5}
+              strokeDasharray={circ} strokeDashoffset={circ * (1 - pct / 100)}
+              strokeLinecap="round" transform="rotate(-90 30 30)" style={{ transition:'stroke-dashoffset 0.5s' }} />
+            <text x={30} y={35} textAnchor="middle" fontSize={12} fontWeight={700} fill="#1A1A18">{pct}%</text>
+          </svg>
+          <div style={{ flex:1 }}>
+            <div style={{ fontWeight:600, fontSize:14, color:'#1A1A18', marginBottom:3 }}>Idiom Progress</div>
+            <div style={{ fontSize:12, color:'#888', marginBottom:6 }}>{reviewed} of {IDIOMS.length} reviewed</div>
+            <div style={{ height:4, background:'#F0F0EC', borderRadius:2, overflow:'hidden' }}>
+              <div style={{ height:'100%', width:`${pct}%`, background:A, borderRadius:2, transition:'width 0.5s' }} />
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:9 }}>
+        {[
+          { tab:'review', icon:'📖', label:'103 Common Idioms', sub: due > 0 ? `${due} cards due` : 'Spaced-repetition review', hi:true },
+          { tab:'quiz', icon:'🎯', label:'Quick Quiz', sub:'4 quiz modes' },
+          { tab:'examwords', icon:'📋', label:'Past Exam Words', sub:`${EXAM_WORDS.length} words (2014–2025)` },
+          { tab:'syllabus', icon:'📚', label:'Syllabus Words', sub:`${SYLLABUS_WORDS.length} words, Sec 1–4` },
+          { tab:'chars', icon:'🔤', label:'Character Groups', sub:'构词 · 词语替换 practice' },
+          { tab:'more', icon:'⚙️', label:'Progress & Export', sub:'Export revision sheet' },
+        ].map(({ tab, icon, label, sub, hi }) => (
+          <button key={tab} onClick={() => setTab(tab)} style={{ padding:'13px', border:`${hi ? '1.5px' : '1px'} solid ${hi ? A : '#E8E8E4'}`, borderRadius:12, background: hi ? '#FAECE7' : 'white', cursor:'pointer', textAlign:'left' }}>
+            <div style={{ fontSize:18, marginBottom:4 }}>{icon}</div>
+            <div style={{ fontWeight:600, fontSize:13, color: hi ? '#993C1D' : '#1A1A18' }}>{label}</div>
+            <div style={{ fontSize:11, color: hi ? '#C9956A' : '#888', marginTop:2 }}>{sub}</div>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── REVIEW ───────────────────────────────────────────────────────────────────
+function Review({ cards, onRate, onAnswer }) {
+  const [deck, setDeck] = useState(() => buildDeck(cards));
+  const [idx, setIdx] = useState(0);
+  const [revealed, setRevealed] = useState(false);
+  const [done, setDone] = useState(0);
+  const today = todayStr();
+  const card = deck[idx];
+
+  const rate = (q) => {
+    if (!card) return;
+    onAnswer(); onRate(card.word, q); setDone(n => n + 1);
+    const ni = idx + 1;
+    if (ni >= deck.length) { setDeck(buildDeck(cards)); setIdx(0); } else setIdx(ni);
+    setRevealed(false);
+  };
+
+  if (!card) return (
+    <Card style={{ textAlign:'center', padding:'48px 20px' }}>
+      <div style={{ fontSize:36, marginBottom:12 }}>🎉</div>
+      <p style={{ fontWeight:600, fontSize:15, color:'#1A1A18', marginBottom:6 }}>All caught up!</p>
+      <p style={{ fontSize:13, color:'#888' }}>Come back tomorrow for your next session.</p>
+    </Card>
+  );
+
+  const cd = cards[card.word];
+  const isNew = !cd, isDue = cd && cd.nextReview <= today;
+
+  return (
+    <div>
+      <div style={{ display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:9 }}>
+        <span style={{ fontSize:11, color:'#AAA' }}>{idx + 1}/{deck.length} · {done} done</span>
+        <div style={{ display:'flex', gap:5 }}>
+          {isNew && <Badge type="关联词">New</Badge>}
+          {isDue && !isNew && <Badge type="成语" style={{ background:'#FCEBEB', color:'#A32D2D' }}>Due</Badge>}
+        </div>
+      </div>
+      <div style={{ height:3, background:'#F0F0EC', borderRadius:2, overflow:'hidden', marginBottom:14 }}>
+        <div style={{ height:'100%', width:`${Math.round(idx / deck.length * 100)}%`, background:A, transition:'width 0.3s' }} />
+      </div>
+      <Card>
+        <p style={{ fontSize:54, fontWeight:300, color:'#1A1A18', margin:'0 0 5px', lineHeight:1.1, fontFamily:'serif' }}>{card.word}</p>
+        {!revealed ? (
+          <>
+            <button onClick={() => setRevealed(true)} style={{ fontSize:14, padding:'9px 24px', border:'1px solid #E0E0DC', borderRadius:9, background:'#FAFAF8', cursor:'pointer', color:'#1A1A18', display:'block', margin:'18px auto 0' }}>
+              Reveal meaning
+            </button>
+            <p style={{ fontSize:11, color:'#BBB', textAlign:'center', marginTop:8 }}>Study the characters first</p>
+          </>
+        ) : (
+          <>
+            <p style={{ fontSize:15, color:A, marginBottom:4 }}>{card.pinyin}</p>
+            <p style={{ fontSize:17, fontWeight:600, color:'#1A1A18', marginBottom:10 }}>{card.meaning}</p>
+            <div style={{ background:'#FAFAF8', borderRadius:8, padding:'9px 12px', marginBottom:14, border:'1px solid #F0F0EC' }}>
+              <p style={{ fontSize:13, color:'#1A1A18', marginBottom:2, lineHeight:1.6 }}>{card.cn}</p>
+              <p style={{ fontSize:11, color:'#888', lineHeight:1.5 }}>{card.en}</p>
+            </div>
+            <p style={{ fontSize:11, color:'#AAA', textAlign:'center', marginBottom:7 }}>How well did you know this?</p>
+            <div style={{ display:'grid', gridTemplateColumns:'repeat(4,1fr)', gap:5 }}>
+              {[
+                { q:1, e:'😵', l:'Again', s:'Forgot', bg:'#FCEBEB', bc:'#F09595', tc:'#A32D2D' },
+                { q:3, e:'😓', l:'Hard', s:'Struggled', bg:'#FEF3E2', bc:'#F5C77C', tc:'#8A5E00' },
+                { q:4, e:'🙂', l:'Good', s:'Got it', bg:'#EAF3DE', bc:'#97C459', tc:'#3B6D11' },
+                { q:5, e:'⚡', l:'Easy', s:'Instant!', bg:'#E6F1FB', bc:'#80B8F0', tc:'#185FA5' },
+              ].map(({ q, e, l, s, bg, bc, tc }) => (
+                <div key={q} style={{ textAlign:'center' }}>
+                  <button onClick={() => rate(q)} style={{ width:'100%', padding:'8px 3px', border:`1px solid ${bc}`, borderRadius:9, background:bg, cursor:'pointer', color:tc }}>
+                    <div style={{ fontSize:16, marginBottom:1 }}>{e}</div>
+                    <div style={{ fontWeight:600, fontSize:11 }}>{l}</div>
+                    <div style={{ fontSize:10, opacity:0.8 }}>{s}</div>
+                  </button>
+                  <div style={{ fontSize:10, color:'#CCC', marginTop:2 }}>{iLabel(applyRating(cd, q))}</div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+      </Card>
+    </div>
+  );
+}
+
+// ─── QUIZ ─────────────────────────────────────────────────────────────────────
+// A sentence is only usable in a fill-in-the-blank quiz if, once the target
+// word is removed, enough context remains to make the answer determinable.
+function hasContext(sentence, word) {
+  if (!sentence || !sentence.includes(word)) return false;
+  const rest = sentence.replace(word, '');
+  const cjk = [...rest].filter(c => /[\u4e00-\u9fff]/.test(c)).length;
+  return cjk >= 8 || /[，；、：—]/.test(rest); // a clause/comma counts as context
+}
+
+// Pool of every word that has a context-rich example sentence (idioms + data).
+function buildSentencePool() {
+  const arr = [];
+  IDIOMS.forEach(i => arr.push({ word: i.word, sentence: i.cn, en: i.en, meaning: i.meaning, collocations: [], confusables: [] }));
+  Object.entries(WORD_DATA).forEach(([w, d]) => {
+    if (d.sentence) arr.push({ word: w, sentence: d.sentence, en: d.sentenceEn, meaning: d.meaning, collocations: d.collocations || [], confusables: d.confusables || [] });
+  });
+  const seen = new Set();
+  return arr.filter(x => hasContext(x.sentence, x.word) && !seen.has(x.word) && seen.add(x.word));
+}
+
+function Quiz({ onAnswer }) {
+  const [mode, setMode] = useState('menu');
+  const [q, setQ] = useState(null);          // meaning quiz
+  const [sel, setSel] = useState(null);
+  const [sq, setSq] = useState(null);        // sentence-based quizzes (exam / collocation / replace)
+  const [sqSel, setSqSel] = useState(null);
+  const [score, setScore] = useState({ c: 0, t: 0 });
+
+  const sentencePool = useMemo(buildSentencePool, []);
+  // 词语替换 uses ONLY curated distractors (verified wrong-in-context one-char swaps),
+  // so the quiz can never show an accidental synonym. Words without 3 curated
+  // distractors simply don't appear in this mode.
+  const replacePool = useMemo(() => sentencePool.filter(x => chs(x.word).length === 2 && (x.confusables || []).length >= 3), [sentencePool]);
+  const collocationPool = useMemo(() => sentencePool.filter(x => x.collocations && x.collocations.length), [sentencePool]);
+
+  const newMQ = useCallback(() => {
+    const pool = shuffle(IDIOMS); const cor = pool[0];
+    const opts = shuffle([cor, ...pool.slice(1, 4)]);
+    const byM = Math.random() > 0.5;
+    setQ({ prompt: byM ? `What does "${cor.word}" (${cor.pinyin}) mean?` : `Which idiom means "${cor.meaning}"?`, opts: opts.map(o => ({ label: byM ? o.meaning : o.word, sub: byM ? '' : o.pinyin, isC: o.word === cor.word })) });
+    setSel(null);
+  }, []);
+
+  // Exam fill-in-blank (idioms): blank the idiom, choose among 4 idioms.
+  const examIdioms = useMemo(() => IDIOMS.filter(i => hasContext(i.cn, i.word)), []);
+  const newExamQ = useCallback(() => {
+    const pool = shuffle(examIdioms.length >= 4 ? examIdioms : IDIOMS); const cor = pool[0];
+    const distract = shuffle(IDIOMS.filter(i => i.word !== cor.word)).slice(0, 3);
+    setSq({ kind: 'exam', badge: '填空 · Fill in the blank', prompt: 'Choose the idiom that fits.', sub: `意思：${cor.meaning}`, sentence: cor.cn.replace(cor.word, '＿＿＿＿'),
+      word: cor.word, meaning: cor.meaning, opts: shuffle([cor, ...distract]).map(o => ({ word: o.word, isC: o.word === cor.word })) });
+    setSqSel(null);
+  }, [examIdioms]);
+
+  // 词语搭配: blank the word in its sentence; pick the word that fits the context/collocation.
+  const newCollocationQ = useCallback(() => {
+    const pool = collocationPool.length >= 4 ? collocationPool : sentencePool;
+    const item = pool[Math.floor(Math.random() * pool.length)];
+    const len = chs(item.word).length;
+    const ic = chs(item.word);
+    // distractors of the same length that share NO character with the answer,
+    // so a wrong option can't accidentally also read correctly.
+    let distract = shuffle(pool.filter(x => x.word !== item.word && chs(x.word).length === len && !chs(x.word).some(c => ic.includes(c)))).slice(0, 3);
+    if (distract.length < 3) distract = shuffle(pool.filter(x => x.word !== item.word && chs(x.word).length === len)).slice(0, 3);
+    const rawCol = item.collocations && item.collocations.length ? item.collocations[0] : '';
+    const hint = rawCol ? `搭配：${rawCol.split(item.word).join('＿＿')}` : '';
+    setSq({ kind: 'collocation', badge: '词语搭配 · Collocation', prompt: '选出与句子搭配得当的词语。',
+      sub: [hint, item.meaning ? `意思：${item.meaning}` : ''].filter(Boolean).join('　·　'),
+      sentence: item.sentence.replace(item.word, '＿＿'), word: item.word, meaning: item.meaning,
+      opts: shuffle([item, ...distract]).map(o => ({ word: o.word, isC: o.word === item.word })) });
+    setSqSel(null);
+  }, [collocationPool, sentencePool]);
+
+  // 词语替换: blank a 2-char word; the 4 options differ by exactly one character.
+  const newReplaceQ = useCallback(() => {
+    const item = replacePool[Math.floor(Math.random() * replacePool.length)];
+    const variants = shuffle(item.confusables.slice()).slice(0, 3);
+    setSq({ kind: 'replace', badge: '词语替换 · One-character swap', prompt: '只有一个字之差 —— 哪个词语填入才正确？',
+      sub: item.meaning ? `意思：${item.meaning}` : '',
+      sentence: item.sentence.replace(item.word, '＿＿'), word: item.word, meaning: item.meaning,
+      opts: shuffle([item.word, ...variants]).map(w => ({ word: w, isC: w === item.word })) });
+    setSqSel(null);
+  }, [replacePool]);
+
+  const qBtn = { display:'block', width:'100%', textAlign:'left', padding:'10px 13px', margin:'5px 0', border:'1px solid #E8E8E4', borderRadius:9, background:'transparent', cursor:'pointer', fontSize:13, color:'#1A1A18', boxSizing:'border-box', outline:'none', WebkitTapHighlightColor:'transparent' };
+
+  if (mode === 'menu') return (
+    <div>
+      {score.t > 0 && <div style={{ background:'#FAFAF8', border:'1px solid #E8E8E4', borderRadius:9, padding:'9px 13px', marginBottom:12, fontSize:12, color:'#888', textAlign:'center' }}>{score.c}/{score.t} correct ({Math.round(score.c / score.t * 100)}%)</div>}
+      <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
+        {[
+          { id:'meaning', icon:'🃏', title:'Meaning Quiz', sub:'Match idioms to meanings', action: () => { setMode('meaning'); newMQ(); } },
+          { id:'exam', icon:'📝', title:'Exam Fill-in-Blank', sub:'Real sentences with gaps', action: () => { setMode('sentence'); newExamQ(); } },
+          { id:'collocation', icon:'🔗', title:'词语搭配', sub:'Pick the word that fits', action: () => { setMode('sentence'); newCollocationQ(); } },
+          { id:'replace', icon:'🔁', title:'词语替换', sub:'Spot the one-character difference', action: () => { setMode('sentence'); newReplaceQ(); } },
+        ].map(({ id, icon, title, sub, action }) => (
+          <Card key={id} style={{ cursor:'pointer', textAlign:'center' }} onClick={action}>
+            <div style={{ fontSize:22, marginBottom:6 }}>{icon}</div>
+            <div style={{ fontWeight:600, marginBottom:3, fontSize:13 }}>{title}</div>
+            <div style={{ fontSize:11, color:'#888' }}>{sub}</div>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+
+  const BackBtn = () => <Chip onClick={() => setMode('menu')}>← Back</Chip>;
+  const ScoreTag = () => <span style={{ fontSize:11, color:'#AAA' }}>{score.c}/{score.t} correct</span>;
+  const NextBtn = ({ onClick }) => <button onClick={onClick} style={{ fontSize:13, padding:'8px 22px', border:'1px solid #E0E0DC', borderRadius:8, background:'#FAFAF8', cursor:'pointer', color:'#1A1A18', display:'block', margin:'12px auto 0' }}>Next →</button>;
+
+  if (mode === 'meaning' && q) return (
+    <div>
+      <div style={{ display:'flex', justifyContent:'space-between', marginBottom:12, alignItems:'center' }}><BackBtn /><ScoreTag /></div>
+      <Card>
+        <p style={{ fontSize:14, fontWeight:600, marginBottom:14, color:'#1A1A18' }}>{q.prompt}</p>
+        {q.opts.map((opt, i) => {
+          const sty = sel === null ? {} : opt.isC ? { background:'#EAF3DE', borderColor:'#97C459', color:'#3B6D11' } : sel === i ? { background:'#FCEBEB', borderColor:'#E24B4A', color:'#A32D2D' } : { opacity:0.5 };
+          return <button key={i} style={{ ...qBtn, ...sty }} onClick={() => { if (sel !== null) return; setSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}>{opt.label}{opt.sub && <span style={{ fontSize:11, opacity:0.6, marginLeft:5 }}>{opt.sub}</span>}</button>;
+        })}
+        {sel !== null && <NextBtn onClick={newMQ} />}
+      </Card>
+    </div>
+  );
+
+  if (mode === 'sentence') {
+    if (!sq) return (
+      <div>
+        <div style={{ marginBottom:12 }}><BackBtn /></div>
+        <Card style={{ textAlign:'center', padding:'40px 20px' }}>
+          <p style={{ fontSize:13, color:'#888', lineHeight:1.6 }}>Not enough words with example sentences yet for this quiz.<br />Run <code>npm run gen-words</code> to unlock the full question pool.</p>
+        </Card>
+      </div>
+    );
+    const next = sq.kind === 'exam' ? newExamQ : sq.kind === 'collocation' ? newCollocationQ : newReplaceQ;
+    return (
+      <div>
+        <div style={{ display:'flex', justifyContent:'space-between', marginBottom:12, alignItems:'center' }}><BackBtn /><ScoreTag /></div>
+        <Card>
+          <Badge type="关联词" style={{ marginBottom:9, display:'inline-block' }}>{sq.badge}</Badge>
+          <p style={{ fontSize:16, fontWeight:600, color:'#1A1A18', margin:'6px 0 4px', lineHeight:1.8, fontFamily:'serif' }}>{sq.sentence}</p>
+          <p style={{ fontSize:11, color:'#888', marginBottom: sq.sub ? 3 : 12 }}>{sq.prompt}</p>
+          {sq.sub && <p style={{ fontSize:11, color:'#C9956A', marginBottom:12 }}>{sq.sub}</p>}
+          {sq.opts.map((opt, i) => {
+            const sty = sqSel !== null ? (opt.isC ? { background:'#EAF3DE', borderColor:'#97C459', color:'#3B6D11' } : sqSel === i ? { background:'#FCEBEB', borderColor:'#E24B4A', color:'#A32D2D' } : { opacity:0.5 }) : {};
+            return <button key={i} style={{ ...qBtn, ...sty }} onClick={() => { if (sqSel !== null) return; setSqSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}><span style={{ fontFamily:'serif', fontSize:16 }}>{opt.word}</span></button>;
+          })}
+          {sqSel !== null && (
+            <>
+              <div style={{ background:'#FAFAF8', borderRadius:8, padding:'8px 11px', marginTop:10, border:'1px solid #F0F0EC' }}>
+                <p style={{ fontSize:12, fontWeight:600, color: sq.opts[sqSel]?.isC ? '#3B6D11' : '#A32D2D' }}>{sq.opts[sqSel]?.isC ? `✓ 正确！「${sq.word}」` : `✗ 答案是「${sq.word}」`}{sq.meaning ? ` — ${sq.meaning}` : ''}</p>
+              </div>
+              <NextBtn onClick={next} />
+            </>
+          )}
+        </Card>
+      </div>
+    );
+  }
+
+  return null;
+}
+
+// ─── EXAM WORDS ───────────────────────────────────────────────────────────────
+function ExamWords({ onOpenWord }) {
+  const [search, setSearch] = useState('');
+  const [typeF, setTypeF] = useState('all');
+  const [yearF, setYearF] = useState('all');
+  const [freqOnly, setFreqOnly] = useState(false);
+  const [page, setPage] = useState(0);
+  const PAGE = 48;
+  const years = useMemo(() => ['all', ...Array.from({ length: 12 }, (_, i) => String(2014 + i))], []);
+  const filtered = useMemo(() => EXAM_WORDS.filter(w => {
+    if (search && !w.w.includes(search)) return false;
+    if (typeF !== 'all' && w.t !== typeF) return false;
+    if (yearF !== 'all' && !w.y.includes(yearF)) return false;
+    if (freqOnly && w.y.length < 2) return false;
+    return true;
+  }), [search, typeF, yearF, freqOnly]);
+  useEffect(() => setPage(0), [search, typeF, yearF, freqOnly]);
+  const paged = filtered.slice(page * PAGE, (page + 1) * PAGE);
+  const totalPages = Math.ceil(filtered.length / PAGE);
+
+  return (
+    <div>
+      <div style={{ background:'#FFFBF5', border:'1px solid #F5DEC8', borderRadius:9, padding:'9px 13px', marginBottom:12, fontSize:12, color:'#8A5E00' }}>
+        {EXAM_WORDS.length} words from O-level Chinese papers, 2014–2025. Tap any word for meaning, sentence, 词语搭配 &amp; 构词.
+      </div>
+      <input placeholder="Search…" value={search} onChange={e => setSearch(e.target.value)} style={{ width:'100%', padding:'8px 12px', borderRadius:9, border:'1px solid #E0E0DC', fontSize:13, marginBottom:9, background:'white', outline:'none', boxSizing:'border-box' }} />
+      <div style={{ display:'flex', gap:5, marginBottom:7, flexWrap:'wrap' }}>
+        {['all','成语','关联词','叠字','普通词'].map(t => <Chip key={t} active={typeF === t} onClick={() => setTypeF(t)}>{t === 'all' ? 'All types' : t}</Chip>)}
+        <Chip active={freqOnly} onClick={() => setFreqOnly(v => !v)}>⭐ 2×+ only</Chip>
+      </div>
+      <div style={{ display:'flex', gap:5, marginBottom:10, flexWrap:'wrap' }}>
+        {years.map(y => <Chip key={y} active={yearF === y} onClick={() => setYearF(y)}>{y === 'all' ? 'All years' : y}</Chip>)}
+      </div>
+      <p style={{ fontSize:11, color:'#AAA', marginBottom:9 }}>{filtered.length} words shown</p>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(120px,1fr))', gap:7 }}>
+        {paged.map((w, i) => {
+          const col = TC[w.t] || { bg:'#EEE', text:'#444' };
+          return (
+            <div key={i} onClick={() => onOpenWord(w.w)} style={{ background:'white', border:'1px solid #E8E8E4', borderRadius:10, padding:'10px 11px', cursor:'pointer' }}>
+              <div style={{ display:'flex', justifyContent:'space-between', alignItems:'flex-start', marginBottom:3 }}>
+                <span style={{ fontSize:16, fontFamily:'serif', color:'#1A1A18', lineHeight:1.2 }}>{w.w}</span>
+                <span style={{ fontSize:9, padding:'2px 4px', borderRadius:20, fontWeight:600, background:col.bg, color:col.text, marginLeft:3, whiteSpace:'nowrap' }}>{w.t}</span>
+              </div>
+              <div style={{ display:'flex', gap:2, flexWrap:'wrap' }}>
+                {w.y.map(yr => <span key={yr} style={{ fontSize:9, padding:'1px 4px', borderRadius:10, background:'#F5F5F2', color:'#888' }}>{yr}</span>)}
+              </div>
+              {w.y.length >= 2 && <div style={{ fontSize:10, color:A, marginTop:2 }}>{'●'.repeat(w.y.length)} {w.y.length}×</div>}
+            </div>
+          );
+        })}
+      </div>
+      {totalPages > 1 && (
+        <div style={{ display:'flex', justifyContent:'center', gap:8, marginTop:14, alignItems:'center' }}>
+          <button disabled={page === 0} onClick={() => setPage(p => p - 1)} style={{ padding:'5px 12px', border:'1px solid #E0E0DC', borderRadius:7, background:'transparent', cursor: page === 0 ? 'not-allowed' : 'pointer', opacity: page === 0 ? 0.4 : 1, fontSize:12 }}>←</button>
+          <span style={{ fontSize:12, color:'#888' }}>{page + 1} / {totalPages}</span>
+          <button disabled={page === totalPages - 1} onClick={() => setPage(p => p + 1)} style={{ padding:'5px 12px', border:'1px solid #E0E0DC', borderRadius:7, background:'transparent', cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer', opacity: page === totalPages - 1 ? 0.4 : 1, fontSize:12 }}>→</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── SYLLABUS ─────────────────────────────────────────────────────────────────
+function SyllabusView({ onOpenWord }) {
+  const [search, setSearch] = useState('');
+  const [secF, setSecF] = useState('all');
+  const [page, setPage] = useState(0);
+  const PAGE = 64;
+  const examSet = useMemo(() => new Set(EXAM_WORDS.map(w => w.w)), []);
+  const filtered = useMemo(() => SYLLABUS_WORDS.filter(w => {
+    if (search && !w.w.includes(search) && !w.py.toLowerCase().includes(search.toLowerCase())) return false;
+    if (secF !== 'all' && w.s !== secF) return false;
+    return true;
+  }), [search, secF]);
+  useEffect(() => setPage(0), [search, secF]);
+  const paged = filtered.slice(page * PAGE, (page + 1) * PAGE);
+  const totalPages = Math.ceil(filtered.length / PAGE);
+
+  return (
+    <div>
+      <div style={{ background:'#F0F7FF', border:'1px solid #C5DEF5', borderRadius:9, padding:'9px 13px', marginBottom:12, fontSize:12, color:'#185FA5' }}>
+        {SYLLABUS_WORDS.length} words from the Sec 1–4 syllabus. Tap any word for full detail · orange dot = also in past exams.
+      </div>
+      <input placeholder="Search by character or pinyin…" value={search} onChange={e => setSearch(e.target.value)} style={{ width:'100%', padding:'8px 12px', borderRadius:9, border:'1px solid #E0E0DC', fontSize:13, marginBottom:9, background:'white', outline:'none', boxSizing:'border-box' }} />
+      <div style={{ display:'flex', gap:5, marginBottom:10, flexWrap:'wrap' }}>
+        {[['all',`All (${SYLLABUS_WORDS.length})`],['1','Sec 1'],['2','Sec 2'],['3','Sec 3'],['4','Sec 4']].map(([v, label]) => (
+          <Chip key={v} active={secF === v} onClick={() => setSecF(v)}>{label}</Chip>
+        ))}
+      </div>
+      <p style={{ fontSize:11, color:'#AAA', marginBottom:9 }}>{filtered.length} words shown</p>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(125px,1fr))', gap:7 }}>
+        {paged.map((w, i) => {
+          const inExam = examSet.has(w.w);
+          return (
+            <div key={i} onClick={() => onOpenWord(w.w)} style={{ background:'white', border:`1px solid ${inExam ? '#F5DEC8' : '#E8E8E4'}`, borderRadius:10, padding:'10px 11px', position:'relative', cursor:'pointer' }}>
+              {inExam && <div style={{ position:'absolute', top:6, right:6, width:7, height:7, borderRadius:'50%', background:A }} />}
+              <div style={{ fontSize:16, fontFamily:'serif', color: inExam ? A : '#1A1A18', marginBottom:2, lineHeight:1.2 }}>{w.w}</div>
+              {w.py && <div style={{ fontSize:10, color:'#AAA' }}>{w.py}</div>}
+              <div style={{ fontSize:9, color:'#CCC', marginTop:2 }}>Sec {w.s}</div>
+            </div>
+          );
+        })}
+      </div>
+      {totalPages > 1 && (
+        <div style={{ display:'flex', justifyContent:'center', gap:8, marginTop:14, alignItems:'center' }}>
+          <button disabled={page === 0} onClick={() => setPage(p => p - 1)} style={{ padding:'5px 12px', border:'1px solid #E0E0DC', borderRadius:7, background:'transparent', cursor: page === 0 ? 'not-allowed' : 'pointer', opacity: page === 0 ? 0.4 : 1, fontSize:12 }}>←</button>
+          <span style={{ fontSize:12, color:'#888' }}>{page + 1} / {totalPages}</span>
+          <button disabled={page === totalPages - 1} onClick={() => setPage(p => p + 1)} style={{ padding:'5px 12px', border:'1px solid #E0E0DC', borderRadius:7, background:'transparent', cursor: page === totalPages - 1 ? 'not-allowed' : 'pointer', opacity: page === totalPages - 1 ? 0.4 : 1, fontSize:12 }}>→</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── CHARACTERS ───────────────────────────────────────────────────────────────
+function Chars({ onOpenWord }) {
+  const [mode, setMode] = useState('first');
+  const [open, setOpen] = useState(null);
+  const groups = mode === 'first' ? CHAR_F : CHAR_L;
+  return (
+    <div>
+      <div style={{ background:'#FAFAF8', border:'1px solid #E8E8E4', borderRadius:9, padding:'9px 13px', marginBottom:12, fontSize:12, color:'#888', lineHeight:1.6 }}>
+        Words sharing a character often appear in <strong>词语替换</strong> questions. Tap a group to expand, then tap a word for its meaning, sentence &amp; 构词.
+      </div>
+      <div style={{ display:'flex', gap:7, marginBottom:12 }}>
+        <Chip active={mode === 'first'} onClick={() => { setMode('first'); setOpen(null); }}>Same first character</Chip>
+        <Chip active={mode === 'last'} onClick={() => { setMode('last'); setOpen(null); }}>Same last character</Chip>
+      </div>
+      <div style={{ display:'grid', gridTemplateColumns:'repeat(auto-fill,minmax(145px,1fr))', gap:8 }}>
+        {groups.map((g, i) => (
+          <Card key={i} style={{ padding:'11px 13px', border: open === i ? `2px solid ${A}` : '1px solid #E8E8E4' }}>
+            <div onClick={() => setOpen(open === i ? null : i)} style={{ cursor:'pointer' }}>
+              <div style={{ fontSize:24, fontFamily:'serif', color:A, marginBottom:3 }}>{mode === 'first' ? `${g.char}＿` : `＿${g.char}`}</div>
+              <div style={{ fontSize:10, color:'#AAA', marginBottom:5 }}>{g.words.length} words</div>
+            </div>
+            {open === i
+              ? <div style={{ display:'flex', flexWrap:'wrap', gap:3 }}>{g.words.map((w, j) => <button key={j} onClick={() => onOpenWord(w)} style={{ fontSize:11, fontFamily:'serif', background:'#F5F5F2', padding:'2px 7px', borderRadius:20, color:'#1A1A18', border:'1px solid #ECECE7', cursor:'pointer' }}>{w}</button>)}</div>
+              : <div onClick={() => setOpen(i)} style={{ fontSize:11, color:'#888', cursor:'pointer' }}>{g.words.slice(0, 3).join('、')}…</div>}
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ─── MORE ─────────────────────────────────────────────────────────────────────
+function More({ cards }) {
+  const today = todayStr();
+  const learned = IDIOMS.filter(i => cards[i.word] && cards[i.word].reps > 0);
+  const due = IDIOMS.filter(i => { const c = cards[i.word]; return c && c.nextReview <= today; });
+  const pct = Math.round(learned.length / 103 * 100);
+  const [done, setDone] = useState(false);
+
+  const doExport = () => {
+    const lines = ['CHINESE VOCAB — REVISION LIST', `Generated: ${new Date().toLocaleDateString()}`, '', `Progress: ${learned.length}/103 idioms · ${due.length} due today`, '', '=== DUE TODAY ==='];
+    if (!due.length) lines.push('Nothing due — all caught up!');
+    due.forEach(w => { const c = cards[w.word]; lines.push('', `${w.word} (${w.pinyin}) — ${c.reps} reviews`, `Meaning: ${w.meaning}`, `Example: ${w.cn}`, `         ${w.en}`); });
+    lines.push('', '', '=== ALL 103 IDIOMS ===');
+    IDIOMS.forEach(w => lines.push(`${w.word} (${w.pinyin}) — ${w.meaning}`));
+    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a'); a.href = url; a.download = 'vocab_revision.txt'; a.click(); URL.revokeObjectURL(url);
+    setDone(true); setTimeout(() => setDone(false), 2500);
+  };
+
+  return (
+    <div>
+      <Card style={{ marginBottom:11 }}>
+        <p style={{ fontWeight:600, fontSize:14, marginBottom:7, color:'#1A1A18' }}>Your Progress</p>
+        <div style={{ height:5, background:'#F0F0EC', borderRadius:3, overflow:'hidden', marginBottom:7 }}>
+          <div style={{ height:'100%', width:`${pct}%`, background:A, borderRadius:3 }} />
+        </div>
+        <div style={{ display:'flex', justifyContent:'space-between', fontSize:12, color:'#888' }}>
+          <span>{learned.length}/103 idioms ({pct}%)</span>
+          <span>{due.length} due today</span>
+        </div>
+        {due.length > 0 && (
+          <div style={{ marginTop:9, display:'flex', flexWrap:'wrap', gap:4 }}>
+            {due.map((w, i) => <span key={i} style={{ fontSize:12, fontFamily:'serif', background:'#FCEBEB', color:'#A32D2D', padding:'2px 7px', borderRadius:20 }}>{w.word}</span>)}
+          </div>
+        )}
+      </Card>
+      <Card style={{ marginBottom:11 }}>
+        <p style={{ fontWeight:600, fontSize:14, marginBottom:5, color:'#1A1A18' }}>Export Revision Sheet</p>
+        <p style={{ fontSize:12, color:'#888', marginBottom:11 }}>Download a printable .txt of your due idioms and all 103 definitions.</p>
+        <button onClick={doExport} style={{ padding:'8px 18px', border:'1px solid #E0E0DC', borderRadius:9, background:'transparent', cursor:'pointer', color:'#1A1A18', fontSize:13 }}>
+          {done ? '✓ Downloaded!' : 'Download revision sheet'}
+        </button>
+      </Card>
+      <Card>
+        <p style={{ fontWeight:600, fontSize:14, marginBottom:5, color:'#1A1A18' }}>About</p>
+        <p style={{ fontSize:12, color:'#888', lineHeight:1.7 }}>
+          <strong>103</strong> common idioms with SM-2 spaced repetition · <strong>{EXAM_WORDS.length}</strong> past exam words (2014–2025) · <strong>{SYLLABUS_WORDS.length}</strong> syllabus words (Sec 1–4). Every word opens a detail card with meaning, example sentence, 词语搭配 and 构词. Quizzes cover meaning, exam fill-in-blank, 词语搭配 and 词语替换.
+          <br /><br />Progress saves automatically to this browser.
+        </p>
+      </Card>
+    </div>
+  );
+}
+
+// ─── WORD DETAIL (shared card: meaning · sentence · 词语搭配 · 构词) ──────────────
+function WordDetail({ word, onOpenWord }) {
+  const info = wordInfo(word);
+  const idiom = IDIOMS.find(i => i.word === word);
+  const py = pinyinOf(word);
+  const gouci = buildGouci(word);
+  const meaning = info?.meaning || idiom?.meaning;
+  const en = info?.en || idiom?.en;
+  const sentence = info?.sentence || idiom?.cn;
+  const sentenceEn = info?.sentenceEn || (idiom ? idiom.en : '');
+  const collocations = info?.collocations || [];
+
+  const Section = ({ title, children }) => (
+    <div style={{ marginBottom: 15 }}>
+      <div style={{ fontSize: 11, fontWeight: 700, color: A, letterSpacing: 0.4, marginBottom: 6 }}>{title}</div>
+      {children}
+    </div>
+  );
+  const GBlock = ({ label, words }) => words.length ? (
+    <div style={{ marginBottom: 9 }}>
+      <div style={{ fontSize: 10, color: '#AAA', marginBottom: 4 }}>{label}</div>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 4 }}>
+        {words.map((w, i) => (
+          <button key={i} onClick={() => onOpenWord(w)} style={{ fontSize: 13, fontFamily: 'serif', background: '#F5F5F2', padding: '3px 9px', borderRadius: 20, color: '#1A1A18', border: '1px solid #ECECE7', cursor: 'pointer' }}>{w}</button>
+        ))}
+      </div>
+    </div>
+  ) : null;
+
+  return (
+    <div>
+      <div style={{ marginBottom: 16 }}>
+        <div style={{ fontSize: 40, fontFamily: 'serif', color: '#1A1A18', lineHeight: 1.1 }}>{word}</div>
+        {py && <div style={{ fontSize: 14, color: A, marginTop: 3 }}>{py}</div>}
+      </div>
+
+      {meaning ? (
+        <>
+          <Section title="意思 · MEANING">
+            <p style={{ fontSize: 14, color: '#1A1A18', lineHeight: 1.6 }}>{meaning}</p>
+            {en && <p style={{ fontSize: 12, color: '#888', marginTop: 3 }}>{en}</p>}
+          </Section>
+          {sentence && (
+            <Section title="例句 · SENTENCE">
+              <div style={{ background: '#FAFAF8', borderRadius: 8, padding: '10px 12px', border: '1px solid #F0F0EC' }}>
+                <p style={{ fontSize: 14, color: '#1A1A18', lineHeight: 1.7 }}>{sentence}</p>
+                {sentenceEn && <p style={{ fontSize: 11, color: '#888', marginTop: 4, lineHeight: 1.5 }}>{sentenceEn}</p>}
+              </div>
+            </Section>
+          )}
+          {collocations.length > 0 && (
+            <Section title="词语搭配 · COLLOCATIONS">
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: 5 }}>
+                {collocations.map((c, i) => <span key={i} style={{ fontSize: 13, fontFamily: 'serif', background: '#FAECE7', color: '#993C1D', padding: '4px 10px', borderRadius: 20 }}>{c}</span>)}
+              </div>
+            </Section>
+          )}
+        </>
+      ) : (
+        <div style={{ background: '#FFFBF5', border: '1px solid #F5DEC8', borderRadius: 9, padding: '11px 13px', marginBottom: 15, fontSize: 12, color: '#8A5E00', lineHeight: 1.6 }}>
+          意思、例句和词语搭配尚未生成。Run <code>npm run gen-words</code> to fill this word in. The 构词 examples below are available now.
+        </div>
+      )}
+
+      {gouci && (
+        <Section title="构词 · WORD BUILDING">
+          <GBlock label={`${gouci.a}＿（“${gouci.a}”在首）`} words={gouci.AX} />
+          <GBlock label={`＿${gouci.a}（“${gouci.a}”在尾）`} words={gouci.XA} />
+          <GBlock label={`${gouci.b}＿（“${gouci.b}”在首）`} words={gouci.BX} />
+          <GBlock label={`＿${gouci.b}（“${gouci.b}”在尾）`} words={gouci.XB} />
+          {!gouci.AX.length && !gouci.XA.length && !gouci.BX.length && !gouci.XB.length &&
+            <p style={{ fontSize: 12, color: '#AAA' }}>No related words found in the current word set.</p>}
+        </Section>
+      )}
+    </div>
+  );
+}
+
+function WordModal({ stack, onClose, onOpenWord, onBack }) {
+  if (!stack.length) return null;
+  const word = stack[stack.length - 1];
+  return (
+    <div onClick={onClose} style={{ position: 'fixed', inset: 0, background: 'rgba(20,14,6,0.45)', zIndex: 200, display: 'flex', alignItems: 'flex-end', justifyContent: 'center' }}>
+      <div onClick={e => e.stopPropagation()} style={{ background: 'white', width: '100%', maxWidth: 560, maxHeight: '86vh', overflowY: 'auto', borderRadius: '18px 18px 0 0', padding: '14px 18px 30px', boxShadow: '0 -8px 40px rgba(0,0,0,0.2)' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 8 }}>
+          {stack.length > 1
+            ? <button onClick={onBack} style={{ fontSize: 13, border: 'none', background: 'transparent', color: A, cursor: 'pointer', padding: 0 }}>← Back</button>
+            : <span />}
+          <button onClick={onClose} style={{ fontSize: 22, border: 'none', background: 'transparent', color: '#BBB', cursor: 'pointer', lineHeight: 1, padding: 0 }}>×</button>
+        </div>
+        <WordDetail word={word} onOpenWord={onOpenWord} />
+      </div>
+    </div>
+  );
+}
+
+// ─── MAIN ─────────────────────────────────────────────────────────────────────
+const NAV = [
+  { id:'home', icon:'🏠', label:'Home' },
+  { id:'review', icon:'📖', label:'Review' },
+  { id:'quiz', icon:'🎯', label:'Quiz' },
+  { id:'examwords', icon:'📋', label:'Exam Words' },
+  { id:'syllabus', icon:'📚', label:'Syllabus' },
+  { id:'chars', icon:'🔤', label:'Characters' },
+  { id:'more', icon:'⚙️', label:'More' },
+];
+const TITLES = { home:'华文词汇练习', review:'Review · 103 Common Idioms', quiz:'Quiz', examwords:'Past Exam Words', syllabus:'Syllabus Words', chars:'Character Groups', more:'Progress & Export' };
+
+export default function Home_Page() {
+  const [tab, setTab] = useState('home');
+  const [cards, setCards] = useState({});
+  const [streak, setStreak] = useState(0);
+  const [todayCount, setTodayCount] = useState(0);
+  const [mounted, setMounted] = useState(false);
+  const [wordStack, setWordStack] = useState([]);
+  const openWord = useCallback(w => setWordStack(s => [...s, w]), []);
+  const backWord = useCallback(() => setWordStack(s => s.slice(0, -1)), []);
+  const closeWord = useCallback(() => setWordStack([]), []);
+
+  useEffect(() => {
+    const c = lLoad('vc-cards'), s = lLoad('vc-streak');
+    if (c) setCards(c);
+    if (s) {
+      const today = todayStr(), yesterday = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+      if (s.d === today) { setStreak(s.s); setTodayCount(s.c || 0); }
+      else if (s.d === yesterday) setStreak(s.s);
+      else setStreak(0);
+    }
+    setMounted(true);
+  }, []);
+
+  useEffect(() => { if (mounted) lSave('vc-cards', cards); }, [cards, mounted]);
+
+  const onRate = useCallback((word, q) => setCards(prev => ({ ...prev, [word]: applyRating(prev[word], q) })), []);
+
+  const onAnswer = useCallback(() => {
+    setTodayCount(c => {
+      const nc = c + 1;
+      setStreak(s => {
+        const ns = nc === 1 ? s + 1 : s;
+        lSave('vc-streak', { d: todayStr(), s: ns, c: nc });
+        return ns;
+      });
+      return nc;
+    });
+  }, []);
+
+  if (!mounted) return <div style={{ textAlign:'center', padding:48, color:'#AAA' }}>Loading…</div>;
+
+  return (
+    <div style={{ maxWidth:720, margin:'0 auto', paddingBottom:72, minHeight:'100vh', background:'#FAFAF8' }}>
+      <div style={{ padding:'14px 20px 11px', borderBottom:'1px solid #E8E8E4', marginBottom:16, background:'white', position:'sticky', top:0, zIndex:50 }}>
+        <h1 style={{ fontSize:17, fontWeight:700, color:'#1A1A18', margin:0 }}>{TITLES[tab]}</h1>
+        {tab === 'home' && <p style={{ fontSize:11, color:'#AAA', marginTop:2 }}>{IDIOMS.length} idioms · {EXAM_WORDS.length} exam words · {SYLLABUS_WORDS.length} syllabus words</p>}
+      </div>
+
+      <div style={{ padding:'0 20px' }}>
+        {tab === 'home' && <Home cards={cards} streak={streak} todayCount={todayCount} setTab={setTab} />}
+        {tab === 'review' && <Review cards={cards} onRate={onRate} onAnswer={onAnswer} />}
+        {tab === 'quiz' && <Quiz onAnswer={onAnswer} />}
+        {tab === 'examwords' && <ExamWords onOpenWord={openWord} />}
+        {tab === 'syllabus' && <SyllabusView onOpenWord={openWord} />}
+        {tab === 'chars' && <Chars onOpenWord={openWord} />}
+        {tab === 'more' && <More cards={cards} />}
+      </div>
+
+      <div style={{ position:'fixed', bottom:0, left:'50%', transform:'translateX(-50%)', width:'100%', maxWidth:720, background:'white', borderTop:'1px solid #E8E8E4', display:'flex', zIndex:100 }}>
+        {NAV.map(({ id, icon, label }) => (
+          <button key={id} onClick={() => setTab(id)} style={{ flex:1, padding:'7px 3px 9px', border:'none', background:'transparent', cursor:'pointer', display:'flex', flexDirection:'column', alignItems:'center', gap:2 }}>
+            <span style={{ fontSize:16, lineHeight:1 }}>{icon}</span>
+            <span style={{ fontSize:9, color: tab === id ? A : '#AAA', fontWeight: tab === id ? 700 : 400 }}>{label}</span>
+            {tab === id && <div style={{ width:18, height:2, background:A, borderRadius:1 }} />}
+          </button>
+        ))}
+      </div>
+
+      <WordModal stack={wordStack} onOpenWord={openWord} onBack={backWord} onClose={closeWord} />
+    </div>
+  );
+}
