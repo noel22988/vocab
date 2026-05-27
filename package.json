@@ -1,11 +1,12 @@
 {
   "name": "chinese-vocab-trainer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "gen-words": "node scripts/generate-word-data.js"
   },
   "dependencies": {
     "next": "14.2.3",
