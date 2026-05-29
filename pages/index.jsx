@@ -453,7 +453,7 @@ function Quiz({ onAnswer }) {
     setSqSel(null);
   }, [examIdioms]);
 
-  // 词语搭配: blank the word in its sentence; pick the word that fits the context/collocation.
+  // 选词填空: blank the word in its sentence; pick the word that fits the context/collocation.
   const newCollocationQ = useCallback(() => {
     const pool = collocationPool.length >= 4 ? collocationPool : sentencePool;
     const item = pool[Math.floor(Math.random() * pool.length)];
@@ -463,10 +463,7 @@ function Quiz({ onAnswer }) {
     // so a wrong option can't accidentally also read correctly.
     let distract = shuffle(pool.filter(x => x.word !== item.word && chs(x.word).length === len && !chs(x.word).some(c => ic.includes(c)))).slice(0, 3);
     if (distract.length < 3) distract = shuffle(pool.filter(x => x.word !== item.word && chs(x.word).length === len)).slice(0, 3);
-    const rawCol = item.collocations && item.collocations.length ? item.collocations[0] : '';
-    const hint = rawCol ? `搭配：${rawCol.split(item.word).join('＿＿')}` : '';
-    setSq({ kind: 'collocation', badge: '词语搭配 · Collocation', prompt: '选出与句子搭配得当的词语。',
-      sub: [hint, item.meaning ? `意思：${item.meaning}` : ''].filter(Boolean).join('　·　'),
+    setSq({ kind: 'collocation', badge: '选词填空 · Cloze', prompt: '选出最合适填入空格的词语。',
       sentence: item.sentence.replace(item.word, '＿＿'), word: item.word, meaning: item.meaning,
       opts: shuffle([item, ...distract]).map(o => ({ word: o.word, isC: o.word === item.word })) });
     setSqSel(null);
@@ -475,20 +472,22 @@ function Quiz({ onAnswer }) {
   // 词语替换: a 2-char word in the sentence is replaced with a confusable (one-char swap). User picks the correct word.
   const newReplaceQ = useCallback(() => {
     const item = replacePool[Math.floor(Math.random() * replacePool.length)];
-    const confusables = shuffle(item.confusables.slice()).slice(0, 3);
-    const wrong = confusables[0]; // the misused word that appears in the sentence
+    // Try each confusable as the wrong-word; prefer one that yields ≥3 distractors all sharing one char with it at same position.
+    const candidates = shuffle(item.confusables.slice());
+    let wrong = candidates[0], distractors = [];
+    for (const cand of candidates) {
+      const [c, d] = chs(cand);
+      const sharesOne = w => { const cs = chs(w); return cs.length === 2 && ((cs[0] === c) !== (cs[1] === d)); };
+      const used = new Set([item.word, cand]);
+      let pool = item.confusables.filter(x => x !== cand && sharesOne(x));
+      pool = [...pool, ...[...startsWith(c, cand), ...endsWith(d, cand)].filter(x => !used.has(x) && !pool.includes(x))];
+      if (pool.length < 3) pool = [...pool, ...EXTRA_WORDS.filter(x => !used.has(x) && sharesOne(x) && !pool.includes(x))];
+      if (pool.length >= 3) { wrong = cand; distractors = shuffle(pool).slice(0, 3); break; }
+      if (pool.length > distractors.length) { wrong = cand; distractors = shuffle(pool).slice(0, 3); }
+    }
     const idx = item.sentence.indexOf(item.word);
     const sentenceParts = { before: item.sentence.slice(0, idx), wrong, after: item.sentence.slice(idx + item.word.length) };
-    // Auto-derive a 4th distractor: a 2-char word sharing one char with the headword at the same position.
-    const [a, b] = chs(item.word);
-    const used = new Set([item.word, ...confusables]);
-    let extraPool = [...startsWith(a, item.word), ...endsWith(b, item.word)].filter(x => !used.has(x));
-    if (extraPool.length === 0) {
-      // fall back to the supplementary list (common 2-char Chinese words outside the curated corpus)
-      extraPool = EXTRA_WORDS.filter(w => !used.has(w) && ((chs(w)[0] === a) !== (chs(w)[1] === b)));
-    }
-    const fourth = extraPool.length ? extraPool[Math.floor(Math.random() * extraPool.length)] : null;
-    const optWords = fourth ? [item.word, confusables[1], confusables[2], fourth] : [item.word, confusables[1], confusables[2]];
+    const optWords = [item.word, ...distractors];
     setSq({ kind: 'replace', badge: '词语替换 · One-character swap', prompt: '句中划线的词语用错了 —— 应改成：',
       sub: item.meaning ? `意思：${item.meaning}` : '',
       sentenceParts, word: item.word, wrong, meaning: item.meaning,
@@ -503,9 +502,9 @@ function Quiz({ onAnswer }) {
       {score.t > 0 && <div style={{ background:'#FAFAF8', border:'1px solid #E8E8E4', borderRadius:9, padding:'9px 13px', marginBottom:12, fontSize:12, color:'#888', textAlign:'center' }}>{score.c}/{score.t} correct ({Math.round(score.c / score.t * 100)}%)</div>}
       <div style={{ display:'grid', gridTemplateColumns:'1fr 1fr', gap:10 }}>
         {[
-          { id:'meaning', icon:'🃏', title:'Meaning Quiz', sub:'Match idioms to meanings', action: () => { setMode('meaning'); newMQ(); } },
-          { id:'exam', icon:'📝', title:'Exam Fill-in-Blank', sub:'Real sentences with gaps', action: () => { setMode('sentence'); newExamQ(); } },
-          { id:'collocation', icon:'🔗', title:'词语搭配', sub:'Pick the word that fits', action: () => { setMode('sentence'); newCollocationQ(); } },
+          { id:'meaning', icon:'🃏', title:'Idioms Meaning Quiz', sub:'Match idioms to meanings', action: () => { setMode('meaning'); newMQ(); } },
+          { id:'exam', icon:'📝', title:'Idioms Sentence Quiz', sub:'Real sentences with gaps', action: () => { setMode('sentence'); newExamQ(); } },
+          { id:'collocation', icon:'🔗', title:'选词填空', sub:'Pick the word that fits', action: () => { setMode('sentence'); newCollocationQ(); } },
           { id:'replace', icon:'🔁', title:'词语替换', sub:'Spot the one-character difference', action: () => { setMode('sentence'); newReplaceQ(); } },
         ].map(({ id, icon, title, sub, action }) => (
           <Card key={id} style={{ cursor:'pointer', textAlign:'center' }} onClick={action}>
@@ -776,7 +775,7 @@ function More({ cards, onReset }) {
       <Card>
         <p style={{ fontWeight:600, fontSize:14, marginBottom:5, color:'#1A1A18' }}>About</p>
         <p style={{ fontSize:12, color:'#888', lineHeight:1.7 }}>
-          <strong>103</strong> common idioms with SM-2 spaced repetition · <strong>{EXAM_WORDS.length}</strong> past exam words (2014–2025) · <strong>{SYLLABUS_WORDS.length}</strong> syllabus words (Sec 1–4). Every word opens a detail card with meaning, example sentence, 词语搭配 and 构词. Quizzes cover meaning, exam fill-in-blank, 词语搭配 and 词语替换.
+          <strong>103</strong> common idioms with SM-2 spaced repetition · <strong>{EXAM_WORDS.length}</strong> past exam words (2014–2025) · <strong>{SYLLABUS_WORDS.length}</strong> syllabus words (Sec 1–4). Every word opens a detail card with meaning, example sentence, 词语搭配 and 构词. Quizzes cover idioms meaning, idioms sentence, 选词填空 and 词语替换.
           <br /><br />Progress saves automatically to this browser.
         </p>
       </Card>
