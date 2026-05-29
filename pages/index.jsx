@@ -468,14 +468,17 @@ function Quiz({ onAnswer }) {
     setSqSel(null);
   }, [collocationPool, sentencePool]);
 
-  // 词语替换: blank a 2-char word; the 4 options differ by exactly one character.
+  // 词语替换: a 2-char word in the sentence is replaced with a confusable (one-char swap). User picks the correct word.
   const newReplaceQ = useCallback(() => {
     const item = replacePool[Math.floor(Math.random() * replacePool.length)];
-    const variants = shuffle(item.confusables.slice()).slice(0, 3);
-    setSq({ kind: 'replace', badge: '词语替换 · One-character swap', prompt: '只有一个字之差 —— 哪个词语填入才正确？',
+    const confusables = shuffle(item.confusables.slice()).slice(0, 3);
+    const wrong = confusables[0]; // the misused word that appears in the sentence
+    const idx = item.sentence.indexOf(item.word);
+    const sentenceParts = { before: item.sentence.slice(0, idx), wrong, after: item.sentence.slice(idx + item.word.length) };
+    setSq({ kind: 'replace', badge: '词语替换 · One-character swap', prompt: '句中划线的词语用错了 —— 应改成：',
       sub: item.meaning ? `意思：${item.meaning}` : '',
-      sentence: item.sentence.replace(item.word, '＿＿'), word: item.word, meaning: item.meaning,
-      opts: shuffle([item.word, ...variants]).map(w => ({ word: w, isC: w === item.word })) });
+      sentenceParts, word: item.word, wrong, meaning: item.meaning,
+      opts: shuffle([item.word, ...confusables]).map(w => ({ word: w, isC: w === item.word })) });
     setSqSel(null);
   }, [replacePool]);
 
@@ -512,7 +515,7 @@ function Quiz({ onAnswer }) {
         <p style={{ fontSize:14, fontWeight:600, marginBottom:14, color:'#1A1A18' }}>{q.prompt}</p>
         {q.opts.map((opt, i) => {
           const sty = sel === null ? {} : opt.isC ? { background:'#EAF3DE', borderColor:'#97C459', color:'#3B6D11' } : sel === i ? { background:'#FCEBEB', borderColor:'#E24B4A', color:'#A32D2D' } : { opacity:0.5 };
-          return <button key={i} style={{ ...qBtn, ...sty }} onClick={() => { if (sel !== null) return; setSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}>{opt.label}{opt.sub && <span style={{ fontSize:11, opacity:0.6, marginLeft:5 }}>{opt.sub}</span>}</button>;
+          return <button key={i} style={{ ...qBtn, ...sty }} onMouseDown={e => e.preventDefault()} onClick={e => { if (sel !== null) return; e.currentTarget.blur(); setSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}>{opt.label}{opt.sub && <span style={{ fontSize:11, opacity:0.6, marginLeft:5 }}>{opt.sub}</span>}</button>;
         })}
         {sel !== null && <NextBtn onClick={newMQ} />}
       </Card>
@@ -534,17 +537,21 @@ function Quiz({ onAnswer }) {
         <div style={{ display:'flex', justifyContent:'space-between', marginBottom:12, alignItems:'center' }}><BackBtn /><ScoreTag /></div>
         <Card>
           <Badge type="关联词" style={{ marginBottom:9, display:'inline-block' }}>{sq.badge}</Badge>
-          <p style={{ fontSize:16, fontWeight:600, color:'#1A1A18', margin:'6px 0 4px', lineHeight:1.8, fontFamily:'serif' }}>{sq.sentence}</p>
+          <p style={{ fontSize:16, fontWeight:600, color:'#1A1A18', margin:'6px 0 4px', lineHeight:1.8, fontFamily:'serif' }}>
+            {sq.sentenceParts
+              ? <>{sq.sentenceParts.before}<span style={{ textDecoration:'underline wavy #E24B4A', textDecorationSkipInk:'none', textUnderlineOffset:'4px', color:'#A32D2D' }}>{sq.sentenceParts.wrong}</span>{sq.sentenceParts.after}</>
+              : sq.sentence}
+          </p>
           <p style={{ fontSize:11, color:'#888', marginBottom: sq.sub ? 3 : 12 }}>{sq.prompt}</p>
           {sq.sub && <p style={{ fontSize:11, color:'#C9956A', marginBottom:12 }}>{sq.sub}</p>}
           {sq.opts.map((opt, i) => {
             const sty = sqSel !== null ? (opt.isC ? { background:'#EAF3DE', borderColor:'#97C459', color:'#3B6D11' } : sqSel === i ? { background:'#FCEBEB', borderColor:'#E24B4A', color:'#A32D2D' } : { opacity:0.5 }) : {};
-            return <button key={i} style={{ ...qBtn, ...sty }} onClick={() => { if (sqSel !== null) return; setSqSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}><span style={{ fontFamily:'serif', fontSize:16 }}>{opt.word}</span></button>;
+            return <button key={i} style={{ ...qBtn, ...sty }} onMouseDown={e => e.preventDefault()} onClick={e => { if (sqSel !== null) return; e.currentTarget.blur(); setSqSel(i); onAnswer(); setScore(s => ({ c: s.c + (opt.isC ? 1 : 0), t: s.t + 1 })); }}><span style={{ fontFamily:'serif', fontSize:16 }}>{opt.word}</span></button>;
           })}
           {sqSel !== null && (
             <>
               <div style={{ background:'#FAFAF8', borderRadius:8, padding:'8px 11px', marginTop:10, border:'1px solid #F0F0EC' }}>
-                <p style={{ fontSize:12, fontWeight:600, color: sq.opts[sqSel]?.isC ? '#3B6D11' : '#A32D2D' }}>{sq.opts[sqSel]?.isC ? `✓ 正确！「${sq.word}」` : `✗ 答案是「${sq.word}」`}{sq.meaning ? ` — ${sq.meaning}` : ''}</p>
+                <p style={{ fontSize:12, fontWeight:600, color: sq.opts[sqSel]?.isC ? '#3B6D11' : '#A32D2D' }}>{sq.kind === 'replace' && sq.wrong ? (sq.opts[sqSel]?.isC ? `✓ 正确！「${sq.wrong}」应改为「${sq.word}」` : `✗ 应改为「${sq.word}」（句中「${sq.wrong}」用错了）`) : (sq.opts[sqSel]?.isC ? `✓ 正确！「${sq.word}」` : `✗ 答案是「${sq.word}」`)}{sq.meaning ? ` — ${sq.meaning}` : ''}</p>
               </div>
               <NextBtn onClick={next} />
             </>
