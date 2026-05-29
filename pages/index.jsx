@@ -472,18 +472,39 @@ function Quiz({ onAnswer }) {
   // 词语替换: a 2-char word in the sentence is replaced with a confusable (one-char swap). User picks the correct word.
   const newReplaceQ = useCallback(() => {
     const item = replacePool[Math.floor(Math.random() * replacePool.length)];
-    // Try each confusable as the wrong-word; prefer one that yields ≥3 distractors all sharing one char with it at same position.
+    // Try each confusable as the wrong-word; aim for a 1+2 split of distractors:
+    // 1 sharing the same char with WRONG as the correct does, and 2 sharing the other char.
     const candidates = shuffle(item.confusables.slice());
+    const [a, b] = chs(item.word);
     let wrong = candidates[0], distractors = [];
     for (const cand of candidates) {
-      const [c, d] = chs(cand);
-      const sharesOne = w => { const cs = chs(w); return cs.length === 2 && ((cs[0] === c) !== (cs[1] === d)); };
-      const used = new Set([item.word, cand]);
-      let pool = item.confusables.filter(x => x !== cand && sharesOne(x));
-      pool = [...pool, ...[...startsWith(c, cand), ...endsWith(d, cand)].filter(x => !used.has(x) && !pool.includes(x))];
-      if (pool.length < 3) pool = [...pool, ...EXTRA_WORDS.filter(x => !used.has(x) && sharesOne(x) && !pool.includes(x))];
-      if (pool.length >= 3) { wrong = cand; distractors = shuffle(pool).slice(0, 3); break; }
-      if (pool.length > distractors.length) { wrong = cand; distractors = shuffle(pool).slice(0, 3); }
+      const cs = chs(cand);
+      if (cs.length !== 2) continue;
+      const [c, d] = cs;
+      const correctPos = (a === c) ? 0 : 1; // correct shares this char with wrong
+      const usedHere = new Set([item.word, cand]);
+      const at0 = w => { const x = chs(w); return x.length === 2 && x[0] === c && x[1] !== d && !usedHere.has(w); };
+      const at1 = w => { const x = chs(w); return x.length === 2 && x[1] === d && x[0] !== c && !usedHere.has(w); };
+      const buildSide = pos => {
+        const f = pos === 0 ? at0 : at1;
+        let pool = item.confusables.filter(x => x !== cand && f(x));
+        const corp = pos === 0 ? startsWith(c, cand) : endsWith(d, cand);
+        pool = [...pool, ...corp.filter(x => f(x) && !pool.includes(x))];
+        pool = [...pool, ...EXTRA_WORDS.filter(x => f(x) && !pool.includes(x))];
+        return shuffle(pool);
+      };
+      const samePool = buildSide(correctPos);
+      const otherPool = buildSide(correctPos === 0 ? 1 : 0);
+      const same1 = samePool.slice(0, 1); // 1 from same side
+      const other2 = otherPool.slice(0, 2); // 2 from other side
+      let result = [...same1, ...other2];
+      if (result.length < 3) {
+        // shortage: fill from spare on either side
+        const spare = [...samePool.slice(same1.length), ...otherPool.slice(other2.length)];
+        while (result.length < 3 && spare.length) result.push(spare.shift());
+      }
+      if (result.length >= 3) { wrong = cand; distractors = result.slice(0, 3); break; }
+      if (result.length > distractors.length) { wrong = cand; distractors = result; }
     }
     const idx = item.sentence.indexOf(item.word);
     const sentenceParts = { before: item.sentence.slice(0, idx), wrong, after: item.sentence.slice(idx + item.word.length) };
