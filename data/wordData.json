@@ -15490,5 +15490,4553 @@
       "手势",
       "形势"
     ]
+  },
+  "嘈杂": {
+    "py": "cáozá",
+    "meaning": "（声音）杂乱，喧闹。",
+    "en": "noisy; clamorous",
+    "sentence": "市场里人声嘈杂，叫卖声此起彼伏。",
+    "sentenceEn": "The market was noisy with voices, vendors' cries rising and falling.",
+    "collocations": [
+      "人声嘈杂",
+      "嘈杂的环境"
+    ],
+    "confusables": [
+      "复杂",
+      "混杂",
+      "夹杂"
+    ]
+  },
+  "沮丧": {
+    "py": "jǔsàng",
+    "meaning": "灰心失望，意志消沉。",
+    "en": "dejected; depressed",
+    "sentence": "考试失利后，他显得十分沮丧，整天闷闷不乐。",
+    "sentenceEn": "After failing the exam, he looked very dejected, gloomy all day.",
+    "collocations": [
+      "神情沮丧",
+      "沮丧不已"
+    ],
+    "confusables": []
+  },
+  "若有所思": {
+    "py": "ruòyǒu suǒsī",
+    "meaning": "好像在思考着什么。",
+    "en": "lost in thought; pensive",
+    "sentence": "他望着窗外，若有所思，半天没有说话。",
+    "sentenceEn": "He gazed out the window, lost in thought, saying nothing for a long while.",
+    "collocations": [
+      "若有所思地",
+      "露出若有所思的神情"
+    ],
+    "confusables": []
+  },
+  "简陋": {
+    "py": "jiǎnlòu",
+    "meaning": "（房屋、设备等）简单粗陋。",
+    "en": "simple and crude",
+    "sentence": "尽管居住的条件十分简陋，他却毫无怨言。",
+    "sentenceEn": "Though his living conditions were very crude, he made no complaint.",
+    "collocations": [
+      "简陋的房屋",
+      "设备简陋"
+    ],
+    "confusables": [
+      "简单",
+      "简洁",
+      "丑陋"
+    ]
+  },
+  "政府": {
+    "py": "zhèngfǔ",
+    "meaning": "国家权力的执行机关。",
+    "en": "a government",
+    "sentence": "政府出台了一系列措施，帮助有困难的居民。",
+    "sentenceEn": "The government rolled out a series of measures to help residents in difficulty.",
+    "collocations": [
+      "政府部门",
+      "地方政府"
+    ],
+    "confusables": [
+      "政治",
+      "政策",
+      "官府"
+    ]
+  },
+  "开辟": {
+    "py": "kāipì",
+    "meaning": "打开通路；开创、开发。",
+    "en": "open up; start",
+    "sentence": "学校开辟了一块新园地，供同学们种植蔬菜。",
+    "sentenceEn": "The school opened up a new plot for students to grow vegetables.",
+    "collocations": [
+      "开辟道路",
+      "开辟新天地"
+    ],
+    "confusables": [
+      "开始",
+      "开放",
+      "精辟"
+    ]
+  },
+  "市镇": {
+    "py": "shìzhèn",
+    "meaning": "较大的集镇；城镇。",
+    "en": "a town",
+    "sentence": "这座古老的市镇依山傍水，风景十分秀丽。",
+    "sentenceEn": "This ancient town nestles among hills and water, with beautiful scenery.",
+    "collocations": [
+      "繁华的市镇",
+      "沿海市镇"
+    ],
+    "confusables": [
+      "市场",
+      "城镇",
+      "乡镇"
+    ]
+  },
+  "宗教": {
+    "py": "zōngjiào",
+    "meaning": "信仰并崇拜超自然力量的社会意识形态。",
+    "en": "religion",
+    "sentence": "在这个国家，不同宗教的信徒和睦相处。",
+    "sentenceEn": "In this country, believers of different religions live in harmony.",
+    "collocations": [
+      "宗教信仰",
+      "宗教活动"
+    ],
+    "confusables": [
+      "宗旨",
+      "宗族",
+      "请教"
+    ]
+  },
+  "综合": {
+    "py": "zōnghé",
+    "meaning": "把分析过的对象或现象联合成整体。",
+    "en": "synthesize; comprehensive",
+    "sentence": "老师综合大家的意见，制定了新的活动方案。",
+    "sentenceEn": "The teacher synthesized everyone's views and drew up a new activity plan.",
+    "collocations": [
+      "综合分析",
+      "综合素质"
+    ],
+    "confusables": [
+      "综述",
+      "结合",
+      "联合"
+    ]
+  },
+  "诊疗所": {
+    "py": "zhěnliáosuǒ",
+    "meaning": "进行疾病诊断和治疗的场所。",
+    "en": "a clinic",
+    "sentence": "村口新开了一家诊疗所，看病方便多了。",
+    "sentenceEn": "A new clinic opened at the village entrance, making it much easier to see a doctor.",
+    "collocations": [
+      "社区诊疗所",
+      "小型诊疗所"
+    ],
+    "confusables": []
+  },
+  "经济": {
+    "py": "jīngjì",
+    "meaning": "社会生产、分配、消费等活动；用钱方面的情况。",
+    "en": "economy",
+    "sentence": "近年来，这个地区的经济发展十分迅速。",
+    "sentenceEn": "In recent years, this region's economy has developed rapidly.",
+    "collocations": [
+      "经济发展",
+      "经济实力"
+    ],
+    "confusables": [
+      "经验",
+      "救济",
+      "接济"
+    ]
+  },
+  "蓬勃": {
+    "py": "péngbó",
+    "meaning": "繁荣，旺盛。",
+    "en": "vigorous; flourishing",
+    "sentence": "在老师的指导下，班级的各项活动开展得蓬勃有力。",
+    "sentenceEn": "Under the teacher's guidance, the class's activities flourished vigorously.",
+    "collocations": [
+      "蓬勃发展",
+      "朝气蓬勃"
+    ],
+    "confusables": []
+  },
+  "富裕": {
+    "py": "fùyù",
+    "meaning": "（财物）充足，宽绰。",
+    "en": "well-off; affluent",
+    "sentence": "经过多年的努力，村民们的生活逐渐富裕起来。",
+    "sentenceEn": "After years of effort, the villagers' lives gradually became well-off.",
+    "collocations": [
+      "生活富裕",
+      "日益富裕"
+    ],
+    "confusables": [
+      "富有",
+      "宽裕",
+      "充裕"
+    ]
+  },
+  "障碍": {
+    "py": "zhàng'ài",
+    "meaning": "阻挡前进的东西。",
+    "en": "an obstacle; a barrier",
+    "sentence": "他克服了重重障碍，终于实现了自己的理想。",
+    "sentenceEn": "He overcame many obstacles and finally realized his ideal.",
+    "collocations": [
+      "扫除障碍",
+      "语言障碍"
+    ],
+    "confusables": [
+      "妨碍",
+      "阻碍",
+      "无碍"
+    ]
+  },
+  "驰名": {
+    "py": "chímíng",
+    "meaning": "名声传得很远。",
+    "en": "well-known; famous",
+    "sentence": "这种丝绸做工精美，驰名中外。",
+    "sentenceEn": "This silk is exquisitely made and famous both at home and abroad.",
+    "collocations": [
+      "驰名中外",
+      "驰名品牌"
+    ],
+    "confusables": [
+      "驰骋",
+      "著名",
+      "闻名"
+    ]
+  },
+  "屡次": {
+    "py": "lǚcì",
+    "meaning": "一次又一次。",
+    "en": "repeatedly; time and again",
+    "sentence": "他屡次三番地提醒大家注意安全。",
+    "sentenceEn": "He reminded everyone time and again to pay attention to safety.",
+    "collocations": [
+      "屡次失败",
+      "屡次提醒"
+    ],
+    "confusables": [
+      "名次",
+      "层次",
+      "依次"
+    ]
+  },
+  "荣誉": {
+    "py": "róngyù",
+    "meaning": "光荣的名誉。",
+    "en": "honour; glory",
+    "sentence": "他把集体的荣誉看得比什么都重要。",
+    "sentenceEn": "He valued the team's honour above all else.",
+    "collocations": [
+      "荣誉称号",
+      "集体荣誉"
+    ],
+    "confusables": [
+      "荣耀",
+      "名誉",
+      "信誉"
+    ]
+  },
+  "姿态": {
+    "py": "zītài",
+    "meaning": "身体呈现的样子；态度、气度。",
+    "en": "posture; attitude",
+    "sentence": "他以谦虚的姿态，认真听取大家的批评。",
+    "sentenceEn": "With a humble attitude, he listened carefully to everyone's criticism.",
+    "collocations": [
+      "优美的姿态",
+      "高姿态"
+    ],
+    "confusables": [
+      "姿势",
+      "状态",
+      "心态"
+    ]
+  },
+  "翠绿": {
+    "py": "cuìlǜ",
+    "meaning": "像翡翠那样的绿色。",
+    "en": "emerald green",
+    "sentence": "雨后的山林一片翠绿，空气格外清新。",
+    "sentenceEn": "After the rain, the forest was emerald green, the air especially fresh.",
+    "collocations": [
+      "翠绿的草地",
+      "翠绿欲滴"
+    ],
+    "confusables": [
+      "翠竹",
+      "碧绿",
+      "嫩绿"
+    ]
+  },
+  "合拢": {
+    "py": "hélǒng",
+    "meaning": "合到一起；闭合。",
+    "en": "close up; fold together",
+    "sentence": "夜幕降临，花瓣慢慢地合拢起来。",
+    "sentenceEn": "As night fell, the petals slowly closed up.",
+    "collocations": [
+      "慢慢合拢",
+      "合拢双手"
+    ],
+    "confusables": [
+      "合作",
+      "聚拢",
+      "靠拢"
+    ]
+  },
+  "林荫": {
+    "py": "línyìn",
+    "meaning": "成行的树木遮成的阴凉处。",
+    "en": "the shade of trees",
+    "sentence": "他沿着林荫小道慢慢地散步。",
+    "sentenceEn": "He strolled slowly along the tree-shaded path.",
+    "collocations": [
+      "林荫大道",
+      "林荫小道"
+    ],
+    "confusables": [
+      "林木",
+      "绿荫",
+      "浓荫"
+    ]
+  },
+  "樟宜": {
+    "py": "zhāngyí",
+    "meaning": "新加坡的一个地区，以机场闻名。",
+    "en": "Changi (a place in Singapore)",
+    "sentence": "樟宜机场多次被评为世界最佳机场。",
+    "sentenceEn": "Changi Airport has been repeatedly voted the world's best airport.",
+    "collocations": [
+      "樟宜机场",
+      "樟宜地区"
+    ],
+    "confusables": []
+  },
+  "温馨": {
+    "py": "wēnxīn",
+    "meaning": "温暖，馨香；充满温情。",
+    "en": "warm; cosy",
+    "sentence": "一家人围坐在一起吃饭，气氛十分温馨。",
+    "sentenceEn": "The family sat together for the meal in a very warm atmosphere.",
+    "collocations": [
+      "温馨的家",
+      "温馨的气氛"
+    ],
+    "confusables": [
+      "温暖",
+      "温柔",
+      "温和"
+    ]
+  },
+  "粗糙": {
+    "py": "cūcāo",
+    "meaning": "（质料）不精细；不细致。",
+    "en": "rough; coarse",
+    "sentence": "这块木板表面很粗糙，需要打磨光滑。",
+    "sentenceEn": "The surface of this board is rough and needs sanding smooth.",
+    "collocations": [
+      "表面粗糙",
+      "做工粗糙"
+    ],
+    "confusables": [
+      "粗心",
+      "粗鲁",
+      "粗壮"
+    ]
+  },
+  "婆娑": {
+    "py": "pósuō",
+    "meaning": "盘旋舞动的样子；枝叶纷披的样子。",
+    "en": "whirling; swaying (of leaves)",
+    "sentence": "微风吹过，树影婆娑，地上洒满斑驳的光点。",
+    "sentenceEn": "A breeze passed, the tree shadows swaying, the ground dappled with light.",
+    "collocations": [
+      "树影婆娑",
+      "婆娑起舞"
+    ],
+    "confusables": []
+  },
+  "撑": {
+    "py": "chēng",
+    "meaning": "支持；抵住；张开。",
+    "en": "prop up; support",
+    "sentence": "他用一根木棍撑起了快要倒下的篱笆。",
+    "sentenceEn": "He propped up the falling fence with a wooden stick.",
+    "collocations": [
+      "撑伞",
+      "支撑"
+    ],
+    "confusables": []
+  },
+  "同甘共苦": {
+    "py": "tónggān gòngkǔ",
+    "meaning": "共同享受幸福，共同担当艰苦。",
+    "en": "share joys and hardships",
+    "sentence": "这对夫妻多年来同甘共苦，感情十分深厚。",
+    "sentenceEn": "This couple has shared joys and hardships for years, with a deep bond.",
+    "collocations": [
+      "同甘共苦的伙伴",
+      "与人民同甘共苦"
+    ],
+    "confusables": []
+  },
+  "茁壮": {
+    "py": "zhuózhuàng",
+    "meaning": "（植物、动物等）强壮，健壮。",
+    "en": "sturdy; thriving",
+    "sentence": "在阳光雨露的滋润下，禾苗茁壮成长。",
+    "sentenceEn": "Nourished by sun and rain, the seedlings grew sturdy and strong.",
+    "collocations": [
+      "茁壮成长",
+      "长得茁壮"
+    ],
+    "confusables": [
+      "强壮",
+      "健壮",
+      "粗壮"
+    ]
+  },
+  "移民": {
+    "py": "yímín",
+    "meaning": "迁往外地或外国定居；这样的人。",
+    "en": "immigrate; an immigrant",
+    "sentence": "一百多年前，他的祖先移民到了这座海岛。",
+    "sentenceEn": "Over a hundred years ago, his ancestors immigrated to this island.",
+    "collocations": [
+      "移民海外",
+      "早期移民"
+    ],
+    "confusables": [
+      "移动",
+      "人民",
+      "农民"
+    ]
+  },
+  "接纳": {
+    "py": "jiēnà",
+    "meaning": "接受；容纳。",
+    "en": "admit; accept",
+    "sentence": "这座城市以开放的胸怀接纳了来自各地的人们。",
+    "sentenceEn": "This city, with an open heart, welcomed people from all over.",
+    "collocations": [
+      "接纳意见",
+      "欣然接纳"
+    ],
+    "confusables": [
+      "接受",
+      "容纳",
+      "采纳"
+    ]
+  },
+  "无怨无悔": {
+    "py": "wúyuàn wúhuǐ",
+    "meaning": "没有怨言，也不后悔。",
+    "en": "without complaint or regret",
+    "sentence": "为了教育事业，她默默奉献，无怨无悔。",
+    "sentenceEn": "For the cause of education, she gave silently, without complaint or regret.",
+    "collocations": [
+      "无怨无悔地付出",
+      "无怨无悔的爱"
+    ],
+    "confusables": []
+  },
+  "患": {
+    "py": "huàn",
+    "meaning": "害（病）；忧虑；灾祸。",
+    "en": "suffer from; worry",
+    "sentence": "他不幸患上了一种罕见的疾病。",
+    "sentenceEn": "He unfortunately came down with a rare disease.",
+    "collocations": [
+      "患病",
+      "有备无患"
+    ],
+    "confusables": []
+  },
+  "失智症": {
+    "py": "shīzhìzhèng",
+    "meaning": "记忆、思维等能力逐渐衰退的疾病。",
+    "en": "dementia",
+    "sentence": "患上失智症的老人常常记不清自己的家人。",
+    "sentenceEn": "Elderly people with dementia often can't remember their own family.",
+    "collocations": [
+      "患失智症",
+      "失智症患者"
+    ],
+    "confusables": []
+  },
+  "流逝": {
+    "py": "liúshì",
+    "meaning": "（时间等）流过，消逝。",
+    "en": "elapse; slip away",
+    "sentence": "时光匆匆流逝，转眼间又是一年。",
+    "sentenceEn": "Time slipped by in a hurry; in the blink of an eye, another year had passed.",
+    "collocations": [
+      "时光流逝",
+      "岁月流逝"
+    ],
+    "confusables": [
+      "流动",
+      "消逝",
+      "病逝"
+    ]
+  },
+  "嬉戏": {
+    "py": "xīxì",
+    "meaning": "游戏，玩耍。",
+    "en": "play; frolic",
+    "sentence": "几个孩子在浅浅的溪水里快乐地嬉戏。",
+    "sentenceEn": "A few children frolicked happily in the shallow stream.",
+    "collocations": [
+      "追逐嬉戏",
+      "嬉戏玩耍"
+    ],
+    "confusables": [
+      "嬉笑",
+      "游戏",
+      "马戏"
+    ]
+  },
+  "咖喱卜": {
+    "py": "gālíbo",
+    "meaning": "一种包着咖喱馅料的油炸点心。",
+    "en": "a curry puff",
+    "sentence": "放学后，他喜欢买一个香酥的咖喱卜当零食。",
+    "sentenceEn": "After school, he likes to buy a crispy curry puff as a snack.",
+    "collocations": [
+      "香脆的咖喱卜",
+      "一个咖喱卜"
+    ],
+    "confusables": []
+  },
+  "俏皮": {
+    "py": "qiàopí",
+    "meaning": "举止活泼，言谈有趣；样子好看。",
+    "en": "witty; cute",
+    "sentence": "她说话俏皮风趣，总能把大家逗笑。",
+    "sentenceEn": "She speaks wittily and amusingly, always making everyone laugh.",
+    "collocations": [
+      "俏皮话",
+      "俏皮可爱"
+    ],
+    "confusables": [
+      "俏丽",
+      "牛皮",
+      "头皮"
+    ]
+  },
+  "鲜艳": {
+    "py": "xiānyàn",
+    "meaning": "（色彩）鲜明而美丽。",
+    "en": "bright-coloured; vivid",
+    "sentence": "花园里盛开着五颜六色、鲜艳夺目的花朵。",
+    "sentenceEn": "The garden was full of bright, dazzling, multicoloured flowers.",
+    "collocations": [
+      "色彩鲜艳",
+      "鲜艳夺目"
+    ],
+    "confusables": [
+      "鲜花",
+      "鲜明",
+      "娇艳"
+    ]
+  },
+  "承载": {
+    "py": "chéngzài",
+    "meaning": "承受装载（重量）；承担。",
+    "en": "bear; carry",
+    "sentence": "这座古桥承载着这座城市厚重的历史。",
+    "sentenceEn": "This ancient bridge carries the city's weighty history.",
+    "collocations": [
+      "承载重量",
+      "承载着希望"
+    ],
+    "confusables": [
+      "承担",
+      "装载",
+      "满载"
+    ]
+  },
+  "贸易": {
+    "py": "màoyì",
+    "meaning": "买卖商品的活动。",
+    "en": "trade; commerce",
+    "sentence": "这个港口自古以来就是重要的贸易中心。",
+    "sentenceEn": "This port has been an important trade centre since ancient times.",
+    "collocations": [
+      "国际贸易",
+      "贸易往来"
+    ],
+    "confusables": [
+      "贸然",
+      "容易",
+      "交易"
+    ]
+  },
+  "丝绸": {
+    "py": "sīchóu",
+    "meaning": "用蚕丝织成的纺织品。",
+    "en": "silk",
+    "sentence": "这条围巾是用上等的丝绸做成的，手感十分柔滑。",
+    "sentenceEn": "This scarf is made of fine silk and feels very smooth.",
+    "collocations": [
+      "丝绸之路",
+      "一匹丝绸"
+    ],
+    "confusables": [
+      "丝线",
+      "丝毫",
+      "丝瓜"
+    ]
+  },
+  "陆地": {
+    "py": "lùdì",
+    "meaning": "地球表面除海洋外露出水面的部分。",
+    "en": "land; dry land",
+    "sentence": "经过几天的航行，船员们终于看到了陆地。",
+    "sentenceEn": "After several days at sea, the crew finally sighted land.",
+    "collocations": [
+      "广阔的陆地",
+      "登上陆地"
+    ],
+    "confusables": [
+      "陆续",
+      "土地",
+      "草地"
+    ]
+  },
+  "奢侈": {
+    "py": "shēchǐ",
+    "meaning": "花费大量钱财追求享受。",
+    "en": "luxurious; extravagant",
+    "sentence": "他生活节俭，从不追求奢侈的享受。",
+    "sentenceEn": "He lives frugally and never pursues extravagant pleasures.",
+    "collocations": [
+      "奢侈品",
+      "生活奢侈"
+    ],
+    "confusables": [
+      "奢华",
+      "奢望",
+      "奢求"
+    ]
+  },
+  "瓷器": {
+    "py": "cíqì",
+    "meaning": "用瓷土烧制成的器物。",
+    "en": "porcelain; chinaware",
+    "sentence": "这只精美的瓷器是明代的珍贵文物。",
+    "sentenceEn": "This exquisite piece of porcelain is a precious relic from the Ming dynasty.",
+    "collocations": [
+      "精美的瓷器",
+      "青花瓷器"
+    ],
+    "confusables": [
+      "瓷砖",
+      "武器",
+      "乐器"
+    ]
+  },
+  "仪式": {
+    "py": "yíshì",
+    "meaning": "举行典礼的程序、形式。",
+    "en": "a ceremony; a rite",
+    "sentence": "开学典礼上，举行了庄严的升旗仪式。",
+    "sentenceEn": "At the opening ceremony, a solemn flag-raising ritual was held.",
+    "collocations": [
+      "举行仪式",
+      "开幕仪式"
+    ],
+    "confusables": [
+      "仪器",
+      "方式",
+      "形式"
+    ]
+  },
+  "秉持": {
+    "py": "bǐngchí",
+    "meaning": "坚持，主持（多指原则、信念）。",
+    "en": "uphold; adhere to",
+    "sentence": "他始终秉持着诚实守信的原则。",
+    "sentenceEn": "He has always upheld the principle of honesty and trustworthiness.",
+    "collocations": [
+      "秉持原则",
+      "秉持理念"
+    ],
+    "confusables": [
+      "秉承",
+      "保持",
+      "坚持"
+    ]
+  },
+  "枢纽": {
+    "py": "shūniǔ",
+    "meaning": "事物相互联系的中心环节；交通要冲。",
+    "en": "a hub; a pivot",
+    "sentence": "这座城市是全国重要的交通枢纽。",
+    "sentenceEn": "This city is an important transport hub for the whole country.",
+    "collocations": [
+      "交通枢纽",
+      "枢纽地位"
+    ],
+    "confusables": []
+  },
+  "港口": {
+    "py": "gǎngkǒu",
+    "meaning": "供船只停泊、装卸货物的地方。",
+    "en": "a port; a harbour",
+    "sentence": "繁忙的港口里，大大小小的货轮来来往往。",
+    "sentenceEn": "In the busy harbour, cargo ships of all sizes came and went.",
+    "collocations": [
+      "繁忙的港口",
+      "天然港口"
+    ],
+    "confusables": [
+      "港湾",
+      "门口",
+      "出口"
+    ]
+  },
+  "致力": {
+    "py": "zhìlì",
+    "meaning": "把力量集中用于某方面。",
+    "en": "devote oneself to",
+    "sentence": "这位科学家一生致力于癌症的研究。",
+    "sentenceEn": "This scientist devoted his life to cancer research.",
+    "collocations": [
+      "致力于",
+      "致力发展"
+    ],
+    "confusables": [
+      "致敬",
+      "努力",
+      "能力"
+    ]
+  },
+  "勾勒": {
+    "py": "gōulè",
+    "meaning": "用线条画出轮廓；简略地描写。",
+    "en": "sketch; outline",
+    "sentence": "画家寥寥几笔，就勾勒出了远山的轮廓。",
+    "sentenceEn": "With just a few strokes, the painter sketched the outline of the distant hills.",
+    "collocations": [
+      "勾勒轮廓",
+      "勾勒蓝图"
+    ],
+    "confusables": [
+      "勾画",
+      "勾结",
+      "勾销"
+    ]
+  },
+  "高瞻远瞩": {
+    "py": "gāozhān yuǎnzhǔ",
+    "meaning": "站得高，看得远，形容眼光远大。",
+    "en": "farsighted; have great foresight",
+    "sentence": "正是领导者高瞻远瞩的规划，才有了今天的成就。",
+    "sentenceEn": "It was the leaders' farsighted planning that brought about today's achievements.",
+    "collocations": [
+      "高瞻远瞩的目光",
+      "高瞻远瞩的决策"
+    ],
+    "confusables": []
+  },
+  "可谓": {
+    "py": "kěwèi",
+    "meaning": "可以说是。",
+    "en": "may be called; can be said to be",
+    "sentence": "这次活动准备得十分周到，可谓尽善尽美。",
+    "sentenceEn": "The event was so thoroughly prepared it could be called perfect.",
+    "collocations": [
+      "可谓如此",
+      "可谓难得"
+    ],
+    "confusables": [
+      "可以",
+      "所谓",
+      "称谓"
+    ]
+  },
+  "岛屿": {
+    "py": "dǎoyǔ",
+    "meaning": "海洋、江河、湖泊里被水环绕的陆地。",
+    "en": "islands",
+    "sentence": "这片海域上，星罗棋布地分布着大大小小的岛屿。",
+    "sentenceEn": "Scattered across these waters are islands large and small.",
+    "collocations": [
+      "大小岛屿",
+      "海上岛屿"
+    ],
+    "confusables": []
+  },
+  "海峡": {
+    "py": "hǎixiá",
+    "meaning": "两块陆地之间连接两个海域的狭窄水道。",
+    "en": "a strait",
+    "sentence": "这条繁忙的海峡是连接两大洋的重要通道。",
+    "sentenceEn": "This busy strait is an important passage linking two great oceans.",
+    "collocations": [
+      "狭窄的海峡",
+      "海峡两岸"
+    ],
+    "confusables": [
+      "海洋",
+      "海岸",
+      "海浪"
+    ]
+  },
+  "历史": {
+    "py": "lìshǐ",
+    "meaning": "自然界和人类社会的发展过程；过去的事实。",
+    "en": "history",
+    "sentence": "这座城市有着两千多年的悠久历史。",
+    "sentenceEn": "This city has a long history of over two thousand years.",
+    "collocations": [
+      "悠久的历史",
+      "历史人物"
+    ],
+    "confusables": [
+      "历来",
+      "历年",
+      "青史"
+    ]
+  },
+  "挖掘": {
+    "py": "wājué",
+    "meaning": "向下挖；发掘。",
+    "en": "dig; excavate",
+    "sentence": "考古队在这里挖掘出了大量珍贵的文物。",
+    "sentenceEn": "The archaeological team excavated a large number of precious relics here.",
+    "collocations": [
+      "挖掘宝藏",
+      "挖掘潜力"
+    ],
+    "confusables": []
+  },
+  "区域": {
+    "py": "qūyù",
+    "meaning": "地区范围。",
+    "en": "a region; an area",
+    "sentence": "这个区域属于自然保护区，禁止随意开发。",
+    "sentenceEn": "This area is a nature reserve, where development is prohibited.",
+    "collocations": [
+      "划分区域",
+      "广大区域"
+    ],
+    "confusables": [
+      "区别",
+      "领域",
+      "地域"
+    ]
+  },
+  "汇集": {
+    "py": "huìjí",
+    "meaning": "聚集，会合。",
+    "en": "gather; converge",
+    "sentence": "来自世界各地的美食在这里汇集一堂。",
+    "sentenceEn": "Delicacies from around the world come together here.",
+    "collocations": [
+      "汇集一堂",
+      "汇集人才"
+    ],
+    "confusables": [
+      "汇合",
+      "收集",
+      "聚集"
+    ]
+  },
+  "海纳百川": {
+    "py": "hǎinà bǎichuān",
+    "meaning": "比喻胸怀宽广，包容一切。",
+    "en": "all-embracing (like the sea taking in rivers)",
+    "sentence": "这座城市海纳百川，包容着不同的文化。",
+    "sentenceEn": "With an all-embracing spirit, this city takes in different cultures.",
+    "collocations": [
+      "海纳百川的胸怀",
+      "海纳百川的精神"
+    ],
+    "confusables": []
+  },
+  "椰浆饭": {
+    "py": "yējiāng fàn",
+    "meaning": "用椰浆烹煮的米饭，是当地特色食物。",
+    "en": "coconut rice (nasi lemak)",
+    "sentence": "椰浆饭配上香辣的参巴酱，是他最爱的早餐。",
+    "sentenceEn": "Coconut rice with spicy sambal is his favourite breakfast.",
+    "collocations": [
+      "一份椰浆饭",
+      "香喷喷的椰浆饭"
+    ],
+    "confusables": []
+  },
+  "黄姜饭": {
+    "py": "huángjiāng fàn",
+    "meaning": "用黄姜调味、染色的米饭。",
+    "en": "turmeric rice",
+    "sentence": "节庆时，餐桌上少不了一盘金黄的黄姜饭。",
+    "sentenceEn": "At festivals, a plate of golden turmeric rice is a must on the table.",
+    "collocations": [
+      "金黄的黄姜饭",
+      "一盘黄姜饭"
+    ],
+    "confusables": []
+  },
+  "发芽": {
+    "py": "fāyá",
+    "meaning": "种子或植物的芽长出来。",
+    "en": "sprout; germinate",
+    "sentence": "春天来了，种子在湿润的泥土里悄悄发芽。",
+    "sentenceEn": "Spring came, and the seeds quietly sprouted in the moist soil.",
+    "collocations": [
+      "种子发芽",
+      "生根发芽"
+    ],
+    "confusables": [
+      "发现",
+      "嫩芽",
+      "萌芽"
+    ]
+  },
+  "兼容并蓄": {
+    "py": "jiānróng bìngxù",
+    "meaning": "把不同内容、性质的东西都吸收进来。",
+    "en": "incorporate things of diverse nature",
+    "sentence": "中华文化兼容并蓄，吸收了许多外来的精华。",
+    "sentenceEn": "Chinese culture is all-embracing, absorbing much of the best from abroad.",
+    "collocations": [
+      "兼容并蓄的态度",
+      "兼容并蓄的精神"
+    ],
+    "confusables": []
+  },
+  "携手": {
+    "py": "xiéshǒu",
+    "meaning": "手拉手；比喻合作。",
+    "en": "join hands; cooperate",
+    "sentence": "两国携手合作，共同应对气候变化。",
+    "sentenceEn": "The two countries joined hands to tackle climate change together.",
+    "collocations": [
+      "携手合作",
+      "携手前进"
+    ],
+    "confusables": [
+      "携带",
+      "握手",
+      "招手"
+    ]
+  },
+  "辉煌": {
+    "py": "huīhuáng",
+    "meaning": "光辉灿烂；（成就）显著。",
+    "en": "brilliant; glorious",
+    "sentence": "这座城市曾经有过一段辉煌的历史。",
+    "sentenceEn": "This city once had a glorious chapter in its history.",
+    "collocations": [
+      "辉煌的成就",
+      "灯火辉煌"
+    ],
+    "confusables": []
+  },
+  "皇帝": {
+    "py": "huángdì",
+    "meaning": "古代君主国家的最高统治者。",
+    "en": "an emperor",
+    "sentence": "在古代，皇帝拥有至高无上的权力。",
+    "sentenceEn": "In ancient times, the emperor held supreme power.",
+    "collocations": [
+      "古代皇帝",
+      "皇帝的旨意"
+    ],
+    "confusables": [
+      "皇宫",
+      "皇后",
+      "上帝"
+    ]
+  },
+  "典型": {
+    "py": "diǎnxíng",
+    "meaning": "具有代表性的人或事物；有代表性的。",
+    "en": "typical; a model",
+    "sentence": "他乐于助人，是我们学习的典型。",
+    "sentenceEn": "Always ready to help others, he is a model for us to learn from.",
+    "collocations": [
+      "典型例子",
+      "典型人物"
+    ],
+    "confusables": [
+      "典礼",
+      "模型",
+      "类型"
+    ]
+  },
+  "普及": {
+    "py": "pǔjí",
+    "meaning": "普遍推广，使大众化。",
+    "en": "popularize; widespread",
+    "sentence": "随着网络的普及，人们获取信息更加方便。",
+    "sentenceEn": "With the spread of the internet, people obtain information more easily.",
+    "collocations": [
+      "普及知识",
+      "广泛普及"
+    ],
+    "confusables": [
+      "普通",
+      "涉及",
+      "波及"
+    ]
+  },
+  "真伪": {
+    "py": "zhēnwěi",
+    "meaning": "真和假。",
+    "en": "authenticity; true or false",
+    "sentence": "面对网上的信息，我们要学会辨别真伪。",
+    "sentenceEn": "Faced with online information, we must learn to tell the true from the false.",
+    "collocations": [
+      "辨别真伪",
+      "真伪难辨"
+    ],
+    "confusables": [
+      "真实",
+      "真相",
+      "虚伪"
+    ]
+  },
+  "步伐": {
+    "py": "bùfá",
+    "meaning": "走路的步子；行进的速度。",
+    "en": "pace; step",
+    "sentence": "战士们迈着整齐的步伐，走过广场。",
+    "sentenceEn": "The soldiers marched across the square in neat step.",
+    "collocations": [
+      "矫健的步伐",
+      "加快步伐"
+    ],
+    "confusables": [
+      "步骤",
+      "讨伐",
+      "砍伐"
+    ]
+  },
+  "询问": {
+    "py": "xúnwèn",
+    "meaning": "征求意见；打听。",
+    "en": "inquire; ask about",
+    "sentence": "他走到服务台，礼貌地询问了开放时间。",
+    "sentenceEn": "He went to the desk and politely asked about the opening hours.",
+    "collocations": [
+      "询问情况",
+      "详细询问"
+    ],
+    "confusables": [
+      "询价",
+      "提问",
+      "访问"
+    ]
+  },
+  "人云亦云": {
+    "py": "rényún yìyún",
+    "meaning": "别人怎么说，自己也跟着怎么说，没有主见。",
+    "en": "echo what others say",
+    "sentence": "做学问要独立思考，不能人云亦云。",
+    "sentenceEn": "In scholarship one must think independently, not merely echo others.",
+    "collocations": [
+      "人云亦云的人",
+      "切忌人云亦云"
+    ],
+    "confusables": []
+  },
+  "免疫": {
+    "py": "miǎnyì",
+    "meaning": "机体抵抗病原体的能力。",
+    "en": "immune; immunity",
+    "sentence": "经常锻炼可以增强身体的免疫能力。",
+    "sentenceEn": "Regular exercise can strengthen the body's immunity.",
+    "collocations": [
+      "免疫力",
+      "免疫系统"
+    ],
+    "confusables": [
+      "免费",
+      "防疫",
+      "瘟疫"
+    ]
+  },
+  "凝聚力": {
+    "py": "níngjùlì",
+    "meaning": "使人或事物聚集、团结在一起的力量。",
+    "en": "cohesion; cohesive force",
+    "sentence": "一次次集体活动，增强了班级的凝聚力。",
+    "sentenceEn": "One group activity after another strengthened the class's cohesion.",
+    "collocations": [
+      "增强凝聚力",
+      "团队凝聚力"
+    ],
+    "confusables": []
+  },
+  "良好": {
+    "py": "liánghǎo",
+    "meaning": "好；令人满意。",
+    "en": "good; sound",
+    "sentence": "他从小就养成了良好的学习习惯。",
+    "sentenceEn": "From a young age he developed good study habits.",
+    "collocations": [
+      "良好的习惯",
+      "状态良好"
+    ],
+    "confusables": [
+      "良心",
+      "美好",
+      "友好"
+    ]
+  },
+  "人际": {
+    "py": "rénjì",
+    "meaning": "人与人之间的（关系）。",
+    "en": "interpersonal",
+    "sentence": "良好的人际关系对一个人的成长很重要。",
+    "sentenceEn": "Good interpersonal relationships are important to a person's growth.",
+    "collocations": [
+      "人际关系",
+      "人际交往"
+    ],
+    "confusables": [
+      "人才",
+      "国际",
+      "实际"
+    ]
+  },
+  "坦率": {
+    "py": "tǎnshuài",
+    "meaning": "直爽，不隐瞒。",
+    "en": "frank; candid",
+    "sentence": "他为人坦率，心里有什么就说什么。",
+    "sentenceEn": "He is frank by nature, saying whatever is on his mind.",
+    "collocations": [
+      "坦率地说",
+      "为人坦率"
+    ],
+    "confusables": [
+      "坦白",
+      "坦诚",
+      "效率"
+    ]
+  },
+  "隐瞒": {
+    "py": "yǐnmán",
+    "meaning": "把真实情况掩盖起来不让人知道。",
+    "en": "conceal; hide (the truth)",
+    "sentence": "他向父母隐瞒了自己生病的事。",
+    "sentenceEn": "He concealed his illness from his parents.",
+    "collocations": [
+      "隐瞒真相",
+      "毫不隐瞒"
+    ],
+    "confusables": [
+      "隐约",
+      "隐患",
+      "隐居"
+    ]
+  },
+  "粗鲁": {
+    "py": "cūlǔ",
+    "meaning": "粗野，不文明。",
+    "en": "rude; boorish",
+    "sentence": "他说话粗鲁，常常无意中伤害别人。",
+    "sentenceEn": "He speaks rudely and often hurts others unintentionally.",
+    "collocations": [
+      "粗鲁无礼",
+      "举止粗鲁"
+    ],
+    "confusables": [
+      "粗糙",
+      "粗心",
+      "粗壮"
+    ]
+  },
+  "磋商": {
+    "py": "cuōshāng",
+    "meaning": "互相商量，仔细讨论。",
+    "en": "consult; negotiate",
+    "sentence": "双方经过多次磋商，终于达成了协议。",
+    "sentenceEn": "After several rounds of negotiation, the two sides finally reached an agreement.",
+    "collocations": [
+      "反复磋商",
+      "磋商对策"
+    ],
+    "confusables": [
+      "通商",
+      "经商",
+      "行商"
+    ]
+  },
+  "彼此": {
+    "py": "bǐcǐ",
+    "meaning": "那个和这个；双方。",
+    "en": "each other; both sides",
+    "sentence": "他们俩是多年的好友，彼此十分了解。",
+    "sentenceEn": "The two of them are old friends and know each other very well.",
+    "collocations": [
+      "彼此了解",
+      "彼此信任"
+    ],
+    "confusables": [
+      "彼岸",
+      "因此",
+      "如此"
+    ]
+  },
+  "融洽": {
+    "py": "róngqià",
+    "meaning": "彼此感情好，没有隔阂。",
+    "en": "harmonious; on good terms",
+    "sentence": "师生之间关系融洽，相处得十分愉快。",
+    "sentenceEn": "The relationship between teachers and students is harmonious and pleasant.",
+    "collocations": [
+      "关系融洽",
+      "相处融洽"
+    ],
+    "confusables": [
+      "融合",
+      "融化",
+      "融入"
+    ]
+  },
+  "诀窍": {
+    "py": "juéqiào",
+    "meaning": "关键的、巧妙的方法。",
+    "en": "a knack; a trick",
+    "sentence": "掌握了背单词的诀窍，他的效率提高了不少。",
+    "sentenceEn": "Having grasped the knack of memorizing words, his efficiency improved a lot.",
+    "collocations": [
+      "掌握诀窍",
+      "成功的诀窍"
+    ],
+    "confusables": []
+  },
+  "死党": {
+    "py": "sǐdǎng",
+    "meaning": "（口语）关系极铁的朋友。",
+    "en": "close buddies; a sworn clique",
+    "sentence": "他们三个是无话不谈的死党。",
+    "sentenceEn": "The three of them are inseparable buddies who tell each other everything.",
+    "collocations": [
+      "铁杆死党",
+      "一群死党"
+    ],
+    "confusables": [
+      "死亡",
+      "政党",
+      "同党"
+    ]
+  },
+  "强迫": {
+    "py": "qiángpò",
+    "meaning": "施加压力使服从。",
+    "en": "force; compel",
+    "sentence": "学习应该出于兴趣，而不是被人强迫。",
+    "sentenceEn": "Learning should come from interest, not from being forced.",
+    "collocations": [
+      "强迫自己",
+      "强迫接受"
+    ],
+    "confusables": [
+      "强烈",
+      "逼迫",
+      "压迫"
+    ]
+  },
+  "橱窗": {
+    "py": "chúchuāng",
+    "meaning": "商店临街展示商品的玻璃窗。",
+    "en": "a display window",
+    "sentence": "她被商店橱窗里漂亮的裙子吸引住了。",
+    "sentenceEn": "She was drawn to the pretty dress in the shop's display window.",
+    "collocations": [
+      "商店橱窗",
+      "橱窗展示"
+    ],
+    "confusables": [
+      "橱柜",
+      "天窗",
+      "车窗"
+    ]
+  },
+  "狭窄": {
+    "py": "xiázhǎi",
+    "meaning": "宽度小；（心胸、见识）局限。",
+    "en": "narrow; cramped",
+    "sentence": "汽车艰难地驶过这条狭窄的山路。",
+    "sentenceEn": "The car struggled through this narrow mountain road.",
+    "collocations": [
+      "狭窄的街道",
+      "空间狭窄"
+    ],
+    "confusables": [
+      "狭隘",
+      "狭小",
+      "宽窄"
+    ]
+  },
+  "铅笔盒": {
+    "py": "qiānbǐhé",
+    "meaning": "装铅笔、文具的盒子。",
+    "en": "a pencil case",
+    "sentence": "他打开铅笔盒，取出一支削好的铅笔。",
+    "sentenceEn": "He opened his pencil case and took out a sharpened pencil.",
+    "collocations": [
+      "一个铅笔盒",
+      "铅笔盒里"
+    ],
+    "confusables": []
+  },
+  "拧": {
+    "py": "níng",
+    "meaning": "用力扭转。",
+    "en": "twist; wring",
+    "sentence": "他用力拧开了瓶盖，喝了一大口水。",
+    "sentenceEn": "He twisted the cap open with force and took a big gulp of water.",
+    "collocations": [
+      "拧开",
+      "拧毛巾"
+    ],
+    "confusables": []
+  },
+  "抿": {
+    "py": "mǐn",
+    "meaning": "嘴唇、翅膀等轻轻地合拢；轻轻地沾。",
+    "en": "sip; press lightly",
+    "sentence": "她抿了一口热茶，脸上露出满足的笑容。",
+    "sentenceEn": "She took a sip of hot tea, a satisfied smile on her face.",
+    "collocations": [
+      "抿嘴一笑",
+      "抿了一口"
+    ],
+    "confusables": []
+  },
+  "肺炎": {
+    "py": "fèiyán",
+    "meaning": "肺部发炎的疾病。",
+    "en": "pneumonia",
+    "sentence": "他因为受凉感染了肺炎，住院治疗了一周。",
+    "sentenceEn": "He caught pneumonia from a chill and was hospitalized for a week.",
+    "collocations": [
+      "得了肺炎",
+      "肺炎患者"
+    ],
+    "confusables": [
+      "肺部",
+      "发炎",
+      "鼻炎"
+    ]
+  },
+  "纸屑": {
+    "py": "zhǐxiè",
+    "meaning": "纸的碎片。",
+    "en": "scraps of paper",
+    "sentence": "庆典过后，地上撒满了五彩的纸屑。",
+    "sentenceEn": "After the celebration, the ground was strewn with colourful paper scraps.",
+    "collocations": [
+      "满地纸屑",
+      "清扫纸屑"
+    ],
+    "confusables": [
+      "纸张",
+      "木屑",
+      "碎屑"
+    ]
+  },
+  "肿瘤": {
+    "py": "zhǒngliú",
+    "meaning": "机体组织异常增生形成的肿块。",
+    "en": "a tumour",
+    "sentence": "医生检查后发现，这个肿瘤是良性的。",
+    "sentenceEn": "After examination, the doctor found the tumour to be benign.",
+    "collocations": [
+      "良性肿瘤",
+      "切除肿瘤"
+    ],
+    "confusables": [
+      "肿胀",
+      "肿块",
+      "肿痛"
+    ]
+  },
+  "癌症": {
+    "py": "áizhèng",
+    "meaning": "恶性肿瘤引起的疾病。",
+    "en": "cancer",
+    "sentence": "随着医学的进步，许多癌症已经可以治疗。",
+    "sentenceEn": "With advances in medicine, many cancers can now be treated.",
+    "collocations": [
+      "患癌症",
+      "预防癌症"
+    ],
+    "confusables": [
+      "病症",
+      "急症",
+      "绝症"
+    ]
+  },
+  "徒劳无功": {
+    "py": "túláo wúgōng",
+    "meaning": "白费力气，没有成效。",
+    "en": "make a fruitless effort",
+    "sentence": "方法不对，再怎么努力也是徒劳无功。",
+    "sentenceEn": "With the wrong method, no amount of effort gets anywhere.",
+    "collocations": [
+      "徒劳无功的尝试",
+      "白白徒劳无功"
+    ],
+    "confusables": []
+  },
+  "擦拭": {
+    "py": "cāshì",
+    "meaning": "擦，使干净。",
+    "en": "wipe; clean",
+    "sentence": "他小心地擦拭着相框上的灰尘。",
+    "sentenceEn": "He carefully wiped the dust off the photo frame.",
+    "collocations": [
+      "擦拭桌子",
+      "细心擦拭"
+    ],
+    "confusables": [
+      "擦洗",
+      "擦伤",
+      "拂拭"
+    ]
+  },
+  "某": {
+    "py": "mǒu",
+    "meaning": "指不确定的人或事物。",
+    "en": "certain; some",
+    "sentence": "某天清晨，他在公园里偶遇了一位老朋友。",
+    "sentenceEn": "One morning, he ran into an old friend in the park.",
+    "collocations": [
+      "某人",
+      "某种程度"
+    ],
+    "confusables": []
+  },
+  "苍白": {
+    "py": "cāngbái",
+    "meaning": "（脸色）白而无血色；空洞无力。",
+    "en": "pale; pallid",
+    "sentence": "他生了一场大病，脸色变得十分苍白。",
+    "sentenceEn": "After a serious illness, his face turned very pale.",
+    "collocations": [
+      "脸色苍白",
+      "苍白无力"
+    ],
+    "confusables": [
+      "苍老",
+      "洁白",
+      "雪白"
+    ]
+  },
+  "鼓掌": {
+    "py": "gǔzhǎng",
+    "meaning": "拍手，多表示高兴、赞同。",
+    "en": "applaud; clap",
+    "sentence": "精彩的表演结束后，全场观众热烈鼓掌。",
+    "sentenceEn": "After the brilliant performance, the whole audience applauded warmly.",
+    "collocations": [
+      "热烈鼓掌",
+      "鼓掌欢迎"
+    ],
+    "confusables": [
+      "鼓励",
+      "手掌",
+      "巴掌"
+    ]
+  },
+  "忠实": {
+    "py": "zhōngshí",
+    "meaning": "忠诚老实；如实。",
+    "en": "faithful; loyal",
+    "sentence": "他是一位忠实的读者，每一期杂志都不会错过。",
+    "sentenceEn": "He is a faithful reader who never misses an issue of the magazine.",
+    "collocations": [
+      "忠实的朋友",
+      "忠实记录"
+    ],
+    "confusables": [
+      "忠告",
+      "真实",
+      "老实"
+    ]
+  },
+  "异乎寻常": {
+    "py": "yìhū xúncháng",
+    "meaning": "跟平常的情况很不一样。",
+    "en": "unusual; out of the ordinary",
+    "sentence": "今天他异乎寻常地沉默，一句话也不说。",
+    "sentenceEn": "Today he was unusually silent, not saying a word.",
+    "collocations": [
+      "异乎寻常的表现",
+      "显得异乎寻常"
+    ],
+    "confusables": []
+  },
+  "痊愈": {
+    "py": "quányù",
+    "meaning": "病好了，恢复健康。",
+    "en": "recover; heal",
+    "sentence": "经过一个月的治疗，他的伤口终于痊愈了。",
+    "sentenceEn": "After a month of treatment, his wound finally healed.",
+    "collocations": [
+      "完全痊愈",
+      "早日痊愈"
+    ],
+    "confusables": []
+  },
+  "清晰": {
+    "py": "qīngxī",
+    "meaning": "清楚，分明。",
+    "en": "clear; distinct",
+    "sentence": "电话里传来的声音十分清晰。",
+    "sentenceEn": "The voice over the phone was very clear.",
+    "collocations": [
+      "清晰可见",
+      "思路清晰"
+    ],
+    "confusables": [
+      "清洁",
+      "清醒",
+      "清澈"
+    ]
+  },
+  "目睹": {
+    "py": "mùdǔ",
+    "meaning": "亲眼看到。",
+    "en": "witness; see with one's own eyes",
+    "sentence": "他亲眼目睹了那场惊心动魄的救援。",
+    "sentenceEn": "He witnessed the thrilling rescue with his own eyes.",
+    "collocations": [
+      "亲眼目睹",
+      "目睹经过"
+    ],
+    "confusables": [
+      "目标",
+      "目光",
+      "目的"
+    ]
+  },
+  "鄙夷": {
+    "py": "bǐyí",
+    "meaning": "轻视，看不起。",
+    "en": "despise; disdain",
+    "sentence": "他鄙夷地看了对方一眼，转身离开了。",
+    "sentenceEn": "He shot the other a disdainful glance and turned to leave.",
+    "collocations": [
+      "鄙夷的目光",
+      "满脸鄙夷"
+    ],
+    "confusables": []
+  },
+  "流淌": {
+    "py": "liútǎng",
+    "meaning": "（液体）流动。",
+    "en": "flow; stream",
+    "sentence": "清澈的泉水从山间缓缓流淌而下。",
+    "sentenceEn": "Clear spring water flowed slowly down from the mountains.",
+    "collocations": [
+      "缓缓流淌",
+      "泪水流淌"
+    ],
+    "confusables": [
+      "流水",
+      "流逝",
+      "流传"
+    ]
+  },
+  "窗帘": {
+    "py": "chuānglián",
+    "meaning": "挂在窗户上遮光、挡风的布。",
+    "en": "a curtain",
+    "sentence": "清晨，她拉开窗帘，让阳光洒进房间。",
+    "sentenceEn": "In the morning, she drew back the curtains to let sunlight into the room.",
+    "collocations": [
+      "拉上窗帘",
+      "厚厚的窗帘"
+    ],
+    "confusables": [
+      "窗户",
+      "门帘",
+      "珠帘"
+    ]
+  },
+  "提心吊胆": {
+    "py": "tíxīn diàodǎn",
+    "meaning": "形容十分担心或害怕。",
+    "en": "be on tenterhooks; be very anxious",
+    "sentence": "考试成绩公布前，他整天提心吊胆。",
+    "sentenceEn": "Before the exam results came out, he was on tenterhooks all day.",
+    "collocations": [
+      "提心吊胆地",
+      "整天提心吊胆"
+    ],
+    "confusables": []
+  },
+  "封": {
+    "py": "fēng",
+    "meaning": "封闭；封口的或用于信件的量词。",
+    "en": "seal; (measure word for letters)",
+    "sentence": "他写完信，把信口仔细地封好。",
+    "sentenceEn": "Having finished the letter, he carefully sealed the flap.",
+    "collocations": [
+      "封口",
+      "一封信"
+    ],
+    "confusables": []
+  },
+  "古董": {
+    "py": "gǔdǒng",
+    "meaning": "古代留传下来的器物，可供鉴赏、收藏。",
+    "en": "an antique",
+    "sentence": "爷爷收藏了不少珍贵的古董。",
+    "sentenceEn": "Grandpa has collected many precious antiques.",
+    "collocations": [
+      "珍贵的古董",
+      "收藏古董"
+    ],
+    "confusables": [
+      "古老",
+      "古代",
+      "古迹"
+    ]
+  },
+  "衡量": {
+    "py": "héngliáng",
+    "meaning": "比较、估量（轻重、得失等）。",
+    "en": "weigh; measure",
+    "sentence": "我们应该用长远的眼光来衡量得失。",
+    "sentenceEn": "We should weigh gains and losses with a long-term view.",
+    "collocations": [
+      "衡量标准",
+      "反复衡量"
+    ],
+    "confusables": [
+      "数量",
+      "质量",
+      "测量"
+    ]
+  },
+  "纯洁": {
+    "py": "chúnjié",
+    "meaning": "纯净，没有污点；单纯。",
+    "en": "pure; innocent",
+    "sentence": "孩子们的心灵就像泉水一样纯洁。",
+    "sentenceEn": "Children's hearts are as pure as spring water.",
+    "collocations": [
+      "纯洁的心灵",
+      "纯洁友谊"
+    ],
+    "confusables": [
+      "纯朴",
+      "整洁",
+      "清洁"
+    ]
+  },
+  "蔬菜": {
+    "py": "shūcài",
+    "meaning": "可以做菜吃的植物。",
+    "en": "vegetables",
+    "sentence": "多吃新鲜的蔬菜对身体健康有好处。",
+    "sentenceEn": "Eating plenty of fresh vegetables is good for your health.",
+    "collocations": [
+      "新鲜蔬菜",
+      "种植蔬菜"
+    ],
+    "confusables": [
+      "蔬果",
+      "青菜",
+      "白菜"
+    ]
+  },
+  "麦片": {
+    "py": "màipiàn",
+    "meaning": "用麦类加工成的食品。",
+    "en": "oatmeal; cereal",
+    "sentence": "早餐他常常喝一碗热乎乎的麦片。",
+    "sentenceEn": "For breakfast he often has a bowl of warm oatmeal.",
+    "collocations": [
+      "一碗麦片",
+      "燕麦片"
+    ],
+    "confusables": [
+      "麦芽",
+      "卡片",
+      "薯片"
+    ]
+  },
+  "蛋白质": {
+    "py": "dànbáizhì",
+    "meaning": "构成生物体的重要营养物质。",
+    "en": "protein",
+    "sentence": "鸡蛋和豆类含有丰富的蛋白质。",
+    "sentenceEn": "Eggs and beans are rich in protein.",
+    "collocations": [
+      "补充蛋白质",
+      "优质蛋白质"
+    ],
+    "confusables": []
+  },
+  "睡眠": {
+    "py": "shuìmián",
+    "meaning": "睡觉，睡着的状态。",
+    "en": "sleep",
+    "sentence": "充足的睡眠能让人第二天精神饱满。",
+    "sentenceEn": "Adequate sleep keeps one energetic the next day.",
+    "collocations": [
+      "充足的睡眠",
+      "睡眠质量"
+    ],
+    "confusables": [
+      "睡觉",
+      "失眠",
+      "安眠"
+    ]
+  },
+  "体魄": {
+    "py": "tǐpò",
+    "meaning": "人的体格和精力。",
+    "en": "physique; build",
+    "sentence": "他坚持锻炼，练就了强健的体魄。",
+    "sentenceEn": "He kept up his exercise and built a strong physique.",
+    "collocations": [
+      "强健的体魄",
+      "强壮的体魄"
+    ],
+    "confusables": [
+      "体力",
+      "气魄",
+      "魂魄"
+    ]
+  },
+  "频率": {
+    "py": "pínlǜ",
+    "meaning": "单位时间内某事物出现的次数。",
+    "en": "frequency",
+    "sentence": "他练习的频率很高，几乎每天都不间断。",
+    "sentenceEn": "He practises very frequently, almost every day without a break.",
+    "collocations": [
+      "出现频率",
+      "频率很高"
+    ],
+    "confusables": [
+      "频繁",
+      "效率",
+      "概率"
+    ]
+  },
+  "韵律": {
+    "py": "yùnlǜ",
+    "meaning": "诗文、音乐的节奏和声调。",
+    "en": "rhythm; cadence",
+    "sentence": "这首诗读起来朗朗上口，富有韵律。",
+    "sentenceEn": "This poem reads smoothly and is full of rhythm.",
+    "collocations": [
+      "优美的韵律",
+      "韵律感"
+    ],
+    "confusables": [
+      "韵味",
+      "旋律",
+      "规律"
+    ]
+  },
+  "汲取": {
+    "py": "jíqǔ",
+    "meaning": "吸取。",
+    "en": "draw; absorb (lessons, nutrients)",
+    "sentence": "我们要善于从失败中汲取教训。",
+    "sentenceEn": "We should be good at drawing lessons from failure.",
+    "collocations": [
+      "汲取教训",
+      "汲取营养"
+    ],
+    "confusables": [
+      "汲水",
+      "索取",
+      "录取"
+    ]
+  },
+  "心扉": {
+    "py": "xīnfēi",
+    "meaning": "心，思想（比喻）。",
+    "en": "the heart; one's inner self",
+    "sentence": "音乐仿佛打开了她紧闭的心扉。",
+    "sentenceEn": "The music seemed to open her tightly closed heart.",
+    "collocations": [
+      "敞开心扉",
+      "叩响心扉"
+    ],
+    "confusables": [
+      "心情",
+      "心灵",
+      "心思"
+    ]
+  },
+  "缔造": {
+    "py": "dìzào",
+    "meaning": "创立，建立（多指伟大的事业）。",
+    "en": "found; create (a great cause)",
+    "sentence": "无数先辈用汗水缔造了今天的美好生活。",
+    "sentenceEn": "Countless forebears, through their sweat, created the good life of today.",
+    "collocations": [
+      "缔造辉煌",
+      "缔造未来"
+    ],
+    "confusables": [
+      "缔结",
+      "创造",
+      "制造"
+    ]
+  },
+  "聊天": {
+    "py": "liáotiān",
+    "meaning": "谈天，闲谈。",
+    "en": "chat",
+    "sentence": "傍晚，邻居们喜欢聚在一起聊天。",
+    "sentenceEn": "In the evening, the neighbours like to gather and chat.",
+    "collocations": [
+      "聊天解闷",
+      "在线聊天"
+    ],
+    "confusables": [
+      "今天",
+      "明天",
+      "白天"
+    ]
+  },
+  "郊外": {
+    "py": "jiāowài",
+    "meaning": "城市外面的地方。",
+    "en": "the outskirts; the suburbs",
+    "sentence": "周末，一家人开车到郊外呼吸新鲜空气。",
+    "sentenceEn": "On weekends, the family drives to the outskirts for fresh air.",
+    "collocations": [
+      "城市郊外",
+      "郊外踏青"
+    ],
+    "confusables": [
+      "郊区",
+      "户外",
+      "野外"
+    ]
+  },
+  "淋漓": {
+    "py": "línlí",
+    "meaning": "形容湿淋淋往下滴；形容畅快。",
+    "en": "dripping wet; uninhibited",
+    "sentence": "运动过后，他大汗淋漓，衣服都湿透了。",
+    "sentenceEn": "After exercising, he was dripping with sweat, his clothes soaked through.",
+    "collocations": [
+      "大汗淋漓",
+      "淋漓尽致"
+    ],
+    "confusables": [
+      "淋浴",
+      "淋雨",
+      "淋湿"
+    ]
+  },
+  "手札": {
+    "py": "shǒuzhá",
+    "meaning": "亲手写的书信、笔记。",
+    "en": "a personal letter; handwritten notes",
+    "sentence": "这些泛黄的手札，记录着先生当年的所思所想。",
+    "sentenceEn": "These yellowed letters record the gentleman's thoughts of those years.",
+    "collocations": [
+      "珍贵的手札",
+      "先生的手札"
+    ],
+    "confusables": [
+      "手册",
+      "信札",
+      "手机"
+    ]
+  },
+  "休憩": {
+    "py": "xiūqì",
+    "meaning": "休息。",
+    "en": "rest; take a break",
+    "sentence": "走累了，他们在路边的凉亭里休憩片刻。",
+    "sentenceEn": "Tired from walking, they rested a while in a roadside pavilion.",
+    "collocations": [
+      "休憩片刻",
+      "休憩的地方"
+    ],
+    "confusables": []
+  },
+  "饮茶": {
+    "py": "yǐnchá",
+    "meaning": "喝茶；（粤地）上茶楼吃点心。",
+    "en": "drink tea; have dim sum",
+    "sentence": "周末，一家人喜欢到茶楼饮茶、吃点心。",
+    "sentenceEn": "On weekends, the family likes going to a teahouse for tea and dim sum.",
+    "collocations": [
+      "上茶楼饮茶",
+      "饮茶聊天"
+    ],
+    "confusables": [
+      "饮料",
+      "红茶",
+      "绿茶"
+    ]
+  },
+  "唐": {
+    "py": "táng",
+    "meaning": "中国朝代名（唐朝）；姓。",
+    "en": "the Tang dynasty",
+    "sentence": "唐代的诗歌在中国文学史上有着重要的地位。",
+    "sentenceEn": "Poetry of the Tang dynasty holds an important place in Chinese literary history.",
+    "collocations": [
+      "唐朝",
+      "唐诗"
+    ],
+    "confusables": []
+  },
+  "磨": {
+    "py": "mó",
+    "meaning": "摩擦使锋利或光滑；折磨；拖延。",
+    "en": "grind; polish",
+    "sentence": "他在石头上仔细地磨着那把生锈的刀。",
+    "sentenceEn": "He carefully ground the rusty knife on a stone.",
+    "collocations": [
+      "磨刀",
+      "磨练"
+    ],
+    "confusables": []
+  },
+  "葱": {
+    "py": "cōng",
+    "meaning": "一种有辛辣味的蔬菜，可做调料。",
+    "en": "scallion; green onion",
+    "sentence": "妈妈在汤里撒了一把切碎的葱。",
+    "sentenceEn": "Mum sprinkled a handful of chopped scallions into the soup.",
+    "collocations": [
+      "葱花",
+      "大葱"
+    ],
+    "confusables": []
+  },
+  "橘子": {
+    "py": "júzi",
+    "meaning": "一种酸甜多汁的水果。",
+    "en": "a tangerine; a mandarin orange",
+    "sentence": "秋天到了，树上的橘子渐渐变黄了。",
+    "sentenceEn": "Autumn came, and the tangerines on the tree gradually turned yellow.",
+    "collocations": [
+      "剥橘子",
+      "一个橘子"
+    ],
+    "confusables": [
+      "橘红",
+      "橙子",
+      "杯子"
+    ]
+  },
+  "宋": {
+    "py": "sòng",
+    "meaning": "中国朝代名（宋朝）；姓。",
+    "en": "the Song dynasty",
+    "sentence": "宋代的瓷器工艺达到了很高的水平。",
+    "sentenceEn": "The porcelain craft of the Song dynasty reached a very high level.",
+    "collocations": [
+      "宋朝",
+      "宋词"
+    ],
+    "confusables": []
+  },
+  "鼎盛": {
+    "py": "dǐngshèng",
+    "meaning": "正当兴盛或强壮。",
+    "en": "flourishing; at its peak",
+    "sentence": "这个王朝在鼎盛时期，国力十分强大。",
+    "sentenceEn": "At its peak, this dynasty was extremely powerful.",
+    "collocations": [
+      "鼎盛时期",
+      "国力鼎盛"
+    ],
+    "confusables": [
+      "鼎力",
+      "旺盛",
+      "茂盛"
+    ]
+  },
+  "柴": {
+    "py": "chái",
+    "meaning": "做燃料用的树枝、木头等。",
+    "en": "firewood",
+    "sentence": "他从山上捡来一捆干柴，准备生火做饭。",
+    "sentenceEn": "He gathered a bundle of dry firewood from the hill to make a fire and cook.",
+    "collocations": [
+      "砍柴",
+      "柴火"
+    ],
+    "confusables": []
+  },
+  "醋": {
+    "py": "cù",
+    "meaning": "一种有酸味的调味品。",
+    "en": "vinegar",
+    "sentence": "做这道凉菜，需要加一点醋来提味。",
+    "sentenceEn": "For this cold dish, you need a little vinegar to bring out the flavour.",
+    "collocations": [
+      "加醋",
+      "陈醋"
+    ],
+    "confusables": []
+  },
+  "沸水": {
+    "py": "fèishuǐ",
+    "meaning": "正在沸腾的水。",
+    "en": "boiling water",
+    "sentence": "她把面条放进沸水里，煮了几分钟。",
+    "sentenceEn": "She put the noodles into the boiling water and cooked them for a few minutes.",
+    "collocations": [
+      "倒入沸水",
+      "一锅沸水"
+    ],
+    "confusables": [
+      "沸腾",
+      "海水",
+      "河水"
+    ]
+  },
+  "调匀": {
+    "py": "tiáoyún",
+    "meaning": "调和搅拌，使均匀。",
+    "en": "mix evenly; blend",
+    "sentence": "把面粉和水调匀，搅成糊状。",
+    "sentenceEn": "Mix the flour and water evenly into a paste.",
+    "collocations": [
+      "搅拌调匀",
+      "调匀面糊"
+    ],
+    "confusables": [
+      "调节",
+      "调整",
+      "均匀"
+    ]
+  },
+  "搅拌": {
+    "py": "jiǎobàn",
+    "meaning": "用棍子等在液体或糊状物中转动，使均匀。",
+    "en": "stir; mix",
+    "sentence": "她一边加糖，一边用勺子不停地搅拌。",
+    "sentenceEn": "Adding sugar, she kept stirring with a spoon.",
+    "collocations": [
+      "用力搅拌",
+      "搅拌均匀"
+    ],
+    "confusables": [
+      "搅动",
+      "搅和",
+      "凉拌"
+    ]
+  },
+  "步骤": {
+    "py": "bùzhòu",
+    "meaning": "事情进行的程序、次序。",
+    "en": "steps; a procedure",
+    "sentence": "实验必须严格按照步骤进行。",
+    "sentenceEn": "The experiment must be carried out strictly according to the steps.",
+    "collocations": [
+      "按照步骤",
+      "操作步骤"
+    ],
+    "confusables": [
+      "步伐",
+      "步行",
+      "步调"
+    ]
+  },
+  "鉴赏": {
+    "py": "jiànshǎng",
+    "meaning": "鉴定和欣赏（艺术品、文物等）。",
+    "en": "appreciate; admire (art)",
+    "sentence": "他喜欢鉴赏古代的书画作品。",
+    "sentenceEn": "He enjoys appreciating ancient works of calligraphy and painting.",
+    "collocations": [
+      "鉴赏文物",
+      "鉴赏能力"
+    ],
+    "confusables": [
+      "鉴别",
+      "观赏",
+      "赞赏"
+    ]
+  },
+  "消暑": {
+    "py": "xiāoshǔ",
+    "meaning": "消除暑气，解热。",
+    "en": "relieve summer heat",
+    "sentence": "炎炎夏日，吃一碗绿豆汤最能消暑。",
+    "sentenceEn": "On a scorching summer day, a bowl of mung bean soup best relieves the heat.",
+    "collocations": [
+      "消暑解渴",
+      "消暑的好办法"
+    ],
+    "confusables": [
+      "消失",
+      "消除",
+      "中暑"
+    ]
+  },
+  "菌": {
+    "py": "jūn",
+    "meaning": "细菌、真菌等微生物的统称。",
+    "en": "bacteria; fungus",
+    "sentence": "高温可以杀死食物中的大部分细菌。",
+    "sentenceEn": "High temperatures can kill most bacteria in food.",
+    "collocations": [
+      "细菌",
+      "病菌"
+    ],
+    "confusables": []
+  },
+  "舞蹈": {
+    "py": "wǔdǎo",
+    "meaning": "通过身体动作表达情感的艺术。",
+    "en": "dance",
+    "sentence": "她从小学习舞蹈，动作十分优美。",
+    "sentenceEn": "She has studied dance since childhood and moves very gracefully.",
+    "collocations": [
+      "民族舞蹈",
+      "舞蹈演员"
+    ],
+    "confusables": [
+      "舞台",
+      "舞会",
+      "舞步"
+    ]
+  },
+  "节奏": {
+    "py": "jiézòu",
+    "meaning": "音乐中有规律的强弱、长短变化；进展的快慢。",
+    "en": "rhythm; tempo",
+    "sentence": "这首歌的节奏明快，让人忍不住想跳舞。",
+    "sentenceEn": "This song has a brisk rhythm that makes you want to dance.",
+    "collocations": [
+      "鲜明的节奏",
+      "生活节奏"
+    ],
+    "confusables": [
+      "节日",
+      "演奏",
+      "伴奏"
+    ]
+  },
+  "霹雳舞": {
+    "py": "pīlìwǔ",
+    "meaning": "一种动作强烈的现代街舞。",
+    "en": "breakdancing",
+    "sentence": "广场上，几个年轻人正带劲地跳着霹雳舞。",
+    "sentenceEn": "In the square, a few young people were energetically breakdancing.",
+    "collocations": [
+      "跳霹雳舞",
+      "一段霹雳舞"
+    ],
+    "confusables": []
+  },
+  "肌肉": {
+    "py": "jīròu",
+    "meaning": "人和动物体内由纤维组成、能收缩的组织。",
+    "en": "muscle",
+    "sentence": "经过长期的锻炼，他的肌肉变得结实有力。",
+    "sentenceEn": "After long training, his muscles became firm and strong.",
+    "collocations": [
+      "锻炼肌肉",
+      "肌肉酸痛"
+    ],
+    "confusables": [
+      "肌肤",
+      "鸡肉",
+      "猪肉"
+    ]
+  },
+  "风靡": {
+    "py": "fēngmǐ",
+    "meaning": "形容事物很风行，像风吹倒草木一样。",
+    "en": "be fashionable; sweep (a place)",
+    "sentence": "这种舞蹈风靡全球，深受年轻人喜爱。",
+    "sentenceEn": "This dance swept the globe and is loved by young people.",
+    "collocations": [
+      "风靡全球",
+      "风靡一时"
+    ],
+    "confusables": [
+      "风格",
+      "风景",
+      "萎靡"
+    ]
+  },
+  "掀起": {
+    "py": "xiānqǐ",
+    "meaning": "揭起；使升起；引起。",
+    "en": "lift; set off; stir up",
+    "sentence": "这部作品在文坛上掀起了一阵讨论的热潮。",
+    "sentenceEn": "This work set off a wave of discussion in literary circles.",
+    "collocations": [
+      "掀起波澜",
+      "掀起盖头"
+    ],
+    "confusables": [
+      "掀翻",
+      "升起",
+      "兴起"
+    ]
+  },
+  "热潮": {
+    "py": "rècháo",
+    "meaning": "形容蓬勃发展、热烈的形势。",
+    "en": "an upsurge; a craze",
+    "sentence": "学校里掀起了一股学习书法的热潮。",
+    "sentenceEn": "An upsurge of learning calligraphy swept through the school.",
+    "collocations": [
+      "学习热潮",
+      "购物热潮"
+    ],
+    "confusables": [
+      "热闹",
+      "浪潮",
+      "高潮"
+    ]
+  },
+  "雨后春笋": {
+    "py": "yǔhòu chūnsǔn",
+    "meaning": "比喻新事物大量地涌现出来。",
+    "en": "spring up like mushrooms",
+    "sentence": "近年来，各种新型书店如雨后春笋般出现。",
+    "sentenceEn": "In recent years, all kinds of new bookshops have sprung up like mushrooms.",
+    "collocations": [
+      "如雨后春笋",
+      "雨后春笋般涌现"
+    ],
+    "confusables": []
+  },
+  "爆发力": {
+    "py": "bàofālì",
+    "meaning": "短时间内迸发出的强大力量。",
+    "en": "explosive power",
+    "sentence": "短跑运动员需要极强的爆发力。",
+    "sentenceEn": "Sprinters need tremendous explosive power.",
+    "collocations": [
+      "惊人的爆发力",
+      "爆发力强"
+    ],
+    "confusables": []
+  },
+  "默契": {
+    "py": "mòqì",
+    "meaning": "双方不用明说就有一致的理解、配合。",
+    "en": "tacit understanding; rapport",
+    "sentence": "经过长期合作，两人配合得十分默契。",
+    "sentenceEn": "After long cooperation, the two work together with great rapport.",
+    "collocations": [
+      "配合默契",
+      "十足的默契"
+    ],
+    "confusables": [
+      "默默",
+      "默写",
+      "默念"
+    ]
+  },
+  "焕发": {
+    "py": "huànfā",
+    "meaning": "光彩四射；振作。",
+    "en": "shine; radiate; glow",
+    "sentence": "经过修缮，这座老建筑重新焕发了光彩。",
+    "sentenceEn": "After renovation, the old building shone with renewed splendour.",
+    "collocations": [
+      "焕发光彩",
+      "焕发活力"
+    ],
+    "confusables": [
+      "焕然",
+      "出发",
+      "散发"
+    ]
+  },
+  "真挚": {
+    "py": "zhēnzhì",
+    "meaning": "（感情）真诚恳切。",
+    "en": "sincere; heartfelt",
+    "sentence": "他对朋友的感情十分真挚。",
+    "sentenceEn": "His feelings toward his friends are deeply sincere.",
+    "collocations": [
+      "真挚的友谊",
+      "真挚的情感"
+    ],
+    "confusables": [
+      "真实",
+      "真相",
+      "真理"
+    ]
+  },
+  "名额": {
+    "py": "míng'é",
+    "meaning": "规定的人数。",
+    "en": "a quota; a place (in number)",
+    "sentence": "这次比赛的参赛名额十分有限。",
+    "sentenceEn": "The number of places for this competition is very limited.",
+    "collocations": [
+      "参赛名额",
+      "名额有限"
+    ],
+    "confusables": [
+      "名次",
+      "份额",
+      "余额"
+    ]
+  },
+  "链接": {
+    "py": "liànjiē",
+    "meaning": "（网页等）相互链接的入口；连接。",
+    "en": "a link (web)",
+    "sentence": "请点击下面的链接，查看详细信息。",
+    "sentenceEn": "Please click the link below to view details.",
+    "collocations": [
+      "点击链接",
+      "相关链接"
+    ],
+    "confusables": [
+      "链条",
+      "连接",
+      "衔接"
+    ]
+  },
+  "师傅": {
+    "py": "shīfu",
+    "meaning": "对有技艺的人的尊称；传授技艺的人。",
+    "en": "a master; a skilled worker",
+    "sentence": "这位老师傅修了一辈子的钟表。",
+    "sentenceEn": "This old master has repaired clocks and watches all his life.",
+    "collocations": [
+      "老师傅",
+      "拜师傅"
+    ],
+    "confusables": [
+      "师生",
+      "师长",
+      "师范"
+    ]
+  },
+  "裁缝": {
+    "py": "cáiféng",
+    "meaning": "做衣服的工人。",
+    "en": "a tailor",
+    "sentence": "这件旗袍是老裁缝亲手缝制的。",
+    "sentenceEn": "This cheongsam was hand-sewn by the old tailor.",
+    "collocations": [
+      "裁缝店",
+      "手艺好的裁缝"
+    ],
+    "confusables": [
+      "裁剪",
+      "裁判",
+      "裁员"
+    ]
+  },
+  "编织": {
+    "py": "biānzhī",
+    "meaning": "把条状物交错组织起来；构思。",
+    "en": "weave; knit",
+    "sentence": "奶奶正在用毛线编织一条围巾。",
+    "sentenceEn": "Grandma is knitting a scarf with wool.",
+    "collocations": [
+      "编织毛衣",
+      "编织梦想"
+    ],
+    "confusables": [
+      "编写",
+      "纺织",
+      "组织"
+    ]
+  },
+  "匠人": {
+    "py": "jiàngrén",
+    "meaning": "手艺工人。",
+    "en": "a craftsman; an artisan",
+    "sentence": "一件件精美的作品，凝聚着匠人的心血。",
+    "sentenceEn": "Each exquisite work embodies the craftsman's painstaking effort.",
+    "collocations": [
+      "老匠人",
+      "匠人精神"
+    ],
+    "confusables": [
+      "匠心",
+      "工人",
+      "商人"
+    ]
+  },
+  "烘焙": {
+    "py": "hōngbèi",
+    "meaning": "用火或热气烤（食品等）。",
+    "en": "bake; roast",
+    "sentence": "面包房里飘来阵阵烘焙的香味。",
+    "sentenceEn": "Waves of baking aroma drifted from the bakery.",
+    "collocations": [
+      "烘焙面包",
+      "烘焙技术"
+    ],
+    "confusables": [
+      "烘干",
+      "烘托",
+      "烘烤"
+    ]
+  },
+  "讲述": {
+    "py": "jiǎngshù",
+    "meaning": "把事情或道理讲出来。",
+    "en": "recount; narrate",
+    "sentence": "爷爷常常给我们讲述他年轻时的故事。",
+    "sentenceEn": "Grandpa often recounts to us the stories of his youth.",
+    "collocations": [
+      "讲述故事",
+      "详细讲述"
+    ],
+    "confusables": [
+      "讲解",
+      "叙述",
+      "描述"
+    ]
+  },
+  "黎明": {
+    "py": "límíng",
+    "meaning": "天快亮或刚亮的时候。",
+    "en": "dawn; daybreak",
+    "sentence": "黎明时分，东方的天空泛起了鱼肚白。",
+    "sentenceEn": "At dawn, the eastern sky turned a pale fish-belly white.",
+    "collocations": [
+      "黎明时分",
+      "迎接黎明"
+    ],
+    "confusables": [
+      "光明",
+      "聪明",
+      "文明"
+    ]
+  },
+  "苏醒": {
+    "py": "sūxǐng",
+    "meaning": "昏迷后醒过来；恢复知觉。",
+    "en": "regain consciousness; come to",
+    "sentence": "昏迷了三天后，病人终于苏醒了过来。",
+    "sentenceEn": "After three days unconscious, the patient finally came to.",
+    "collocations": [
+      "慢慢苏醒",
+      "大地苏醒"
+    ],
+    "confusables": [
+      "清醒",
+      "觉醒",
+      "唤醒"
+    ]
+  },
+  "禽": {
+    "py": "qín",
+    "meaning": "鸟类的总称（多指家禽）。",
+    "en": "birds; fowl",
+    "sentence": "农场里饲养着许多家禽，如鸡、鸭、鹅。",
+    "sentenceEn": "The farm raises many fowl, such as chickens, ducks, and geese.",
+    "collocations": [
+      "家禽",
+      "飞禽"
+    ],
+    "confusables": []
+  },
+  "晚霞": {
+    "py": "wǎnxiá",
+    "meaning": "日落时天边的彩色云霞。",
+    "en": "the sunset glow",
+    "sentence": "傍晚，绚丽的晚霞染红了半边天空。",
+    "sentenceEn": "In the evening, the gorgeous sunset glow reddened half the sky.",
+    "collocations": [
+      "绚丽的晚霞",
+      "一片晚霞"
+    ],
+    "confusables": [
+      "晚餐",
+      "朝霞",
+      "彩霞"
+    ]
+  },
+  "添砖加瓦": {
+    "py": "tiānzhuān jiāwǎ",
+    "meaning": "比喻为某项事业贡献一份力量。",
+    "en": "do one's bit; make a small contribution",
+    "sentence": "每个人都愿意为家乡的建设添砖加瓦。",
+    "sentenceEn": "Everyone is willing to do their bit for the building of their hometown.",
+    "collocations": [
+      "为社会添砖加瓦",
+      "尽力添砖加瓦"
+    ],
+    "confusables": []
+  },
+  "族裔": {
+    "py": "zúyì",
+    "meaning": "民族；某民族的后代。",
+    "en": "ethnicity; descent",
+    "sentence": "这座城市里居住着许多不同族裔的居民。",
+    "sentenceEn": "This city is home to residents of many different ethnicities.",
+    "collocations": [
+      "不同族裔",
+      "少数族裔"
+    ],
+    "confusables": [
+      "族群",
+      "后裔",
+      "华裔"
+    ]
+  },
+  "唇齿相依": {
+    "py": "chúnchǐ xiāngyī",
+    "meaning": "像嘴唇和牙齿那样相互依靠。",
+    "en": "be closely interdependent",
+    "sentence": "这两个国家唇齿相依，关系十分密切。",
+    "sentenceEn": "The two countries are closely interdependent, with very close ties.",
+    "collocations": [
+      "唇齿相依的关系",
+      "唇齿相依的邻邦"
+    ],
+    "confusables": []
+  },
+  "亲戚": {
+    "py": "qīnqi",
+    "meaning": "跟自己有血缘或婚姻关系的人。",
+    "en": "relatives; kin",
+    "sentence": "过年时，他回老家走访了许多亲戚。",
+    "sentenceEn": "During the New Year, he returned home and visited many relatives.",
+    "collocations": [
+      "走亲戚",
+      "远房亲戚"
+    ],
+    "confusables": [
+      "亲人",
+      "亲自",
+      "亲切"
+    ]
+  },
+  "援手": {
+    "py": "yuánshǒu",
+    "meaning": "援助的手；伸手帮助。",
+    "en": "a helping hand",
+    "sentence": "在他最困难的时候，是朋友伸出了援手。",
+    "sentenceEn": "In his hardest times, it was friends who lent a helping hand.",
+    "collocations": [
+      "伸出援手",
+      "慷慨援手"
+    ],
+    "confusables": [
+      "援助",
+      "帮手",
+      "助手"
+    ]
+  },
+  "侥幸": {
+    "py": "jiǎoxìng",
+    "meaning": "由于偶然的原因得到成功或免去灾害。",
+    "en": "lucky; by a fluke",
+    "sentence": "这次能通过考试，多少有些侥幸的成分。",
+    "sentenceEn": "Passing the exam this time owed something to luck.",
+    "collocations": [
+      "侥幸心理",
+      "侥幸逃脱"
+    ],
+    "confusables": [
+      "庆幸",
+      "荣幸",
+      "不幸"
+    ]
+  },
+  "慷慨解囊": {
+    "py": "kāngkǎi jiěnáng",
+    "meaning": "毫不吝啬地拿出钱财帮助别人。",
+    "en": "give generously; open one's purse",
+    "sentence": "听说灾区缺乏物资，大家纷纷慷慨解囊。",
+    "sentenceEn": "Hearing the disaster area lacked supplies, everyone gave generously.",
+    "collocations": [
+      "慷慨解囊相助",
+      "为灾民慷慨解囊"
+    ],
+    "confusables": []
+  },
+  "渡": {
+    "py": "dù",
+    "meaning": "由这一岸到那一岸；渡过。",
+    "en": "cross (water); ferry",
+    "sentence": "他们乘着小船，安全地渡过了湍急的河流。",
+    "sentenceEn": "On a small boat, they safely crossed the rushing river.",
+    "collocations": [
+      "渡河",
+      "渡过难关"
+    ],
+    "confusables": []
+  },
+  "篱笆": {
+    "py": "líba",
+    "meaning": "用竹子或树枝编成的栅栏。",
+    "en": "a fence (of bamboo or twigs)",
+    "sentence": "小院的四周围着一圈整齐的篱笆。",
+    "sentenceEn": "A neat fence enclosed the little courtyard.",
+    "collocations": [
+      "竹篱笆",
+      "篱笆墙"
+    ],
+    "confusables": []
+  },
+  "心力交瘁": {
+    "py": "xīnlì jiāocuì",
+    "meaning": "精神和体力都极度劳累。",
+    "en": "be physically and mentally exhausted",
+    "sentence": "长期照顾病人，让她感到心力交瘁。",
+    "sentenceEn": "Caring for the patient for so long left her physically and mentally exhausted.",
+    "collocations": [
+      "累得心力交瘁",
+      "心力交瘁的感觉"
+    ],
+    "confusables": []
+  },
+  "雪中送炭": {
+    "py": "xuězhōng sòngtàn",
+    "meaning": "在别人困难时给予及时的帮助。",
+    "en": "provide timely help",
+    "sentence": "你的这笔捐款，对灾民来说真是雪中送炭。",
+    "sentenceEn": "Your donation was truly timely help for the disaster victims.",
+    "collocations": [
+      "雪中送炭的帮助",
+      "懂得雪中送炭"
+    ],
+    "confusables": []
+  },
+  "恰好": {
+    "py": "qiàhǎo",
+    "meaning": "正好，正巧。",
+    "en": "just right; exactly",
+    "sentence": "我刚要出门，恰好遇上了来访的朋友。",
+    "sentenceEn": "Just as I was about to leave, I happened to meet a visiting friend.",
+    "collocations": [
+      "恰好相反",
+      "时间恰好"
+    ],
+    "confusables": [
+      "恰当",
+      "美好",
+      "友好"
+    ]
+  },
+  "弥补": {
+    "py": "míbǔ",
+    "meaning": "把不足或缺陷补足。",
+    "en": "make up for; remedy",
+    "sentence": "他想尽办法弥补自己犯下的过错。",
+    "sentenceEn": "He tried every means to make up for the mistake he had made.",
+    "collocations": [
+      "弥补损失",
+      "弥补不足"
+    ],
+    "confusables": [
+      "弥漫",
+      "修补",
+      "填补"
+    ]
+  },
+  "谚语": {
+    "py": "yànyǔ",
+    "meaning": "民间流传的固定语句，含一定道理。",
+    "en": "a proverb; a saying",
+    "sentence": "“早起的鸟儿有虫吃”是一句广为流传的谚语。",
+    "sentenceEn": "“The early bird catches the worm” is a widely known proverb.",
+    "collocations": [
+      "民间谚语",
+      "一句谚语"
+    ],
+    "confusables": [
+      "成语",
+      "词语",
+      "俗语"
+    ]
+  },
+  "和睦": {
+    "py": "hémù",
+    "meaning": "相处融洽友爱。",
+    "en": "harmonious; on good terms",
+    "sentence": "一家人相处得十分和睦，从不争吵。",
+    "sentenceEn": "The family gets along very harmoniously and never quarrels.",
+    "collocations": [
+      "和睦相处",
+      "家庭和睦"
+    ],
+    "confusables": [
+      "和谐",
+      "和气",
+      "和平"
+    ]
+  },
+  "挑剔": {
+    "py": "tiāotì",
+    "meaning": "过分严格地指出毛病。",
+    "en": "nitpick; be picky",
+    "sentence": "他对食物很挑剔，稍不满意就不肯吃。",
+    "sentenceEn": "He is picky about food and won't eat if the slightest thing displeases him.",
+    "collocations": [
+      "过分挑剔",
+      "挑剔的眼光"
+    ],
+    "confusables": [
+      "挑选",
+      "挑战",
+      "挑衅"
+    ]
+  },
+  "网络": {
+    "py": "wǎngluò",
+    "meaning": "由许多相互连接的点构成的系统；互联网。",
+    "en": "a network; the internet",
+    "sentence": "如今，网络已经成为人们生活中不可或缺的一部分。",
+    "sentenceEn": "Today, the internet has become an indispensable part of people's lives.",
+    "collocations": [
+      "网络世界",
+      "网络安全"
+    ],
+    "confusables": [
+      "网站",
+      "联络",
+      "脉络"
+    ]
+  },
+  "开销": {
+    "py": "kāixiāo",
+    "meaning": "支出的费用。",
+    "en": "expenses; spending",
+    "sentence": "出门旅行，住宿是一笔不小的开销。",
+    "sentenceEn": "When travelling, accommodation is a sizeable expense.",
+    "collocations": [
+      "日常开销",
+      "节省开销"
+    ],
+    "confusables": [
+      "开始",
+      "报销",
+      "推销"
+    ]
+  },
+  "锯子": {
+    "py": "jùzi",
+    "meaning": "用来切割木材等的带齿工具。",
+    "en": "a saw",
+    "sentence": "木匠用锯子把木板锯成了两段。",
+    "sentenceEn": "The carpenter sawed the board into two pieces with a saw.",
+    "collocations": [
+      "一把锯子",
+      "电锯子"
+    ],
+    "confusables": [
+      "锯条",
+      "刀子",
+      "斧子"
+    ]
+  },
+  "遛": {
+    "py": "liù",
+    "meaning": "慢慢走，散步；牵着动物散步。",
+    "en": "stroll; walk (an animal)",
+    "sentence": "每天傍晚，爷爷都会出门遛一会儿弯。",
+    "sentenceEn": "Every evening, Grandpa goes out for a little stroll.",
+    "collocations": [
+      "遛狗",
+      "遛弯"
+    ],
+    "confusables": []
+  },
+  "拴": {
+    "py": "shuān",
+    "meaning": "用绳子等绕住、系住。",
+    "en": "tie; fasten",
+    "sentence": "他把小船拴在岸边的木桩上。",
+    "sentenceEn": "He tied the boat to a wooden post on the bank.",
+    "collocations": [
+      "拴住",
+      "拴马"
+    ],
+    "confusables": []
+  },
+  "渠道": {
+    "py": "qúdào",
+    "meaning": "水道；比喻门路、途径。",
+    "en": "a channel; a way",
+    "sentence": "我们要通过正当的渠道反映问题。",
+    "sentenceEn": "We should raise the issue through proper channels.",
+    "collocations": [
+      "正当渠道",
+      "销售渠道"
+    ],
+    "confusables": [
+      "通道",
+      "频道",
+      "轨道"
+    ]
+  },
+  "培训": {
+    "py": "péixùn",
+    "meaning": "培养训练（技能等）。",
+    "en": "train; cultivate",
+    "sentence": "公司定期为员工提供专业的技能培训。",
+    "sentenceEn": "The company regularly provides staff with professional skills training.",
+    "collocations": [
+      "职业培训",
+      "培训课程"
+    ],
+    "confusables": [
+      "培养",
+      "培育",
+      "教训"
+    ]
+  },
+  "阐述": {
+    "py": "chǎnshù",
+    "meaning": "把道理讲清楚、说明白。",
+    "en": "expound; elaborate",
+    "sentence": "他在报告中详细阐述了自己的观点。",
+    "sentenceEn": "In the report he elaborated his views in detail.",
+    "collocations": [
+      "阐述观点",
+      "详细阐述"
+    ],
+    "confusables": [
+      "叙述",
+      "描述",
+      "陈述"
+    ]
+  },
+  "铿锵": {
+    "py": "kēngqiāng",
+    "meaning": "形容声音响亮、有节奏。",
+    "en": "sonorous; ringing",
+    "sentence": "他的发言铿锵有力，赢得了阵阵掌声。",
+    "sentenceEn": "His speech was forceful and ringing, winning rounds of applause.",
+    "collocations": [
+      "铿锵有力",
+      "铿锵的脚步声"
+    ],
+    "confusables": []
+  },
+  "雅俗": {
+    "py": "yǎsú",
+    "meaning": "高雅和通俗。",
+    "en": "the refined and the popular",
+    "sentence": "这台晚会雅俗共赏，男女老少都很喜欢。",
+    "sentenceEn": "The gala appealed to all tastes; people of all ages loved it.",
+    "collocations": [
+      "雅俗共赏",
+      "不分雅俗"
+    ],
+    "confusables": [
+      "雅致",
+      "通俗",
+      "习俗"
+    ]
+  },
+  "抑扬顿挫": {
+    "py": "yìyáng dùncuò",
+    "meaning": "声音高低起伏，有节奏。",
+    "en": "rhythmical and well-modulated",
+    "sentence": "老师朗读课文时，声音抑扬顿挫，十分动听。",
+    "sentenceEn": "When the teacher read the text aloud, his modulated voice was very pleasant.",
+    "collocations": [
+      "抑扬顿挫的语调",
+      "读得抑扬顿挫"
+    ],
+    "confusables": []
+  },
+  "僵硬": {
+    "py": "jiāngyìng",
+    "meaning": "（肢体）不灵活；呆板。",
+    "en": "stiff; rigid",
+    "sentence": "在寒风中站久了，他的手脚都冻得僵硬了。",
+    "sentenceEn": "After standing long in the cold wind, his hands and feet were stiff with cold.",
+    "collocations": [
+      "表情僵硬",
+      "动作僵硬"
+    ],
+    "confusables": [
+      "僵局",
+      "坚硬",
+      "强硬"
+    ]
+  },
+  "简言意赅": {
+    "py": "jiǎnyán yìgāi",
+    "meaning": "言辞简练，意思完备。",
+    "en": "concise and comprehensive",
+    "sentence": "他的总结简言意赅，几句话就说清了重点。",
+    "sentenceEn": "His summary was concise and complete, making the key points clear in a few words.",
+    "collocations": [
+      "简言意赅地说",
+      "语言简言意赅"
+    ],
+    "confusables": []
+  },
+  "啰嗦": {
+    "py": "luōsuo",
+    "meaning": "（言语）繁复，说话絮叨。",
+    "en": "long-winded; nag",
+    "sentence": "他说话太啰嗦，半天讲不到重点。",
+    "sentenceEn": "He is too long-winded, taking ages to get to the point.",
+    "collocations": [
+      "说话啰嗦",
+      "啰嗦个不停"
+    ],
+    "confusables": []
+  },
+  "遐想": {
+    "py": "xiáxiǎng",
+    "meaning": "悠远地想象。",
+    "en": "reverie; daydream",
+    "sentence": "望着窗外的云朵，她陷入了美好的遐想。",
+    "sentenceEn": "Gazing at the clouds outside, she fell into a pleasant reverie.",
+    "collocations": [
+      "陷入遐想",
+      "引人遐想"
+    ],
+    "confusables": [
+      "遐迩",
+      "幻想",
+      "联想"
+    ]
+  },
+  "枯燥": {
+    "py": "kūzào",
+    "meaning": "单调，没有趣味。",
+    "en": "dull; dry; tedious",
+    "sentence": "这本教科书的内容十分枯燥，让人提不起兴趣。",
+    "sentenceEn": "The textbook's content is very dry and fails to spark interest.",
+    "collocations": [
+      "枯燥无味",
+      "枯燥的工作"
+    ],
+    "confusables": [
+      "枯萎",
+      "干燥",
+      "枯竭"
+    ]
+  },
+  "筛选": {
+    "py": "shāixuǎn",
+    "meaning": "通过淘汰挑选出需要的。",
+    "en": "screen; filter; sift",
+    "sentence": "经过层层筛选，最终只有几人通过了面试。",
+    "sentenceEn": "After rounds of screening, only a few passed the interview.",
+    "collocations": [
+      "筛选信息",
+      "严格筛选"
+    ],
+    "confusables": [
+      "筛子",
+      "挑选",
+      "评选"
+    ]
+  },
+  "欲": {
+    "py": "yù",
+    "meaning": "想要，希望；将要。",
+    "en": "desire; be about to",
+    "sentence": "他话到嘴边，却又欲言又止。",
+    "sentenceEn": "The words came to his lips, yet he hesitated, wanting to speak but stopping.",
+    "collocations": [
+      "欲望",
+      "欲言又止"
+    ],
+    "confusables": []
+  },
+  "浏览": {
+    "py": "liúlǎn",
+    "meaning": "大略地看。",
+    "en": "browse; skim",
+    "sentence": "他坐在沙发上，随意浏览着今天的新闻。",
+    "sentenceEn": "Sitting on the sofa, he casually browsed today's news.",
+    "collocations": [
+      "浏览网页",
+      "随意浏览"
+    ],
+    "confusables": [
+      "游览",
+      "阅览",
+      "展览"
+    ]
+  },
+  "润滑剂": {
+    "py": "rùnhuájì",
+    "meaning": "减少摩擦的物质；比喻调和关系的事物。",
+    "en": "a lubricant",
+    "sentence": "幽默常常是人际关系中的润滑剂。",
+    "sentenceEn": "Humour is often a lubricant in human relationships.",
+    "collocations": [
+      "添加润滑剂",
+      "关系的润滑剂"
+    ],
+    "confusables": []
+  },
+  "扼腕": {
+    "py": "èwàn",
+    "meaning": "握住手腕，表示惋惜、激愤。",
+    "en": "wring one's hands (in regret)",
+    "sentence": "听到他错失良机，大家都为他扼腕叹息。",
+    "sentenceEn": "Hearing he had missed the chance, everyone sighed with regret for him.",
+    "collocations": [
+      "扼腕叹息",
+      "令人扼腕"
+    ],
+    "confusables": [
+      "扼杀",
+      "扼要",
+      "手腕"
+    ]
+  },
+  "体恤": {
+    "py": "tǐxù",
+    "meaning": "设身处地为人着想，给予关怀。",
+    "en": "show solicitude for; empathize",
+    "sentence": "领导十分体恤员工，常常关心他们的生活。",
+    "sentenceEn": "The manager is very considerate of staff and often cares about their lives.",
+    "collocations": [
+      "体恤下属",
+      "体恤民情"
+    ],
+    "confusables": [
+      "体会",
+      "体验",
+      "抚恤"
+    ]
+  },
+  "氛围": {
+    "py": "fēnwéi",
+    "meaning": "周围的气氛和情调。",
+    "en": "atmosphere; ambience",
+    "sentence": "教室里充满了紧张的考试氛围。",
+    "sentenceEn": "The classroom was full of a tense exam atmosphere.",
+    "collocations": [
+      "营造氛围",
+      "节日氛围"
+    ],
+    "confusables": [
+      "包围",
+      "范围",
+      "周围"
+    ]
+  },
+  "谦虚": {
+    "py": "qiānxū",
+    "meaning": "虚心，不自满。",
+    "en": "modest; humble",
+    "sentence": "他取得了好成绩，却依然十分谦虚。",
+    "sentenceEn": "Despite his good results, he remained very modest.",
+    "collocations": [
+      "谦虚谨慎",
+      "虚心谦虚"
+    ],
+    "confusables": [
+      "谦让",
+      "空虚",
+      "心虚"
+    ]
+  },
+  "裨益": {
+    "py": "bìyì",
+    "meaning": "益处，好处。",
+    "en": "benefit; advantage",
+    "sentence": "多读好书，对开阔眼界大有裨益。",
+    "sentenceEn": "Reading good books greatly benefits one's horizons.",
+    "collocations": [
+      "大有裨益",
+      "颇有裨益"
+    ],
+    "confusables": [
+      "利益",
+      "收益",
+      "效益"
+    ]
+  },
+  "严峻": {
+    "py": "yánjùn",
+    "meaning": "严厉；（形势）严重。",
+    "en": "severe; grim",
+    "sentence": "面对严峻的考验，他没有退缩。",
+    "sentenceEn": "Facing a grim test, he did not flinch.",
+    "collocations": [
+      "严峻的形势",
+      "形势严峻"
+    ],
+    "confusables": [
+      "严格",
+      "严肃",
+      "险峻"
+    ]
+  },
+  "流言蜚语": {
+    "py": "liúyán fēiyǔ",
+    "meaning": "毫无根据的话；背后的诽谤。",
+    "en": "rumours and gossip",
+    "sentence": "面对外界的流言蜚语，他选择不予理睬。",
+    "sentenceEn": "Faced with outside rumours and gossip, he chose to ignore them.",
+    "collocations": [
+      "散布流言蜚语",
+      "不理会流言蜚语"
+    ],
+    "confusables": []
+  },
+  "扰乱": {
+    "py": "rǎoluàn",
+    "meaning": "搅乱，使混乱。",
+    "en": "disturb; disrupt",
+    "sentence": "请保持安静，不要扰乱课堂秩序。",
+    "sentenceEn": "Please keep quiet and do not disrupt the class.",
+    "collocations": [
+      "扰乱秩序",
+      "扰乱视线"
+    ],
+    "confusables": [
+      "扰民",
+      "混乱",
+      "慌乱"
+    ]
+  },
+  "甚嚣尘上": {
+    "py": "shènxiāo chénshàng",
+    "meaning": "形容议论纷纷，多指传闻、谬论流行。",
+    "en": "be rife; clamour widely",
+    "sentence": "关于这件事的种种猜测，一时甚嚣尘上。",
+    "sentenceEn": "All kinds of speculation about the matter were rife for a time.",
+    "collocations": [
+      "谣言甚嚣尘上",
+      "一时甚嚣尘上"
+    ],
+    "confusables": []
+  },
+  "基础": {
+    "py": "jīchǔ",
+    "meaning": "建筑物的根脚；事物发展的根本。",
+    "en": "foundation; basis",
+    "sentence": "扎实的基础是取得进步的关键。",
+    "sentenceEn": "A solid foundation is the key to making progress.",
+    "collocations": [
+      "打好基础",
+      "基础知识"
+    ],
+    "confusables": [
+      "基本",
+      "基地",
+      "基金"
+    ]
+  },
+  "涵盖": {
+    "py": "hángài",
+    "meaning": "包括，包容。",
+    "en": "cover; encompass",
+    "sentence": "这本书的内容涵盖了历史、地理等多个方面。",
+    "sentenceEn": "The book's content covers history, geography, and many other areas.",
+    "collocations": [
+      "涵盖范围",
+      "全面涵盖"
+    ],
+    "confusables": [
+      "涵养",
+      "覆盖",
+      "掩盖"
+    ]
+  },
+  "崛起": {
+    "py": "juéqǐ",
+    "meaning": "（山峰等）突起；兴起，崛盛。",
+    "en": "rise abruptly; emerge",
+    "sentence": "近几十年来，这个国家迅速崛起，举世瞩目。",
+    "sentenceEn": "In recent decades, this country has risen rapidly, drawing world attention.",
+    "collocations": [
+      "迅速崛起",
+      "和平崛起"
+    ],
+    "confusables": [
+      "升起",
+      "兴起",
+      "隆起"
+    ]
+  },
+  "颠覆": {
+    "py": "diānfù",
+    "meaning": "推翻；从根本上改变。",
+    "en": "subvert; overturn",
+    "sentence": "这项新技术彻底颠覆了人们的传统观念。",
+    "sentenceEn": "This new technology completely overturned people's traditional ideas.",
+    "collocations": [
+      "颠覆传统",
+      "颠覆性的变化"
+    ],
+    "confusables": [
+      "颠簸",
+      "颠倒",
+      "颠沛"
+    ]
+  },
+  "报刊": {
+    "py": "bàokān",
+    "meaning": "报纸和杂志的总称。",
+    "en": "newspapers and periodicals",
+    "sentence": "图书馆里陈列着各种各样的报刊。",
+    "sentenceEn": "The library displays all kinds of newspapers and periodicals.",
+    "collocations": [
+      "阅读报刊",
+      "报刊杂志"
+    ],
+    "confusables": [
+      "报纸",
+      "期刊",
+      "月刊"
+    ]
+  },
+  "书籍": {
+    "py": "shūjí",
+    "meaning": "书的总称。",
+    "en": "books",
+    "sentence": "他的书房里收藏着大量的书籍。",
+    "sentenceEn": "His study houses a large collection of books.",
+    "collocations": [
+      "阅读书籍",
+      "各类书籍"
+    ],
+    "confusables": [
+      "书本",
+      "古籍",
+      "户籍"
+    ]
+  },
+  "传播": {
+    "py": "chuánbō",
+    "meaning": "广泛散布。",
+    "en": "spread; disseminate",
+    "sentence": "网络让信息的传播变得更加迅速。",
+    "sentenceEn": "The internet has made the spread of information much faster.",
+    "collocations": [
+      "传播知识",
+      "广泛传播"
+    ],
+    "confusables": [
+      "传递",
+      "广播",
+      "直播"
+    ]
+  },
+  "拨": {
+    "py": "bō",
+    "meaning": "用手指或工具挑动；分给。",
+    "en": "dial; stir; allocate",
+    "sentence": "他拨通了朋友的电话，约对方一起吃饭。",
+    "sentenceEn": "He dialled his friend's number and arranged to have a meal together.",
+    "collocations": [
+      "拨打电话",
+      "拨款"
+    ],
+    "confusables": []
+  },
+  "天涯": {
+    "py": "tiānyá",
+    "meaning": "形容极远的地方。",
+    "en": "the ends of the earth",
+    "sentence": "即使远在天涯，他也牵挂着家乡的亲人。",
+    "sentenceEn": "Even at the ends of the earth, he kept his hometown family in his heart.",
+    "collocations": [
+      "天涯海角",
+      "远在天涯"
+    ],
+    "confusables": [
+      "天空",
+      "天气",
+      "生涯"
+    ]
+  },
+  "屏幕": {
+    "py": "píngmù",
+    "meaning": "显示图像、文字的部件。",
+    "en": "a screen",
+    "sentence": "电影院里，巨大的屏幕上正放映着精彩的影片。",
+    "sentenceEn": "In the cinema, a wonderful film was showing on the huge screen.",
+    "collocations": [
+      "电脑屏幕",
+      "触摸屏幕"
+    ],
+    "confusables": [
+      "屏风",
+      "银幕",
+      "字幕"
+    ]
+  },
+  "按钮": {
+    "py": "ànniǔ",
+    "meaning": "用来开关电器等的部件。",
+    "en": "a button (push-button)",
+    "sentence": "他按下红色的按钮，机器立刻停了下来。",
+    "sentenceEn": "He pressed the red button and the machine stopped at once.",
+    "collocations": [
+      "按下按钮",
+      "启动按钮"
+    ],
+    "confusables": [
+      "按时",
+      "按照",
+      "按键"
+    ]
+  },
+  "疆界": {
+    "py": "jiāngjiè",
+    "meaning": "国家或地区领土的界线。",
+    "en": "a boundary; a border",
+    "sentence": "古时候，这条大河曾是两国的疆界。",
+    "sentenceEn": "In ancient times, this great river was the boundary between two states.",
+    "collocations": [
+      "国家疆界",
+      "划定疆界"
+    ],
+    "confusables": [
+      "疆域",
+      "世界",
+      "境界"
+    ]
+  },
+  "庞大": {
+    "py": "pángdà",
+    "meaning": "（形体、组织等）很大。",
+    "en": "huge; enormous",
+    "sentence": "这项工程的规模十分庞大。",
+    "sentenceEn": "The scale of this project is enormous.",
+    "collocations": [
+      "庞大的数字",
+      "庞大的队伍"
+    ],
+    "confusables": [
+      "庞杂",
+      "伟大",
+      "强大"
+    ]
+  },
+  "阶段": {
+    "py": "jiēduàn",
+    "meaning": "事物发展过程中的一段。",
+    "en": "a stage; a phase",
+    "sentence": "复习进入了最关键的冲刺阶段。",
+    "sentenceEn": "Revision entered its most crucial sprint phase.",
+    "collocations": [
+      "重要阶段",
+      "初级阶段"
+    ],
+    "confusables": [
+      "阶层",
+      "片段",
+      "手段"
+    ]
+  },
+  "同侪": {
+    "py": "tóngchái",
+    "meaning": "同辈，地位相当的人。",
+    "en": "peers; one's own generation",
+    "sentence": "他的才华在同侪中十分突出。",
+    "sentenceEn": "His talent stands out conspicuously among his peers.",
+    "collocations": [
+      "同侪之间",
+      "同侪的认可"
+    ],
+    "confusables": [
+      "同学",
+      "同事",
+      "同伴"
+    ]
+  },
+  "撰写": {
+    "py": "zhuànxiě",
+    "meaning": "写作（多指正式的文章）。",
+    "en": "write; compose",
+    "sentence": "他花了三年时间撰写这部学术著作。",
+    "sentenceEn": "He spent three years writing this scholarly work.",
+    "collocations": [
+      "撰写论文",
+      "撰写报告"
+    ],
+    "confusables": [
+      "撰稿",
+      "书写",
+      "编写"
+    ]
+  },
+  "筹备": {
+    "py": "chóubèi",
+    "meaning": "为进行工作而事先准备、安排。",
+    "en": "prepare; make arrangements",
+    "sentence": "学校正在紧张地筹备一年一度的运动会。",
+    "sentenceEn": "The school is busily preparing for the annual sports meet.",
+    "collocations": [
+      "筹备活动",
+      "紧张筹备"
+    ],
+    "confusables": [
+      "筹划",
+      "设备",
+      "装备"
+    ]
+  },
+  "募捐": {
+    "py": "mùjuān",
+    "meaning": "广泛征集捐款、捐物。",
+    "en": "raise donations; solicit contributions",
+    "sentence": "同学们为山区的孩子举行了一场爱心募捐。",
+    "sentenceEn": "The students held a charity drive to raise donations for children in mountain areas.",
+    "collocations": [
+      "募捐活动",
+      "上街募捐"
+    ],
+    "confusables": []
+  },
+  "震撼": {
+    "py": "zhènhàn",
+    "meaning": "震动，摇撼（多指心灵）。",
+    "en": "shake; stun; shock",
+    "sentence": "这部电影的结局深深震撼了每一位观众。",
+    "sentenceEn": "The film's ending deeply moved every viewer.",
+    "collocations": [
+      "震撼人心",
+      "深受震撼"
+    ],
+    "confusables": [
+      "震动",
+      "震惊",
+      "震慑"
+    ]
+  },
+  "循规蹈矩": {
+    "py": "xúnguī dǎojǔ",
+    "meaning": "遵守规矩，不敢违反。",
+    "en": "follow the rules; toe the line",
+    "sentence": "他做事循规蹈矩，从不敢越雷池一步。",
+    "sentenceEn": "He follows the rules in everything, never daring to step out of line.",
+    "collocations": [
+      "循规蹈矩的人",
+      "一向循规蹈矩"
+    ],
+    "confusables": []
+  },
+  "融会贯通": {
+    "py": "rónghuì guàntōng",
+    "meaning": "把各方面的知识或道理融合贯穿，得到透彻理解。",
+    "en": "gain a thorough mastery",
+    "sentence": "只有融会贯通，才能把知识灵活运用。",
+    "sentenceEn": "Only by integrating knowledge thoroughly can one apply it flexibly.",
+    "collocations": [
+      "融会贯通地理解",
+      "做到融会贯通"
+    ],
+    "confusables": []
+  },
+  "腼腆": {
+    "py": "miǎntiǎn",
+    "meaning": "因害羞而神情不自然。",
+    "en": "shy; bashful",
+    "sentence": "他性格腼腆，见到生人就脸红。",
+    "sentenceEn": "He is shy by nature and blushes when meeting strangers.",
+    "collocations": [
+      "腼腆的笑容",
+      "显得腼腆"
+    ],
+    "confusables": []
+  },
+  "咨询": {
+    "py": "zīxún",
+    "meaning": "征求意见，请教。",
+    "en": "consult; seek advice",
+    "sentence": "遇到法律问题，可以向专业人士咨询。",
+    "sentenceEn": "For legal problems, you can consult a professional.",
+    "collocations": [
+      "咨询专家",
+      "心理咨询"
+    ],
+    "confusables": [
+      "咨文",
+      "查询",
+      "探询"
+    ]
+  },
+  "数据": {
+    "py": "shùjù",
+    "meaning": "进行各种统计、分析所依据的数值。",
+    "en": "data",
+    "sentence": "这份报告引用了大量的统计数据。",
+    "sentenceEn": "This report cites a large amount of statistical data.",
+    "collocations": [
+      "分析数据",
+      "数据准确"
+    ],
+    "confusables": [
+      "数字",
+      "根据",
+      "证据"
+    ]
+  },
+  "分析": {
+    "py": "fēnxī",
+    "meaning": "把事物分解成各部分加以研究。",
+    "en": "analyze; analysis",
+    "sentence": "老师帮我们分析了这道题的解法。",
+    "sentenceEn": "The teacher analyzed the solution to this problem for us.",
+    "collocations": [
+      "分析问题",
+      "仔细分析"
+    ],
+    "confusables": [
+      "分别",
+      "解析",
+      "剖析"
+    ]
+  },
+  "冰淇淋": {
+    "py": "bīngqílín",
+    "meaning": "一种冷冻的甜食。",
+    "en": "ice cream",
+    "sentence": "炎热的夏天，孩子们最爱吃冰淇淋。",
+    "sentenceEn": "On hot summer days, children love eating ice cream.",
+    "collocations": [
+      "一支冰淇淋",
+      "草莓冰淇淋"
+    ],
+    "confusables": []
+  },
+  "雄鹰": {
+    "py": "xióngyīng",
+    "meaning": "雄健的鹰。",
+    "en": "an eagle",
+    "sentence": "一只雄鹰展开翅膀，在高空翱翔。",
+    "sentenceEn": "An eagle spread its wings and soared high in the sky.",
+    "collocations": [
+      "矫健的雄鹰",
+      "雄鹰展翅"
+    ],
+    "confusables": [
+      "雄伟",
+      "雄壮",
+      "老鹰"
+    ]
+  },
+  "渺小": {
+    "py": "miǎoxiǎo",
+    "meaning": "非常小；微不足道。",
+    "en": "tiny; insignificant",
+    "sentence": "在浩瀚的宇宙面前，人类显得十分渺小。",
+    "sentenceEn": "Before the vast universe, humankind seems tiny indeed.",
+    "collocations": [
+      "渺小的个人",
+      "显得渺小"
+    ],
+    "confusables": [
+      "渺茫",
+      "微小",
+      "弱小"
+    ]
+  },
+  "坐井观天": {
+    "py": "zuòjǐng guāntiān",
+    "meaning": "坐在井底看天，比喻眼界狭小。",
+    "en": "have a narrow view (like a frog in a well)",
+    "sentence": "我们不能坐井观天，要多出去开阔眼界。",
+    "sentenceEn": "We mustn't take a frog-in-the-well view; we should go out and broaden our horizons.",
+    "collocations": [
+      "坐井观天的人",
+      "切忌坐井观天"
+    ],
+    "confusables": []
+  },
+  "自鸣得意": {
+    "py": "zìmíng déyì",
+    "meaning": "自以为了不起，表示很得意。",
+    "en": "be complacent; preen oneself",
+    "sentence": "取得一点成绩就自鸣得意，是不可取的。",
+    "sentenceEn": "Preening over a small achievement is not advisable.",
+    "collocations": [
+      "自鸣得意的样子",
+      "显得自鸣得意"
+    ],
+    "confusables": []
+  },
+  "孤陋寡闻": {
+    "py": "gūlòu guǎwén",
+    "meaning": "学识浅薄，见闻不广。",
+    "en": "ignorant and ill-informed",
+    "sentence": "他谦虚地说自己孤陋寡闻，需要多学习。",
+    "sentenceEn": "He modestly said he was ill-informed and needed to learn more.",
+    "collocations": [
+      "孤陋寡闻的人",
+      "实在孤陋寡闻"
+    ],
+    "confusables": []
+  },
+  "奥妙": {
+    "py": "àomiào",
+    "meaning": "（道理、内容）深奥微妙。",
+    "en": "profound; subtle",
+    "sentence": "这道菜的烹饪方法看似简单，其实大有奥妙。",
+    "sentenceEn": "The way this dish is cooked seems simple but actually holds great subtlety.",
+    "collocations": [
+      "其中的奥妙",
+      "奥妙无穷"
+    ],
+    "confusables": [
+      "奥秘",
+      "美妙",
+      "巧妙"
+    ]
+  },
+  "寓言": {
+    "py": "yùyán",
+    "meaning": "用故事寄托深刻道理的文学体裁。",
+    "en": "a fable; an allegory",
+    "sentence": "《乌鸦喝水》是一则家喻户晓的寓言。",
+    "sentenceEn": "“The Crow and the Pitcher” is a well-known fable.",
+    "collocations": [
+      "寓言故事",
+      "一则寓言"
+    ],
+    "confusables": [
+      "寓意",
+      "语言",
+      "名言"
+    ]
+  },
+  "桨": {
+    "py": "jiǎng",
+    "meaning": "划船用的工具。",
+    "en": "an oar; a paddle",
+    "sentence": "他用力地划着桨，小船飞快地前进。",
+    "sentenceEn": "He rowed the oars hard, and the boat sped forward.",
+    "collocations": [
+      "划桨",
+      "船桨"
+    ],
+    "confusables": []
+  },
+  "浅尝辄止": {
+    "py": "qiǎncháng zhézhǐ",
+    "meaning": "略微尝试一下就停下来，不深入。",
+    "en": "stop after a brief try; not go deep",
+    "sentence": "学习任何技能，都不能浅尝辄止。",
+    "sentenceEn": "In learning any skill, one must not stop after a superficial try.",
+    "collocations": [
+      "切忌浅尝辄止",
+      "浅尝辄止的态度"
+    ],
+    "confusables": []
+  },
+  "哲学": {
+    "py": "zhéxué",
+    "meaning": "关于世界观、人生观的根本学问。",
+    "en": "philosophy",
+    "sentence": "这本书深入浅出地介绍了西方哲学。",
+    "sentenceEn": "This book gives an accessible introduction to Western philosophy.",
+    "collocations": [
+      "哲学思想",
+      "人生哲学"
+    ],
+    "confusables": [
+      "哲理",
+      "科学",
+      "文学"
+    ]
+  },
+  "比喻": {
+    "py": "bǐyù",
+    "meaning": "用相似的事物来描绘说明。",
+    "en": "a metaphor; a simile",
+    "sentence": "作者用生动的比喻，把道理讲得通俗易懂。",
+    "sentenceEn": "The author used vivid metaphors to explain the idea plainly.",
+    "collocations": [
+      "打比喻",
+      "形象的比喻"
+    ],
+    "confusables": [
+      "比较",
+      "暗喻",
+      "隐喻"
+    ]
+  },
+  "干涸": {
+    "py": "gānhé",
+    "meaning": "（河流、池塘等）没有水了。",
+    "en": "dry up; run dry",
+    "sentence": "长期不下雨，河床都干涸了。",
+    "sentenceEn": "With no rain for a long time, even the riverbed dried up.",
+    "collocations": [
+      "河水干涸",
+      "干涸的池塘"
+    ],
+    "confusables": [
+      "干净",
+      "干燥",
+      "干旱"
+    ]
+  },
+  "浇灌": {
+    "py": "jiāoguàn",
+    "meaning": "浇水灌溉。",
+    "en": "water; irrigate",
+    "sentence": "他每天清晨都用清水浇灌花园里的花草。",
+    "sentenceEn": "Every morning he waters the flowers and plants in the garden.",
+    "collocations": [
+      "浇灌庄稼",
+      "用心浇灌"
+    ],
+    "confusables": [
+      "浇水",
+      "浇铸",
+      "浇筑"
+    ]
+  },
+  "落伍": {
+    "py": "luòwǔ",
+    "meaning": "比喻人或事物跟不上时代。",
+    "en": "fall behind; be outdated",
+    "sentence": "时代发展很快，不学习就会落伍。",
+    "sentenceEn": "The times move fast; without learning, one falls behind.",
+    "collocations": [
+      "思想落伍",
+      "跟不上而落伍"
+    ],
+    "confusables": [
+      "落叶",
+      "队伍",
+      "入伍"
+    ]
+  },
+  "孜孜不倦": {
+    "py": "zīzī bùjuàn",
+    "meaning": "勤奋努力，不知疲倦。",
+    "en": "diligent and tireless",
+    "sentence": "他几十年如一日，孜孜不倦地钻研学问。",
+    "sentenceEn": "For decades on end, he studied diligently and tirelessly.",
+    "collocations": [
+      "孜孜不倦地学习",
+      "孜孜不倦的精神"
+    ],
+    "confusables": []
+  },
+  "敷衍": {
+    "py": "fūyǎn",
+    "meaning": "做事不认真，表面应付。",
+    "en": "perfunctory; go through the motions",
+    "sentence": "做事要认真负责，不能敷衍了事。",
+    "sentenceEn": "One must work conscientiously, not just go through the motions.",
+    "collocations": [
+      "敷衍了事",
+      "敷衍塞责"
+    ],
+    "confusables": []
+  },
+  "逆水行舟": {
+    "py": "nìshuǐ xíngzhōu",
+    "meaning": "比喻不努力前进就会后退。",
+    "en": "like a boat sailing against the current",
+    "sentence": "学如逆水行舟，不进则退。",
+    "sentenceEn": "Learning is like rowing upstream: not to advance is to fall back.",
+    "collocations": [
+      "逆水行舟的道理",
+      "如逆水行舟"
+    ],
+    "confusables": []
+  },
+  "淘汰": {
+    "py": "táotài",
+    "meaning": "去掉不合适的，留下合适的。",
+    "en": "eliminate; weed out",
+    "sentence": "在激烈的竞争中，落后者很快会被淘汰。",
+    "sentenceEn": "In fierce competition, those who lag behind are quickly eliminated.",
+    "collocations": [
+      "淘汰落后",
+      "遭到淘汰"
+    ],
+    "confusables": [
+      "淘气",
+      "淘金",
+      "淘米"
+    ]
+  },
+  "佐证": {
+    "py": "zuǒzhèng",
+    "meaning": "证据；用作证据。",
+    "en": "evidence; proof",
+    "sentence": "这份文件为他的说法提供了有力的佐证。",
+    "sentenceEn": "This document provides strong evidence for his claim.",
+    "collocations": [
+      "有力的佐证",
+      "作为佐证"
+    ],
+    "confusables": [
+      "佐料",
+      "论证",
+      "例证"
+    ]
+  },
+  "平庸": {
+    "py": "píngyōng",
+    "meaning": "寻常而不突出；缺乏才能。",
+    "en": "mediocre; commonplace",
+    "sentence": "他不甘于平庸，立志做出一番成绩。",
+    "sentenceEn": "Unwilling to settle for mediocrity, he resolved to achieve something.",
+    "collocations": [
+      "平庸之辈",
+      "资质平庸"
+    ],
+    "confusables": [
+      "平凡",
+      "平淡",
+      "平静"
+    ]
+  },
+  "岂": {
+    "py": "qǐ",
+    "meaning": "表示反问，相当于“难道”“怎么”。",
+    "en": "how could; how can (rhetorical)",
+    "sentence": "君子一言九鼎，岂能轻易反悔？",
+    "sentenceEn": "A gentleman keeps his word; how could he go back on it so lightly?",
+    "collocations": [
+      "岂有此理",
+      "岂能"
+    ],
+    "confusables": []
+  },
+  "诠释": {
+    "py": "quánshì",
+    "meaning": "说明，解释。",
+    "en": "interpret; annotate; expound",
+    "sentence": "这位演员用精湛的演技诠释了角色的内心。",
+    "sentenceEn": "The actor interpreted the character's inner world with consummate skill.",
+    "collocations": [
+      "诠释经典",
+      "完美诠释"
+    ],
+    "confusables": []
+  },
+  "抛锚": {
+    "py": "pāomáo",
+    "meaning": "（车船）中途发生故障停下；停船下锚。",
+    "en": "break down; drop anchor",
+    "sentence": "汽车在半路上抛锚了，他们只好等待救援。",
+    "sentenceEn": "The car broke down halfway, so they had to wait for help.",
+    "collocations": [
+      "半路抛锚",
+      "轮船抛锚"
+    ],
+    "confusables": [
+      "抛弃",
+      "抛售",
+      "起锚"
+    ]
+  },
+  "郁闷": {
+    "py": "yùmèn",
+    "meaning": "心情低沉，烦闷。",
+    "en": "gloomy; depressed",
+    "sentence": "连续几天的阴雨，让他感到有些郁闷。",
+    "sentenceEn": "Several days of dreary rain left him feeling somewhat gloomy.",
+    "collocations": [
+      "心情郁闷",
+      "郁闷不乐"
+    ],
+    "confusables": [
+      "郁结",
+      "烦闷",
+      "沉闷"
+    ]
+  },
+  "叼": {
+    "py": "diāo",
+    "meaning": "用嘴衔住。",
+    "en": "hold in the mouth",
+    "sentence": "小狗叼着一根骨头，跑到院子里。",
+    "sentenceEn": "The puppy ran into the yard with a bone in its mouth.",
+    "collocations": [
+      "叼着",
+      "叼走"
+    ],
+    "confusables": []
+  },
+  "逗": {
+    "py": "dòu",
+    "meaning": "招引，逗弄；有趣。",
+    "en": "tease; amuse",
+    "sentence": "他做了个鬼脸，把弟弟逗得哈哈大笑。",
+    "sentenceEn": "He made a funny face and amused his little brother into laughter.",
+    "collocations": [
+      "逗笑",
+      "逗趣"
+    ],
+    "confusables": []
+  },
+  "绊": {
+    "py": "bàn",
+    "meaning": "行走时被东西挡住或缠住。",
+    "en": "trip; stumble",
+    "sentence": "他被地上的石头绊了一下，差点摔倒。",
+    "sentenceEn": "He tripped over a stone on the ground and nearly fell.",
+    "collocations": [
+      "绊倒",
+      "绊脚石"
+    ],
+    "confusables": []
+  },
+  "攀登": {
+    "py": "pāndēng",
+    "meaning": "抓住东西往上爬；比喻不断进取。",
+    "en": "climb; scale",
+    "sentence": "登山队员一步步向顶峰攀登。",
+    "sentenceEn": "The climbers scaled toward the summit step by step.",
+    "collocations": [
+      "攀登高峰",
+      "勇于攀登"
+    ],
+    "confusables": [
+      "攀爬",
+      "攀谈",
+      "攀比"
+    ]
+  },
+  "山脉": {
+    "py": "shānmài",
+    "meaning": "成行列分布的群山。",
+    "en": "a mountain range",
+    "sentence": "这条绵延的山脉横跨了好几个省。",
+    "sentenceEn": "This stretching mountain range spans several provinces.",
+    "collocations": [
+      "绵延的山脉",
+      "巍峨的山脉"
+    ],
+    "confusables": [
+      "山峰",
+      "血脉",
+      "命脉"
+    ]
+  },
+  "宇宙": {
+    "py": "yǔzhòu",
+    "meaning": "包括地球及一切天体的无限空间。",
+    "en": "the universe; the cosmos",
+    "sentence": "浩瀚的宇宙中藏着无数未解的奥秘。",
+    "sentenceEn": "The vast universe hides countless unsolved mysteries.",
+    "collocations": [
+      "浩瀚的宇宙",
+      "宇宙空间"
+    ],
+    "confusables": []
+  },
+  "体验": {
+    "py": "tǐyàn",
+    "meaning": "亲身经历，从中得到感受。",
+    "en": "experience (personally)",
+    "sentence": "这次乡村之行，让他体验到了农民的辛劳。",
+    "sentenceEn": "This trip to the countryside let him experience the farmers' hard toil.",
+    "collocations": [
+      "亲身体验",
+      "生活体验"
+    ],
+    "confusables": [
+      "体育",
+      "实验",
+      "检验"
+    ]
+  },
+  "跋涉": {
+    "py": "báshè",
+    "meaning": "爬山蹚水，形容旅途艰苦。",
+    "en": "trek; trudge",
+    "sentence": "他们长途跋涉，终于到达了目的地。",
+    "sentenceEn": "After a long trek, they finally reached their destination.",
+    "collocations": [
+      "长途跋涉",
+      "跋涉千里"
+    ],
+    "confusables": [
+      "跋扈",
+      "交涉",
+      "干涉"
+    ]
+  },
+  "牵挂": {
+    "py": "qiānguà",
+    "meaning": "因放心不下而想念。",
+    "en": "worry about; be concerned",
+    "sentence": "出门在外，他时刻牵挂着家中的父母。",
+    "sentenceEn": "Away from home, he constantly worried about his parents.",
+    "collocations": [
+      "牵挂家人",
+      "心中牵挂"
+    ],
+    "confusables": [
+      "牵连",
+      "牵引",
+      "悬挂"
+    ]
+  },
+  "唤": {
+    "py": "huàn",
+    "meaning": "呼叫，召唤。",
+    "en": "call; summon",
+    "sentence": "清晨，公鸡的啼叫唤醒了沉睡的村庄。",
+    "sentenceEn": "At dawn, the rooster's crow woke the sleeping village.",
+    "collocations": [
+      "呼唤",
+      "召唤"
+    ],
+    "confusables": []
+  },
+  "喉咙": {
+    "py": "hóulóng",
+    "meaning": "咽喉，喉咙部位。",
+    "en": "the throat",
+    "sentence": "他喊得太久，喉咙都沙哑了。",
+    "sentenceEn": "He shouted so long that his throat went hoarse.",
+    "collocations": [
+      "喉咙痛",
+      "扯着喉咙"
+    ],
+    "confusables": [
+      "喉头",
+      "喉结",
+      "喉炎"
+    ]
+  },
+  "绷": {
+    "py": "bēng",
+    "meaning": "拉紧；勉强支持。",
+    "en": "stretch tight; strain",
+    "sentence": "他绷着脸，一句话也不说。",
+    "sentenceEn": "He kept a straight face and said nothing.",
+    "collocations": [
+      "绷紧",
+      "绷着脸"
+    ],
+    "confusables": []
+  },
+  "无奈": {
+    "py": "wúnài",
+    "meaning": "无可奈何；没有办法。",
+    "en": "helpless; have no choice",
+    "sentence": "面对突如其来的变故，他感到十分无奈。",
+    "sentenceEn": "Faced with the sudden mishap, he felt utterly helpless.",
+    "collocations": [
+      "无奈之举",
+      "满脸无奈"
+    ],
+    "confusables": [
+      "无聊",
+      "无知",
+      "无数"
+    ]
+  },
+  "寺庙": {
+    "py": "sìmiào",
+    "meaning": "供奉神佛、供人祭祀的建筑。",
+    "en": "a temple",
+    "sentence": "山顶上有一座古老的寺庙。",
+    "sentenceEn": "On the mountaintop stands an ancient temple.",
+    "collocations": [
+      "古老的寺庙",
+      "寺庙的钟声"
+    ],
+    "confusables": []
+  },
+  "幽静": {
+    "py": "yōujìng",
+    "meaning": "幽雅安静。",
+    "en": "quiet and secluded",
+    "sentence": "这条小巷十分幽静，几乎看不到行人。",
+    "sentenceEn": "This little lane is very quiet and secluded, with hardly a passerby.",
+    "collocations": [
+      "幽静的小路",
+      "环境幽静"
+    ],
+    "confusables": [
+      "幽默",
+      "平静",
+      "冷静"
+    ]
+  },
+  "诧异": {
+    "py": "chàyì",
+    "meaning": "觉得意外而奇怪。",
+    "en": "surprised; astonished",
+    "sentence": "听到这个消息，他诧异得说不出话来。",
+    "sentenceEn": "On hearing the news, he was too astonished to speak.",
+    "collocations": [
+      "十分诧异",
+      "诧异的目光"
+    ],
+    "confusables": [
+      "差异",
+      "奇异",
+      "怪异"
+    ]
+  },
+  "贱": {
+    "py": "jiàn",
+    "meaning": "价钱低；地位低下。",
+    "en": "cheap; lowly",
+    "sentence": "在古代，商人的地位曾经十分卑贱。",
+    "sentenceEn": "In ancient times, merchants once held a very lowly status.",
+    "collocations": [
+      "贵贱",
+      "卑贱"
+    ],
+    "confusables": []
+  },
+  "哽咽": {
+    "py": "gěngyè",
+    "meaning": "哭时不能痛快地出声。",
+    "en": "choke with sobs",
+    "sentence": "说到伤心处，她不禁哽咽起来。",
+    "sentenceEn": "Coming to the sad part, she could not help choking with sobs.",
+    "collocations": [
+      "哽咽着说",
+      "激动得哽咽"
+    ],
+    "confusables": []
+  },
+  "眼眶": {
+    "py": "yǎnkuàng",
+    "meaning": "眼睛周围的部位。",
+    "en": "the eye socket; rims of the eyes",
+    "sentence": "听到这番话，她的眼眶渐渐湿润了。",
+    "sentenceEn": "Hearing these words, her eyes gradually grew moist.",
+    "collocations": [
+      "湿润的眼眶",
+      "眼眶发红"
+    ],
+    "confusables": [
+      "眼睛",
+      "眼神",
+      "眼泪"
+    ]
+  },
+  "咀嚼": {
+    "py": "jǔjué",
+    "meaning": "用牙齿磨碎食物；比喻反复体会。",
+    "en": "chew; ponder",
+    "sentence": "牛把草料慢慢地咀嚼着，十分悠闲。",
+    "sentenceEn": "The cow chewed its fodder slowly and leisurely.",
+    "collocations": [
+      "细细咀嚼",
+      "咀嚼食物"
+    ],
+    "confusables": []
+  },
+  "隆重": {
+    "py": "lóngzhòng",
+    "meaning": "盛大而庄重。",
+    "en": "grand; solemn",
+    "sentence": "开国大典的场面十分隆重。",
+    "sentenceEn": "The founding ceremony was a most grand occasion.",
+    "collocations": [
+      "隆重举行",
+      "隆重的典礼"
+    ],
+    "confusables": [
+      "隆起",
+      "庄重",
+      "慎重"
+    ]
+  },
+  "诅咒": {
+    "py": "zǔzhòu",
+    "meaning": "祈求鬼神降祸于人；咒骂。",
+    "en": "curse; damn",
+    "sentence": "他不停地诅咒着那些伤害过他的人。",
+    "sentenceEn": "He kept cursing those who had hurt him.",
+    "collocations": [
+      "恶毒诅咒",
+      "诅咒命运"
+    ],
+    "confusables": []
+  },
+  "洋溢": {
+    "py": "yángyì",
+    "meaning": "（情绪、气氛等）充分流露、布满。",
+    "en": "brim with; permeate",
+    "sentence": "孩子们的脸上洋溢着幸福的笑容。",
+    "sentenceEn": "The children's faces brimmed with happy smiles.",
+    "collocations": [
+      "洋溢着热情",
+      "笑容洋溢"
+    ],
+    "confusables": [
+      "洋气",
+      "充溢",
+      "横溢"
+    ]
+  },
+  "慈祥": {
+    "py": "cíxiáng",
+    "meaning": "（老年人的态度、神色）和蔼安详。",
+    "en": "kindly; benevolent",
+    "sentence": "奶奶慈祥的笑容，让人感到无比温暖。",
+    "sentenceEn": "Grandma's kindly smile made one feel boundlessly warm.",
+    "collocations": [
+      "慈祥的老人",
+      "慈祥的目光"
+    ],
+    "confusables": [
+      "慈善",
+      "慈悲",
+      "吉祥"
+    ]
+  },
+  "潭": {
+    "py": "tán",
+    "meaning": "深的水池。",
+    "en": "a deep pool",
+    "sentence": "瀑布下面是一个清澈见底的水潭。",
+    "sentenceEn": "Below the waterfall lay a crystal-clear pool.",
+    "collocations": [
+      "深潭",
+      "水潭"
+    ],
+    "confusables": []
+  },
+  "教授": {
+    "py": "jiàoshòu",
+    "meaning": "高等学校的教师职称；传授知识。",
+    "en": "a professor; to teach",
+    "sentence": "这位教授在物理学界享有很高的声望。",
+    "sentenceEn": "This professor enjoys high prestige in the field of physics.",
+    "collocations": [
+      "大学教授",
+      "教授知识"
+    ],
+    "confusables": [
+      "教师",
+      "教育",
+      "传授"
+    ]
+  },
+  "割舍": {
+    "py": "gēshě",
+    "meaning": "舍弃，放弃（多指难以放弃的）。",
+    "en": "give up; part with",
+    "sentence": "他对这片土地感情深厚，难以割舍。",
+    "sentenceEn": "His deep attachment to this land made it hard to part with.",
+    "collocations": [
+      "难以割舍",
+      "割舍不下"
+    ],
+    "confusables": [
+      "割断",
+      "割让",
+      "取舍"
+    ]
+  },
+  "分忧": {
+    "py": "fēnyōu",
+    "meaning": "分担别人的忧愁、困难。",
+    "en": "share someone's worries",
+    "sentence": "懂事的孩子总想着为父母分忧。",
+    "sentenceEn": "A sensible child always thinks of easing their parents' worries.",
+    "collocations": [
+      "为国分忧",
+      "替父母分忧"
+    ],
+    "confusables": [
+      "分担",
+      "分别",
+      "担忧"
+    ]
+  },
+  "残障": {
+    "py": "cánzhàng",
+    "meaning": "身体或智力上的残疾、障碍。",
+    "en": "disability; disabled",
+    "sentence": "社会应该给予残障人士更多的关爱。",
+    "sentenceEn": "Society should give people with disabilities more care.",
+    "collocations": [
+      "残障人士",
+      "残障设施"
+    ],
+    "confusables": [
+      "残缺",
+      "保障",
+      "故障"
+    ]
+  },
+  "聘请": {
+    "py": "pìnqǐng",
+    "meaning": "请人担任职务。",
+    "en": "engage; invite (to a post)",
+    "sentence": "学校聘请了一位经验丰富的教练。",
+    "sentenceEn": "The school engaged an experienced coach.",
+    "collocations": [
+      "聘请专家",
+      "高薪聘请"
+    ],
+    "confusables": [
+      "聘用",
+      "邀请",
+      "申请"
+    ]
+  },
+  "同工同酬": {
+    "py": "tónggōng tóngchóu",
+    "meaning": "做同样的工作，得到同样的报酬。",
+    "en": "equal pay for equal work",
+    "sentence": "实现男女同工同酬，是社会进步的体现。",
+    "sentenceEn": "Achieving equal pay for equal work between men and women reflects social progress.",
+    "collocations": [
+      "实行同工同酬",
+      "同工同酬的原则"
+    ],
+    "confusables": []
+  },
+  "权利": {
+    "py": "quánlì",
+    "meaning": "依法享有的权益和利益。",
+    "en": "rights; entitlements",
+    "sentence": "每个公民都享有受教育的权利。",
+    "sentenceEn": "Every citizen has the right to education.",
+    "collocations": [
+      "合法权利",
+      "维护权利"
+    ],
+    "confusables": [
+      "权力",
+      "胜利",
+      "福利"
+    ]
+  },
+  "雇主": {
+    "py": "gùzhǔ",
+    "meaning": "雇用别人的人。",
+    "en": "an employer",
+    "sentence": "雇主应该按时支付员工的工资。",
+    "sentenceEn": "Employers should pay their staff's wages on time.",
+    "collocations": [
+      "雇主与员工",
+      "苛刻的雇主"
+    ],
+    "confusables": [
+      "雇员",
+      "业主",
+      "买主"
+    ]
+  },
+  "纠纷": {
+    "py": "jiūfēn",
+    "meaning": "争执的事情；牵连不清的争端。",
+    "en": "a dispute; a conflict",
+    "sentence": "两家为了一堵墙发生了纠纷。",
+    "sentenceEn": "The two families fell into a dispute over a wall.",
+    "collocations": [
+      "发生纠纷",
+      "调解纠纷"
+    ],
+    "confusables": [
+      "纠正",
+      "纠缠",
+      "缤纷"
+    ]
+  },
+  "小贩": {
+    "py": "xiǎofàn",
+    "meaning": "本钱小、做小生意的人。",
+    "en": "a peddler; a vendor",
+    "sentence": "街边的小贩正在叫卖新鲜的水果。",
+    "sentenceEn": "The street vendor was hawking fresh fruit.",
+    "collocations": [
+      "流动小贩",
+      "街头小贩"
+    ],
+    "confusables": [
+      "小心",
+      "商贩",
+      "摊贩"
+    ]
+  },
+  "摊位": {
+    "py": "tānwèi",
+    "meaning": "市场上摆摊的位置。",
+    "en": "a stall; a booth",
+    "sentence": "展览会上，每个摊位都挤满了顾客。",
+    "sentenceEn": "At the fair, every stall was crowded with customers.",
+    "collocations": [
+      "租用摊位",
+      "热闹的摊位"
+    ],
+    "confusables": [
+      "摊贩",
+      "座位",
+      "单位"
+    ]
+  },
+  "呵护": {
+    "py": "hēhù",
+    "meaning": "爱护，保护（多带感情色彩）。",
+    "en": "cherish; take tender care of",
+    "sentence": "在父母的精心呵护下，他健康地成长。",
+    "sentenceEn": "Under his parents' loving care, he grew up healthy.",
+    "collocations": [
+      "精心呵护",
+      "呵护备至"
+    ],
+    "confusables": [
+      "呵欠",
+      "保护",
+      "守护"
+    ]
+  },
+  "缓解": {
+    "py": "huǎnjiě",
+    "meaning": "使尖锐、紧张的情况好转。",
+    "en": "alleviate; ease; relieve",
+    "sentence": "适当的运动可以缓解学习的压力。",
+    "sentenceEn": "Proper exercise can relieve the pressure of study.",
+    "collocations": [
+      "缓解压力",
+      "缓解疼痛"
+    ],
+    "confusables": [
+      "缓慢",
+      "化解",
+      "瓦解"
+    ]
+  },
+  "乞丐": {
+    "py": "qǐgài",
+    "meaning": "靠向人讨要为生的人。",
+    "en": "a beggar",
+    "sentence": "寒风中，一个乞丐蜷缩在街角。",
+    "sentenceEn": "In the cold wind, a beggar huddled at a street corner.",
+    "collocations": [
+      "街头乞丐",
+      "沦为乞丐"
+    ],
+    "confusables": [
+      "乞求",
+      "乞讨",
+      "乞怜"
+    ]
+  },
+  "跪": {
+    "py": "guì",
+    "meaning": "两膝着地，臀部抬起。",
+    "en": "kneel",
+    "sentence": "他跪在地上，向父母深深地磕了一个头。",
+    "sentenceEn": "He knelt on the ground and kowtowed deeply to his parents.",
+    "collocations": [
+      "下跪",
+      "跪拜"
+    ],
+    "confusables": []
+  },
+  "肮脏": {
+    "py": "āngzāng",
+    "meaning": "脏，不干净；卑劣。",
+    "en": "dirty; filthy",
+    "sentence": "他换下肮脏的衣服，洗了个热水澡。",
+    "sentenceEn": "He took off his dirty clothes and had a hot bath.",
+    "collocations": [
+      "肮脏的环境",
+      "肮脏的手段"
+    ],
+    "confusables": [
+      "心脏",
+      "内脏",
+      "肝脏"
+    ]
+  },
+  "贫穷": {
+    "py": "pínqióng",
+    "meaning": "缺乏生产资料和生活资料；穷困。",
+    "en": "poor; impoverished",
+    "sentence": "经过努力，许多贫穷的家庭逐渐脱贫。",
+    "sentenceEn": "Through effort, many poor families gradually escaped poverty.",
+    "collocations": [
+      "贫穷落后",
+      "摆脱贫穷"
+    ],
+    "confusables": [
+      "贫乏",
+      "贫民",
+      "无穷"
+    ]
+  },
+  "赤裸裸": {
+    "py": "chìluǒluǒ",
+    "meaning": "光着身子；比喻毫无遮盖、毫不掩饰。",
+    "en": "stark naked; undisguised",
+    "sentence": "这部小说赤裸裸地揭露了社会的黑暗。",
+    "sentenceEn": "This novel laid bare the darkness of society without disguise.",
+    "collocations": [
+      "赤裸裸的现实",
+      "赤裸裸地暴露"
+    ],
+    "confusables": []
+  },
+  "祈求": {
+    "py": "qíqiú",
+    "meaning": "请求，恳切地希望得到。",
+    "en": "pray for; entreat",
+    "sentence": "人们在庙里祈求来年风调雨顺。",
+    "sentenceEn": "People prayed at the temple for a good harvest in the coming year.",
+    "collocations": [
+      "祈求平安",
+      "默默祈求"
+    ],
+    "confusables": [
+      "祈福",
+      "请求",
+      "要求"
+    ]
+  },
+  "慈悲": {
+    "py": "cíbēi",
+    "meaning": "慈善和怜悯（多用于佛教）。",
+    "en": "mercy; compassion",
+    "sentence": "他心怀慈悲，常常帮助有困难的人。",
+    "sentenceEn": "With a compassionate heart, he often helps those in difficulty.",
+    "collocations": [
+      "慈悲为怀",
+      "大发慈悲"
+    ],
+    "confusables": [
+      "慈爱",
+      "慈祥",
+      "慈善"
+    ]
+  },
+  "阻挡": {
+    "py": "zǔdǎng",
+    "meaning": "拦住，使不能通过或发展。",
+    "en": "block; stop; obstruct",
+    "sentence": "任何困难都阻挡不了他前进的步伐。",
+    "sentenceEn": "No difficulty could block his forward steps.",
+    "collocations": [
+      "阻挡去路",
+      "无法阻挡"
+    ],
+    "confusables": [
+      "阻碍",
+      "抵挡",
+      "遮挡"
+    ]
   }
 }
