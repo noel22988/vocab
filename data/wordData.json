@@ -14658,5 +14658,837 @@
       "宝贵",
       "珍贵"
     ]
+  },
+  "消耗": {
+    "py": "xiāohào",
+    "meaning": "因使用或损耗而逐渐减少。",
+    "en": "consume; use up",
+    "sentence": "长跑会消耗大量的体力，赛后要及时补充能量。",
+    "sentenceEn": "Long-distance running consumes a lot of energy, so one must replenish afterward.",
+    "collocations": [
+      "消耗体力",
+      "消耗资源"
+    ],
+    "confusables": [
+      "消失",
+      "损耗",
+      "内耗"
+    ]
+  },
+  "干旱": {
+    "py": "gānhàn",
+    "meaning": "因长期缺雨而土地缺水。",
+    "en": "drought; arid",
+    "sentence": "今年雨水稀少，许多地区出现了严重的干旱。",
+    "sentenceEn": "Rainfall was scarce this year, and many regions suffered severe drought.",
+    "collocations": [
+      "干旱地区",
+      "严重干旱"
+    ],
+    "confusables": [
+      "干燥",
+      "抗旱",
+      "防旱"
+    ]
+  },
+  "蓄水池": {
+    "py": "xùshuǐchí",
+    "meaning": "用来蓄存水的池子。",
+    "en": "a reservoir",
+    "sentence": "村里修建了一座蓄水池，解决了灌溉用水的难题。",
+    "sentenceEn": "The village built a reservoir, solving the problem of water for irrigation.",
+    "collocations": [
+      "修建蓄水池",
+      "大型蓄水池"
+    ],
+    "confusables": []
+  },
+  "洗澡": {
+    "py": "xǐzǎo",
+    "meaning": "用水清洗身体。",
+    "en": "bathe; take a bath",
+    "sentence": "运动出了一身汗，他回家后立刻去洗澡。",
+    "sentenceEn": "Drenched in sweat from exercise, he went to bathe as soon as he got home.",
+    "collocations": [
+      "洗澡水",
+      "喜欢洗澡"
+    ],
+    "confusables": [
+      "洗手",
+      "洗脸",
+      "泡澡"
+    ]
+  },
+  "浴室": {
+    "py": "yùshì",
+    "meaning": "供洗澡用的房间。",
+    "en": "a bathroom",
+    "sentence": "浴室里铺着防滑的瓷砖，使用起来很安全。",
+    "sentenceEn": "The bathroom is laid with anti-slip tiles, making it safe to use.",
+    "collocations": [
+      "宽敞的浴室",
+      "浴室地板"
+    ],
+    "confusables": [
+      "浴缸",
+      "教室",
+      "卧室"
+    ]
+  },
+  "趋势": {
+    "py": "qūshì",
+    "meaning": "事物发展的动向。",
+    "en": "a trend; a tendency",
+    "sentence": "近年来，绿色出行已经成为一种潮流趋势。",
+    "sentenceEn": "In recent years, green travel has become a popular trend.",
+    "collocations": [
+      "发展趋势",
+      "上升趋势"
+    ],
+    "confusables": [
+      "趋向",
+      "形势",
+      "优势"
+    ]
+  },
+  "开源节流": {
+    "py": "kāiyuán jiéliú",
+    "meaning": "开辟收入来源，节省开支。",
+    "en": "increase income and cut spending",
+    "sentence": "要想摆脱财政困难，必须开源节流，精打细算。",
+    "sentenceEn": "To get out of financial trouble, one must increase income and cut spending, budgeting carefully.",
+    "collocations": [
+      "开源节流的办法",
+      "注重开源节流"
+    ],
+    "confusables": []
+  },
+  "媒体": {
+    "py": "méitǐ",
+    "meaning": "传播信息的工具，如报刊、网络等。",
+    "en": "media",
+    "sentence": "这件事经过媒体报道后，引起了社会的广泛关注。",
+    "sentenceEn": "After being reported by the media, the matter drew wide public attention.",
+    "collocations": [
+      "新闻媒体",
+      "媒体报道"
+    ],
+    "confusables": [
+      "媒介",
+      "身体",
+      "集体"
+    ]
+  },
+  "塑料": {
+    "py": "sùliào",
+    "meaning": "一种人工合成的高分子材料。",
+    "en": "plastic",
+    "sentence": "为了保护环境，我们应该减少使用一次性塑料制品。",
+    "sentenceEn": "To protect the environment, we should reduce the use of disposable plastic products.",
+    "collocations": [
+      "塑料袋",
+      "塑料制品"
+    ],
+    "confusables": [
+      "塑造",
+      "材料",
+      "资料"
+    ]
+  },
+  "吨": {
+    "py": "dūn",
+    "meaning": "质量单位，一吨等于一千千克。",
+    "en": "a ton (unit of mass)",
+    "sentence": "这辆卡车一次能运载十吨货物。",
+    "sentenceEn": "This truck can carry ten tons of goods at once.",
+    "collocations": [
+      "一吨",
+      "几吨重"
+    ],
+    "confusables": []
+  },
+  "廉价": {
+    "py": "liánjià",
+    "meaning": "价格低廉。",
+    "en": "cheap; low-priced",
+    "sentence": "这种材料虽然廉价，质量却毫不逊色。",
+    "sentenceEn": "Though this material is cheap, its quality is in no way inferior.",
+    "collocations": [
+      "廉价商品",
+      "廉价出售"
+    ],
+    "confusables": [
+      "廉洁",
+      "物价",
+      "降价"
+    ]
+  },
+  "提供": {
+    "py": "tígōng",
+    "meaning": "供给（意见、资料、物资等）。",
+    "en": "provide; supply",
+    "sentence": "图书馆为同学们提供了丰富的学习资源。",
+    "sentenceEn": "The library provides students with abundant learning resources.",
+    "collocations": [
+      "提供服务",
+      "提供便利"
+    ],
+    "confusables": [
+      "提高",
+      "提出",
+      "提议"
+    ]
+  },
+  "铺": {
+    "py": "pū",
+    "meaning": "把东西展开或摊平；铺设。",
+    "en": "spread; pave",
+    "sentence": "工人们正在马路上铺设崭新的沥青。",
+    "sentenceEn": "Workers were paving the road with fresh asphalt.",
+    "collocations": [
+      "铺床",
+      "铺路"
+    ],
+    "confusables": []
+  },
+  "污染": {
+    "py": "wūrǎn",
+    "meaning": "有害物质混入空气、水、土壤等使之变脏。",
+    "en": "pollute; contaminate",
+    "sentence": "工厂随意排放废水，严重污染了附近的河流。",
+    "sentenceEn": "The factory discharged wastewater carelessly, seriously polluting the nearby river.",
+    "collocations": [
+      "空气污染",
+      "污染环境"
+    ],
+    "confusables": [
+      "污水",
+      "感染",
+      "传染"
+    ]
+  },
+  "焚烧": {
+    "py": "fénshāo",
+    "meaning": "烧（多指大面积燃烧）。",
+    "en": "burn; incinerate",
+    "sentence": "随意焚烧垃圾会产生大量有害气体，污染空气。",
+    "sentenceEn": "Burning rubbish indiscriminately produces large amounts of harmful gases and pollutes the air.",
+    "collocations": [
+      "焚烧垃圾",
+      "焚烧处理"
+    ],
+    "confusables": [
+      "焚毁",
+      "燃烧",
+      "发烧"
+    ]
+  },
+  "烟尘": {
+    "py": "yānchén",
+    "meaning": "烟雾和尘埃。",
+    "en": "smoke and dust",
+    "sentence": "工地上机器轰鸣，烟尘弥漫，呛得人睁不开眼。",
+    "sentenceEn": "On the construction site, machines roared and smoke and dust filled the air, stinging the eyes.",
+    "collocations": [
+      "烟尘弥漫",
+      "滚滚烟尘"
+    ],
+    "confusables": [
+      "烟雾",
+      "灰尘",
+      "粉尘"
+    ]
+  },
+  "土壤": {
+    "py": "tǔrǎng",
+    "meaning": "适于植物生长的土地表层。",
+    "en": "soil",
+    "sentence": "肥沃的土壤为农作物的生长提供了充足的养分。",
+    "sentenceEn": "Fertile soil provides crops with ample nutrients for growth.",
+    "collocations": [
+      "肥沃的土壤",
+      "改良土壤"
+    ],
+    "confusables": [
+      "土地",
+      "土豆",
+      "沃壤"
+    ]
+  },
+  "遏制": {
+    "py": "èzhì",
+    "meaning": "用力阻止，使不发展。",
+    "en": "curb; contain",
+    "sentence": "为了遏制疫情的蔓延，各地都采取了严格的措施。",
+    "sentenceEn": "To curb the spread of the epidemic, strict measures were taken everywhere.",
+    "collocations": [
+      "遏制蔓延",
+      "有效遏制"
+    ],
+    "confusables": [
+      "控制",
+      "限制",
+      "抑制"
+    ]
+  },
+  "倡导": {
+    "py": "chàngdǎo",
+    "meaning": "带头提倡。",
+    "en": "advocate; initiate",
+    "sentence": "学校大力倡导节约用水，反对浪费。",
+    "sentenceEn": "The school strongly advocates saving water and opposes waste.",
+    "collocations": [
+      "倡导环保",
+      "大力倡导"
+    ],
+    "confusables": [
+      "倡议",
+      "引导",
+      "领导"
+    ]
+  },
+  "逐渐": {
+    "py": "zhújiàn",
+    "meaning": "渐渐地。",
+    "en": "gradually",
+    "sentence": "随着天色渐暗，街上的行人逐渐少了。",
+    "sentenceEn": "As the sky gradually darkened, the pedestrians on the street thinned out.",
+    "collocations": [
+      "逐渐增多",
+      "逐渐适应"
+    ],
+    "confusables": [
+      "逐步",
+      "逐年",
+      "逐一"
+    ]
+  },
+  "统计": {
+    "py": "tǒngjì",
+    "meaning": "总括地计算；对数据的搜集整理。",
+    "en": "statistics; count up",
+    "sentence": "老师统计了一下，全班同学都按时交了作业。",
+    "sentenceEn": "The teacher counted and found the whole class had handed in homework on time.",
+    "collocations": [
+      "统计数据",
+      "据统计"
+    ],
+    "confusables": [
+      "统一",
+      "设计",
+      "估计"
+    ]
+  },
+  "泛滥": {
+    "py": "fànlàn",
+    "meaning": "江河湖泊的水溢出；坏事不受限制地流行。",
+    "en": "overflow; be rampant",
+    "sentence": "连日暴雨，河水泛滥，淹没了大片农田。",
+    "sentenceEn": "After days of heavy rain, the river overflowed, submerging vast farmland.",
+    "collocations": [
+      "河水泛滥",
+      "泛滥成灾"
+    ],
+    "confusables": []
+  },
+  "寿命": {
+    "py": "shòumìng",
+    "meaning": "生存的年限；使用的期限。",
+    "en": "lifespan; service life",
+    "sentence": "适当保养可以延长机器的使用寿命。",
+    "sentenceEn": "Proper maintenance can extend a machine's service life.",
+    "collocations": [
+      "平均寿命",
+      "延长寿命"
+    ],
+    "confusables": [
+      "寿星",
+      "生命",
+      "性命"
+    ]
+  },
+  "缺乏": {
+    "py": "quēfá",
+    "meaning": "没有或不够。",
+    "en": "lack; be short of",
+    "sentence": "由于缺乏经验，他在工作中犯了一些小错误。",
+    "sentenceEn": "Lacking experience, he made a few small mistakes at work.",
+    "collocations": [
+      "缺乏经验",
+      "缺乏信心"
+    ],
+    "confusables": [
+      "缺少",
+      "贫乏",
+      "疲乏"
+    ]
+  },
+  "亿": {
+    "py": "yì",
+    "meaning": "数目，一亿等于一万万。",
+    "en": "a hundred million",
+    "sentence": "我国的人口已经超过了十四亿。",
+    "sentenceEn": "Our country's population has exceeded 1.4 billion.",
+    "collocations": [
+      "几亿",
+      "上亿"
+    ],
+    "confusables": []
+  },
+  "妥善": {
+    "py": "tuǒshàn",
+    "meaning": "稳妥完善。",
+    "en": "proper; appropriate",
+    "sentence": "他把这件棘手的事情处理得十分妥善。",
+    "sentenceEn": "He handled this tricky matter very properly.",
+    "collocations": [
+      "妥善处理",
+      "妥善保管"
+    ],
+    "confusables": [
+      "妥当",
+      "完善",
+      "慈善"
+    ]
+  },
+  "自卑": {
+    "py": "zìbēi",
+    "meaning": "轻视自己，认为不如别人。",
+    "en": "have low self-esteem; feel inferior",
+    "sentence": "他因为个子矮小而感到自卑，不敢和别人交往。",
+    "sentenceEn": "He felt inferior because of his short stature and dared not mix with others.",
+    "collocations": [
+      "感到自卑",
+      "自卑心理"
+    ],
+    "confusables": [
+      "自信",
+      "自豪",
+      "谦卑"
+    ]
+  },
+  "身材": {
+    "py": "shēncái",
+    "meaning": "人体高矮和胖瘦的样子。",
+    "en": "figure; build",
+    "sentence": "她身材高挑，气质优雅，十分引人注目。",
+    "sentenceEn": "She has a tall figure and elegant bearing, drawing much attention.",
+    "collocations": [
+      "身材匀称",
+      "保持身材"
+    ],
+    "confusables": [
+      "身高",
+      "教材",
+      "木材"
+    ]
+  },
+  "羡慕": {
+    "py": "xiànmù",
+    "meaning": "看见别人的长处而希望自己也有。",
+    "en": "envy; admire",
+    "sentence": "看到同学获奖，他的眼中流露出羡慕的神情。",
+    "sentenceEn": "Seeing his classmate win, a look of envy showed in his eyes.",
+    "collocations": [
+      "十分羡慕",
+      "羡慕不已"
+    ],
+    "confusables": [
+      "仰慕",
+      "爱慕",
+      "思慕"
+    ]
+  },
+  "抗拒": {
+    "py": "kàngjù",
+    "meaning": "抵抗，拒绝。",
+    "en": "resist; defy",
+    "sentence": "面对美食的诱惑，他实在难以抗拒。",
+    "sentenceEn": "Faced with the temptation of delicious food, he found it hard to resist.",
+    "collocations": [
+      "无法抗拒",
+      "抗拒诱惑"
+    ],
+    "confusables": [
+      "抗议",
+      "抗争",
+      "抗击"
+    ]
+  },
+  "诱惑": {
+    "py": "yòuhuò",
+    "meaning": "使用手段引人；吸引。",
+    "en": "tempt; lure",
+    "sentence": "面对金钱的诱惑，他始终坚守着自己的原则。",
+    "sentenceEn": "In the face of the lure of money, he held firm to his principles.",
+    "collocations": [
+      "抵制诱惑",
+      "巨大的诱惑"
+    ],
+    "confusables": [
+      "诱导",
+      "迷惑",
+      "困惑"
+    ]
+  },
+  "戒": {
+    "py": "jiè",
+    "meaning": "革除（不良嗜好）；防备；戒指。",
+    "en": "give up; guard against",
+    "sentence": "为了健康，他下定决心戒掉了多年的烟瘾。",
+    "sentenceEn": "For his health, he resolved to give up his years-long smoking habit.",
+    "collocations": [
+      "戒烟",
+      "戒备"
+    ],
+    "confusables": []
+  },
+  "茫然": {
+    "py": "mángrán",
+    "meaning": "完全不知道的样子；失意的样子。",
+    "en": "at a loss; blank",
+    "sentence": "突然失去了方向，他茫然地站在原地，不知所措。",
+    "sentenceEn": "Suddenly losing his bearings, he stood blankly, at a loss what to do.",
+    "collocations": [
+      "一脸茫然",
+      "茫然不知所措"
+    ],
+    "confusables": [
+      "突然",
+      "仍然",
+      "居然"
+    ]
+  },
+  "打瞌睡": {
+    "py": "dǎ kēshuì",
+    "meaning": "因困倦而短时间入睡。",
+    "en": "doze off; nod off",
+    "sentence": "由于昨晚睡得太晚，他上课时不停地打瞌睡。",
+    "sentenceEn": "Having slept too late the night before, he kept dozing off in class.",
+    "collocations": [
+      "忍不住打瞌睡",
+      "上课打瞌睡"
+    ],
+    "confusables": []
+  },
+  "嫌": {
+    "py": "xián",
+    "meaning": "厌恶，不满意；嫌疑。",
+    "en": "dislike; mind",
+    "sentence": "他嫌路太远，不愿意走着去。",
+    "sentenceEn": "He minded that the road was too far and didn't want to walk.",
+    "collocations": [
+      "嫌弃",
+      "嫌麻烦"
+    ],
+    "confusables": []
+  },
+  "逼": {
+    "py": "bī",
+    "meaning": "强迫，给人威胁；靠近。",
+    "en": "force; press",
+    "sentence": "敌人步步紧逼，形势变得越来越危急。",
+    "sentenceEn": "The enemy pressed closer step by step, and the situation grew ever more critical.",
+    "collocations": [
+      "逼迫",
+      "逼近"
+    ],
+    "confusables": []
+  },
+  "烹饪": {
+    "py": "pēngrèn",
+    "meaning": "做饭做菜的技艺。",
+    "en": "cooking; the culinary art",
+    "sentence": "奶奶的烹饪手艺很好，做的菜人人爱吃。",
+    "sentenceEn": "Grandma's cooking is excellent; everyone loves her dishes.",
+    "collocations": [
+      "烹饪技巧",
+      "擅长烹饪"
+    ],
+    "confusables": [
+      "烹调",
+      "烹煮",
+      "烹炸"
+    ]
+  },
+  "符合": {
+    "py": "fúhé",
+    "meaning": "（数量、形状、情节等）相合。",
+    "en": "conform to; accord with",
+    "sentence": "他的设计方案完全符合比赛的要求。",
+    "sentenceEn": "His design fully conformed to the contest's requirements.",
+    "collocations": [
+      "符合要求",
+      "符合标准"
+    ],
+    "confusables": [
+      "符号",
+      "结合",
+      "适合"
+    ]
+  },
+  "憋": {
+    "py": "biē",
+    "meaning": "抑制；闷在心里。",
+    "en": "suppress; hold back",
+    "sentence": "他憋了一肚子的话，却始终没有说出口。",
+    "sentenceEn": "He had a bellyful of words held back, yet never spoke them out.",
+    "collocations": [
+      "憋气",
+      "憋住"
+    ],
+    "confusables": []
+  },
+  "委婉": {
+    "py": "wěiwǎn",
+    "meaning": "（言辞）婉转，不直接。",
+    "en": "tactful; euphemistic",
+    "sentence": "他委婉地拒绝了对方的请求，没有伤害彼此的感情。",
+    "sentenceEn": "He tactfully declined the request without hurting their feelings.",
+    "collocations": [
+      "委婉地表达",
+      "委婉拒绝"
+    ],
+    "confusables": [
+      "委托",
+      "委员",
+      "委屈"
+    ]
+  },
+  "彻底": {
+    "py": "chèdǐ",
+    "meaning": "深入透彻，没有遗留。",
+    "en": "thorough; complete",
+    "sentence": "他下决心要彻底改掉拖延的坏习惯。",
+    "sentenceEn": "He resolved to completely break his bad habit of procrastination.",
+    "collocations": [
+      "彻底解决",
+      "彻底改变"
+    ],
+    "confusables": [
+      "彻夜",
+      "到底",
+      "海底"
+    ]
+  },
+  "缝": {
+    "py": "féng",
+    "meaning": "用针线连缀；缝隙。",
+    "en": "sew; a seam",
+    "sentence": "妈妈一针一线地为我缝补衣服上的破洞。",
+    "sentenceEn": "Stitch by stitch, Mum sewed up the hole in my clothes.",
+    "collocations": [
+      "缝补",
+      "门缝"
+    ],
+    "confusables": []
+  },
+  "掩": {
+    "py": "yǎn",
+    "meaning": "遮盖；关闭。",
+    "en": "cover; conceal",
+    "sentence": "她用手掩住嘴，忍不住笑了起来。",
+    "sentenceEn": "She covered her mouth with her hand, unable to hold back a laugh.",
+    "collocations": [
+      "掩饰",
+      "掩盖"
+    ],
+    "confusables": []
+  },
+  "恐惧": {
+    "py": "kǒngjù",
+    "meaning": "惊慌害怕。",
+    "en": "fear; dread",
+    "sentence": "在漆黑的夜里独自走路，他心中充满了恐惧。",
+    "sentenceEn": "Walking alone in the pitch-dark night, his heart was full of fear.",
+    "collocations": [
+      "感到恐惧",
+      "心生恐惧"
+    ],
+    "confusables": [
+      "恐怖",
+      "恐慌",
+      "畏惧"
+    ]
+  },
+  "走廊": {
+    "py": "zǒuláng",
+    "meaning": "屋檐下或建筑物之间有顶的通道。",
+    "en": "a corridor; a hallway",
+    "sentence": "教学楼的走廊里，挂满了同学们的书画作品。",
+    "sentenceEn": "The corridors of the teaching building were hung with students' calligraphy and paintings.",
+    "collocations": [
+      "长长的走廊",
+      "走廊尽头"
+    ],
+    "confusables": [
+      "走路",
+      "长廊",
+      "画廊"
+    ]
+  },
+  "锁": {
+    "py": "suǒ",
+    "meaning": "加在门、箱上使人不能开启的器具；用锁关住。",
+    "en": "a lock; to lock",
+    "sentence": "出门前，他仔细地把门锁好。",
+    "sentenceEn": "Before going out, he carefully locked the door.",
+    "collocations": [
+      "锁门",
+      "一把锁"
+    ],
+    "confusables": []
+  },
+  "熄灯": {
+    "py": "xīdēng",
+    "meaning": "关闭或灭掉灯火。",
+    "en": "turn off the lights",
+    "sentence": "宿舍十点准时熄灯，同学们都得按时休息。",
+    "sentenceEn": "The dormitory lights go off at ten sharp, and everyone must rest on time.",
+    "collocations": [
+      "准时熄灯",
+      "熄灯睡觉"
+    ],
+    "confusables": [
+      "熄火",
+      "台灯",
+      "路灯"
+    ]
+  },
+  "颤抖": {
+    "py": "chàndǒu",
+    "meaning": "因冷、怕、激动而身体抖动。",
+    "en": "tremble; shiver",
+    "sentence": "寒风刺骨，他冻得浑身颤抖。",
+    "sentenceEn": "The wind was biting, and he shivered all over with cold.",
+    "collocations": [
+      "浑身颤抖",
+      "声音颤抖"
+    ],
+    "confusables": [
+      "颤动",
+      "颤栗",
+      "发抖"
+    ]
+  },
+  "隐约": {
+    "py": "yǐnyuē",
+    "meaning": "看起来或听起来不清楚。",
+    "en": "faint; indistinct",
+    "sentence": "远处隐约传来一阵悠扬的笛声。",
+    "sentenceEn": "From afar came the faint sound of a melodious flute.",
+    "collocations": [
+      "隐约可见",
+      "隐约听见"
+    ],
+    "confusables": [
+      "隐藏",
+      "大约",
+      "预约"
+    ]
+  },
+  "瑟瑟": {
+    "py": "sèsè",
+    "meaning": "形容轻微的声音；发抖的样子。",
+    "en": "rustle; shiver",
+    "sentence": "秋风吹过，树叶瑟瑟作响。",
+    "sentenceEn": "The autumn wind blew, and the leaves rustled.",
+    "collocations": [
+      "瑟瑟发抖",
+      "瑟瑟作响"
+    ],
+    "confusables": []
+  },
+  "恐怖": {
+    "py": "kǒngbù",
+    "meaning": "由可怕引起的强烈害怕。",
+    "en": "terror; horror",
+    "sentence": "这部电影气氛恐怖，吓得他不敢一个人看。",
+    "sentenceEn": "The film's atmosphere was so terrifying that he dared not watch it alone.",
+    "collocations": [
+      "恐怖电影",
+      "恐怖气氛"
+    ],
+    "confusables": [
+      "恐惧",
+      "恐慌",
+      "恐吓"
+    ]
+  },
+  "通宵": {
+    "py": "tōngxiāo",
+    "meaning": "整夜，从天黑到天亮。",
+    "en": "all night",
+    "sentence": "为了完成项目，团队成员通宵加班，毫无怨言。",
+    "sentenceEn": "To finish the project, the team worked all night without complaint.",
+    "collocations": [
+      "通宵达旦",
+      "通宵工作"
+    ],
+    "confusables": [
+      "通知",
+      "元宵",
+      "夜宵"
+    ]
+  },
+  "惊悚": {
+    "py": "jīngsǒng",
+    "meaning": "惊吓恐惧，使人毛骨悚然。",
+    "en": "horror; terrifying",
+    "sentence": "这部小说情节惊悚，读起来让人心惊胆战。",
+    "sentenceEn": "The novel's plot is so terrifying it makes one's heart race while reading.",
+    "collocations": [
+      "惊悚片",
+      "气氛惊悚"
+    ],
+    "confusables": [
+      "惊喜",
+      "惊奇",
+      "惊慌"
+    ]
+  },
+  "脖子": {
+    "py": "bózi",
+    "meaning": "头和躯干相连的部分。",
+    "en": "the neck",
+    "sentence": "他伸长脖子，想看清楚台上发生了什么。",
+    "sentenceEn": "He craned his neck to see clearly what was happening on stage.",
+    "collocations": [
+      "伸长脖子",
+      "脖子酸痛"
+    ],
+    "confusables": [
+      "脖颈",
+      "孩子",
+      "鼻子"
+    ]
+  },
+  "社交媒体": {
+    "py": "shèjiāo méitǐ",
+    "meaning": "供人们建立社会关系、分享信息的网络平台。",
+    "en": "social media",
+    "sentence": "如今，许多人习惯通过社交媒体了解新闻和交流。",
+    "sentenceEn": "Nowadays, many people are used to getting news and communicating through social media.",
+    "collocations": [
+      "使用社交媒体",
+      "社交媒体平台"
+    ],
+    "confusables": []
+  },
+  "姿势": {
+    "py": "zīshì",
+    "meaning": "身体呈现的样子。",
+    "en": "posture; pose",
+    "sentence": "他保持着标准的姿势，准备起跑。",
+    "sentenceEn": "He held a proper stance, ready to start running.",
+    "collocations": [
+      "标准姿势",
+      "摆好姿势"
+    ],
+    "confusables": [
+      "姿态",
+      "手势",
+      "形势"
+    ]
   }
 }
