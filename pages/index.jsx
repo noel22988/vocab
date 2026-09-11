@@ -1,10 +1,27 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import WORD_DATA from '../data/wordData.json';
-import EXAM_WORDS from '../data/examWords.json';
-import SYLLABUS_RAW from '../data/syllabusRaw.json';
-import CHAR_F from '../data/charF.json';
-import CHAR_L from '../data/charL.json';
-import COLLOC_EN from '../data/collocEn.json';
+import DATA from '../data/wordData.json';
+
+// Everything about a word lives in one record in wordData.json. The structures
+// below are rebuilt from it at load, so the rest of the app is unchanged.
+const COLLOC_EN = {};
+const WORD_DATA = {};
+for (const [w, d] of Object.entries(DATA.words)) {
+  const cols = [];
+  for (const c of (d.collocations || [])) { cols.push(c.cn); if (c.en) COLLOC_EN[c.cn] = c.en; }
+  WORD_DATA[w] = { ...d, collocations: cols };
+}
+const _ENTRIES = Object.entries(WORD_DATA);
+const EXAM_WORDS = _ENTRIES.filter(([, d]) => d.years).sort((a, b) => a[1].xi - b[1].xi)
+  .map(([w, d]) => ({ w, t: d.type, y: d.years }));
+const SYLLABUS_RAW = _ENTRIES.filter(([, d]) => d.s != null).sort((a, b) => a[1].si - b[1].si)
+  .map(([w, d]) => ({ w, py: d.spy !== undefined ? d.spy : d.py, s: d.s }));
+const _charGroups = (order, keyOf, idx) => order.map(ch => ({
+  char: ch,
+  words: _ENTRIES.filter(([w, d]) => d[idx] != null && keyOf(w) === ch)
+    .sort((a, b) => a[1][idx] - b[1][idx]).map(([w]) => w),
+}));
+const CHAR_F = _charGroups(DATA.charFOrder, w => w[0], 'cfi');
+const CHAR_L = _charGroups(DATA.charLOrder, w => { const a = [...w]; return a[a.length - 1]; }, 'cli');
 
 // ─── DATA ─────────────────────────────────────────────────────────────────────
 const IDIOMS = [
